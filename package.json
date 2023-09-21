@@ -1,0 +1,24 @@
+{
+  "name": "leetcode",
+  "version": "1.0.0",
+  "description": "A repository to document my solutions to LeetCode coding challenges. Each problem includes explanations and code.",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stevenjlho/leetcode.git"
+  },
+  "keywords": [
+    "leetcode-solutions"
+  ],
+  "author": "Steven Ho",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stevenjlho/leetcode/issues"
+  },
+  "homepage": "https://github.com/stevenjlho/leetcode#readme",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

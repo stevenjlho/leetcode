@@ -7,6 +7,7 @@ A repository to document my solutions to LeetCode coding challenges. Each proble
 - [Introduction](#introduction)
 - [Solutions](#solutions)
 - [How to Contribute](#how-to-contribute)
+- [Test](#test)
 - [License](#license)
 
 ## Introduction
@@ -28,6 +29,12 @@ Contributions to this repository are welcome! If you have a better solution, wan
 3. Make your changes and commit them: `git commit -m "Add your feature"`.
 4. Push to your forked repository: `git push origin feature/your-feature-name`.
 5. Open a pull request, detailing your changes and why they should be merged.
+
+## Test
+```
+npm install
+npm test
+```
 
 ## License
 
