@@ -1,4 +1,4 @@
-# 26. Remove Duplicates from Sorted Array
+# 206. Reverse Linked List
 
 ## Intuition
 The key is to use two pointers to traverse the linked list, and to build the new list starting from the back (since we can only traverse the linked list from the front).
