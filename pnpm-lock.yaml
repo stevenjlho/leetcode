@@ -4,6 +4,14 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+dependencies:
+  data-structure:
+    specifier: git@github.com:JoeKarlsson/data-structures.git
+    version: github.com/JoeKarlsson/data-structures/14112c25e95ea926d66682c7a436d9f75cf78207
+  linked-list:
+    specifier: ^3.1.0
+    version: 3.1.0
+
 devDependencies:
   jest:
     specifier: ^29.7.0
@@ -1762,6 +1770,10 @@ packages:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
     dev: true
 
+  /linked-list@3.1.0:
+    resolution: {integrity: sha512-8fTIVBkKRqJ9MPEwggRkzYsOGcicCC4qSXm6iANVJOGwXrkew85kL7zFztQHSOQBbM6zG+vqtC/cTHm4nuUCSg==}
+    dev: false
+
   /locate-path@5.0.0:
     resolution: {integrity: sha512-t7hw9pI+WvuwNJXwk5zVHpyhIqzg2qTlklJOf0mVxGSbe3Fp2VieZcduNYjaLDoy6p9uGpQEGWG87WpMKlNq8g==}
     engines: {node: '>=8'}
@@ -2242,3 +2254,9 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  github.com/JoeKarlsson/data-structures/14112c25e95ea926d66682c7a436d9f75cf78207:
+    resolution: {tarball: https://codeload.github.com/JoeKarlsson/data-structures/tar.gz/14112c25e95ea926d66682c7a436d9f75cf78207}
+    name: data-structure
+    version: 1.0.0
+    dev: false

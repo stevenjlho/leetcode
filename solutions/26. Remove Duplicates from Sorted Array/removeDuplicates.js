@@ -8,4 +8,4 @@ var removeDuplicates = function(nums) {
     return j;
 };
 
-module.exports = removeDuplicates;
+export default removeDuplicates;

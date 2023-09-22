@@ -2,8 +2,9 @@
   "name": "leetcode",
   "version": "1.0.0",
   "description": "A repository to document my solutions to LeetCode coding challenges. Each problem includes explanations and code.",
+  "type": "module",
   "scripts": {
-    "test": "jest"
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest"
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,9 @@
   "homepage": "https://github.com/stevenjlho/leetcode#readme",
   "devDependencies": {
     "jest": "^29.7.0"
+  },
+  "dependencies": {
+    "data-structure": "git@github.com:JoeKarlsson/data-structures.git",
+    "linked-list": "^3.1.0"
   }
 }

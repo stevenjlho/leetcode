@@ -20,6 +20,10 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 
 - [26. Remove Duplicates from Sorted Array](./solutions/26.%20Remove%20Duplicates%20from%20Sorted%20Array/README.md)
 
+### Medium 
+
+- [53. Maximum Subarray](./solutions/53.%20Maximum%20Subarray/README.md)
+
 ## How to Contribute
 
 Contributions to this repository are welcome! If you have a better solution, want to improve an existing one, or have suggestions, please follow these steps:
