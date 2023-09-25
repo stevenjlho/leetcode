@@ -36,8 +36,8 @@ Contributions to this repository are welcome! If you have a better solution, wan
 
 ## Test
 ```
-npm install
-npm test
+bun install
+bun test
 ```
 
 ## License

@@ -1,21 +1,15 @@
-import LinkedList from "data-structure/linked-list/linkedList";
+import { expect, test } from "bun:test";
+import LinkedList from "mnemonist/linked-list";
 import reverseList from "./reverseList";
 
 test("case 1", () => {
-  let list = new LinkedList();
-  list.add(1);
-  list.add(2);
-  list.add(3);
-  list.add(4);
-  list.add(5);
+  var list = LinkedList.from([1, 2, 3, 4, 5]);
   list.head = reverseList(list.head);
-  expect(list.head.value).toBe(5);
+  expect(list.toArray()).toEqual([5, 4, 3, 2, 1]);
 });
 
 test("case 2", () => {
-  let list = new LinkedList();
-  list.add(1);
-  list.add(2);
+  var list = LinkedList.from([1, 2]);
   list.head = reverseList(list.head);
-  expect(list.head.value).toBe(2);
+  expect(list.toArray()).toEqual([2, 1]);
 });

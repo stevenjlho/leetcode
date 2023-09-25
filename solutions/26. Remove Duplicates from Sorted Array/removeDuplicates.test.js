@@ -1,3 +1,5 @@
+
+import { expect, test } from "bun:test";
 import removeDuplicates from './removeDuplicates';
 
 test('case 1', () => {
