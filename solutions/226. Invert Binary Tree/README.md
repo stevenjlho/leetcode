@@ -29,7 +29,7 @@ var invertTree = function(root) {
         return null ;
     }
 
-    temp = root.left;
+    const temp = root.left;
     root.left = root.right;
     root.right = temp;
 
