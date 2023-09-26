@@ -1,19 +1,17 @@
-# 53. Maximum Subarray
+# [53. Maximum Subarray](https://leetcode.com/problems/maximum-subarray/description/)
 
-## ****Intuition****
+## Intuition
+We can find the maximum sum of a subarray by scanning through the array and keeping track of the current sum of the subarray. If the current sum becomes greater than the maximum, we update the maximum sum.
 
-We can find the maximum sum of subarray by scanning through the array and keeping track of the current of the subarray
+## Approach 
+1. Initialize `maxSum` to the minimum integer value to ensure that any valid subarray sum will be greater than it. Initialize `currentSum` to represent the current sum of the subarray.
+2. Iterate through the `nums` array, adding each element to `currentSum`.
+   - if the current sum `currentSum` is greater than the current maximum sum `maxSum`, update `maxSum` with the new value of `currentSum`. This means we have found a new maximum subarray sum.
+   - If `currentSum` becomes negative, reset it to 0 to start a new subarray, as we want to avoid reducing the overall sum.
+3. Finally, we return the value of `maxSum` as the result, representing the maximum sum of a contiguous subarray within the given array nums
 
-## Explanation
-
-1. **`maxSum`** is initialized to the minimum integer value to ensure that any valid subarray sum will be greater than it. `currentSum` represents the current sum of the subarray.
-2. We iterate through the **`nums`** array, adding each element to **`currentSum`**.
-3. We check if the current sum `currentSum` is greater than the current maximum sum `maxSum`. If it is, we update `maxSum` with the new value of `currentSum`
-4. If **`currentSum`** becomes negative, we reset it to 0 to start a new subarray because we want to avoid reducing the overall sum
-5. After iterating, **`maxSum`** contains the maximum subarray sum.
-
-## Code 
-```Javascript
+## Code
+```javascript
 /**
  * @param {number[]} nums
  * @return {number}
@@ -23,14 +21,17 @@ var maxSubArray = function(nums) {
     let currentSum = 0;
 
     for(let i = 0; i < nums.length; i++) {
-        currentSum += nums[i]
+        currentSum += nums[i];
         if (currentSum > maxSum) {
             maxSum = currentSum;
         }
-
-        if(currentSum < 0) currentSum = 0        
+        // reset it to 0 to avoid reducing the overall sum.
+        if(currentSum < 0) currentSum = 0;
     }
 
     return maxSum;
 };
 ```
+
+## Dynamic Programming
+- Todo
