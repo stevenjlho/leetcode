@@ -1,14 +1,4 @@
-# LeetCode Solutions
-
-A repository to document my solutions to LeetCode coding challenges. Each problem includes explanations and code.
-
-
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Solutions](#solutions)
-- [How to Contribute](#how-to-contribute)
-- [License](#license)
+# LeetCode 
 
 ## Introduction
 
@@ -17,12 +7,13 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 ## Solutions
 
 ### Easy
-- [26. Remove Duplicates from Sorted Array](./solutions/26.%20Remove%20Duplicates%20from%20Sorted%20Array/README.md)
-- [206. Reverse Linked List](./solutions/206.%20Reverse%20Linked%20List/README.md)
-- [226. Invert Binary Tree](./solutions/226.%20Invert%20Binary%20Tree/README.md)
+- [26. Remove Duplicates from Sorted Array](https://github.com/stevenjlho/leetcode/blob/main/solutions/26.%20Remove%20Duplicates%20from%20Sorted%20Array/README.md)
+- [27. Remove Element](https://github.com/stevenjlho/leetcode/blob/main/solutions/27.%20Remove%20Element/README.md)
+- [206. Reverse Linked List](https://github.com/stevenjlho/leetcode/blob/main/solutions/206.%20Reverse%20Linked%20List/README.md)
+- [226. Invert Binary Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/226.%20Invert%20Binary%20Tree/README.md)
 
 ### Medium 
-- [53. Maximum Subarray](./solutions/53.%20Maximum%20Subarray/README.md)
+- [53. Maximum Subarray](https://github.com/stevenjlho/leetcode/blob/main/solutions/53.%20Maximum%20Subarray/README.md)
 
 ## Test
 ```
