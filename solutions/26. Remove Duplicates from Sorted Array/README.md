@@ -1,29 +1,35 @@
-# 26. Remove Duplicates from Sorted Array
+# [26. Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/)
 
 
-## Explanation 
-The code start iterating from `i = 1` because we need to compare each element with its previous element to check for duplicates.
+## Intuition
+We will iterate through the array and maintain two pointers: `index` and `i`. 
+The `index` pointer represents the position where a unique element should be placed, while the `i` pointer iterates through the array elements.
 
-The main logic is inside the `for` loop:
+## Approach
+1. We initialize the pointer `index` to 1 as the first element in the array is always unique and doesn't need to be changed. 
+2. We initialize the pointer `i` to 1 as we need to compare each element with its previous element to check for duplicates.
+3. Iterate through each element using the `i` pointer, and check if nums[i] is not equal to the previous element `nums[i - 1]` to identify a new unique element.
+   - If `nums[i]` is not equal to `nums[i - 1]`, it means we should set the value of `nums[index]` to `nums[i]`.
+	 - Increment `index` by 1 to move to the next position for the next unique element.
+4. Finally, return the value of `index`, which represents the length of the modified array.
 
-1. if the current element  `nums[i]`  is not equal to the previous element `nums[i - 1]`, it means we have encountered a new unique element.
-2. In this case, we update `nums[j]` with the value of unique element at num[i], and then increment j by 1 to mark the next position for  a new unique element.
+## Complexity
+- Time complexity: O(n).
+- Space complexity: O(1).
 
-Once the loop finishes, the value of `j` represents the length of the resulting array with duplicates removed.
-
-## Code 
-```Javascript
+## Code
+```javascript
 /**
  * @param {number[]} nums
  * @return {number}
  */
 var removeDuplicates = function(nums) {
-    let j = 1;
+    let index = 1;
     for(let i = 1; i < nums.length; ++i)
-        if(nums[i] != nums[i - 1])  {  
-            nums[j] = nums[i]; 
-            j++; 
+        if(nums[i] !== nums[i - 1])  {  
+            nums[index] = nums[i]; 
+            index++; 
         }
-    return j;
+    return index;
 };
 ```
