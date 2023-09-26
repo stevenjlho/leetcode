@@ -6,8 +6,8 @@ We can find the maximum sum of a subarray by scanning through the array and keep
 ## Approach 
 1. Initialize `maxSum` to the minimum integer value to ensure that any valid subarray sum will be greater than it. Initialize `currentSum` to represent the current sum of the subarray.
 2. Iterate through the `nums` array, adding each element to `currentSum`.
-   - if the current sum `currentSum` is greater than the current maximum sum `maxSum`, update `maxSum` with the new value of `currentSum`. This means we have found a new maximum subarray sum.
-   - If `currentSum` becomes negative, reset it to 0 to start a new subarray, as we want to avoid reducing the overall sum.
+   - if the `currentSum` is greater than the `maxSum`, update `maxSum` with the new value of `currentSum`. This means we have found a new maximum subarray sum.
+   - If `currentSum` becomes negative, reset it to 0 as we want to avoid reducing the overall sum.
 3. Finally, we return the value of `maxSum` as the result, representing the maximum sum of a contiguous subarray within the given array nums
 
 ## Complexity

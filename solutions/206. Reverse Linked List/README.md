@@ -8,7 +8,7 @@ The key is to use two pointers to traverse the linked list, and to build the new
 1. Initialize `prev` to `null`. This will be used to mark the end of the reversed list.
 Initialize `current` to the `head` of the original list. This is the node we start with while traversing the list.
 2. Traverse the list using `current` until the node is `null`.
-   - `next` keeps track of the next node in the original list so it can be accessed next.
+   - The variable `next` stores the `current.next` pointer so that it can be assigned to `current` later.
    - Reverse the `next` pointers to point backward.
    - Update prev to current, and move current to the next node in the original linked list.
 3. Finally, return the node `prev`, which represents the reverse of linked list. 
