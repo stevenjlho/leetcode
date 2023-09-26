@@ -10,6 +10,10 @@ We can find the maximum sum of a subarray by scanning through the array and keep
    - If `currentSum` becomes negative, reset it to 0 to start a new subarray, as we want to avoid reducing the overall sum.
 3. Finally, we return the value of `maxSum` as the result, representing the maximum sum of a contiguous subarray within the given array nums
 
+## Complexity
+- Time complexity: O(N)
+- Space complexity: O(1)
+
 ## Code
 ```javascript
 /**
