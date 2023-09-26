@@ -7,6 +7,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 ## Solutions
 
 ### Easy
+- [20. Valid Parentheses](https://github.com/stevenjlho/leetcode/blob/main/solutions/20.%20Valid%20Parentheses/README.md)
 - [21. Merge Two Sorted Lists](https://github.com/stevenjlho/leetcode/blob/main/solutions/21.%20Merge%20Two%20Sorted%20Lists/README.md)
 - [26. Remove Duplicates from Sorted Array](https://github.com/stevenjlho/leetcode/blob/main/solutions/26.%20Remove%20Duplicates%20from%20Sorted%20Array/README.md)
 - [27. Remove Element](https://github.com/stevenjlho/leetcode/blob/main/solutions/27.%20Remove%20Element/README.md)
