@@ -14,7 +14,7 @@ We can use a stack data structure to keep track of opening brackets and check if
 
 ## Complexity
 - Time complexity: O(N)
-- Space complexity: O(N) as the stack could store all the opening brackets in the string, resulting in space complexity proportional to the input size.
+- Space complexity: O(N) as the stack could store all the opening brackets in the string
 
 ## Code
 ```javascript
