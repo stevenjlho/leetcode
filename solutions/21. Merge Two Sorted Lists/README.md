@@ -6,9 +6,9 @@ We can create a dummy node as the starting point for the merged list to avoid ed
 ## Approach
 1. Create a dummy node as the starting point for the merged list.
 2. Traverse the lists to check if both `list1` and `list2` are non-null.
-   - If the value of `list1` is less than the value of 'list2', use `tail.next` to keep track of the current node and assign it to `tail`, then update the `list1` pointer. 
+   - If the value of `list1` is less than the value of 'list2', use `tail.next` to link it to the tail of the merged list, then moving the current pointer of the `list1` one step forward.
    - If `list2` has the smaller or equal value, do the same with `list2`.
-   - Update the `tail` pointer from `tail.next`. 
+   - `tail = tail.next;` is used to update the tail to the last node of the merged list, ensuring that the next node is connected correctly.
 3. Identify the non-empty list (if any) and append its remaining elements to the merged list.
 4. Finally, return the merged list starting from the next node of the dummy node.
 
@@ -37,6 +37,7 @@ var mergeTwoLists = function(list1, list2) {
             tail.next = list2
             list2 = list2.next
         }
+				// Update the tail to the last node of the merged list
         tail = tail.next
     }
 
