@@ -36,6 +36,3 @@ var maxSubArray = function(nums) {
     return maxSum;
 };
 ```
-
-## Dynamic Programming
-- Todo

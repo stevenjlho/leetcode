@@ -7,7 +7,6 @@ If we were to place the element of `nums2` from the beginning of `nums1`, we wou
 
 
 ## Approach
-
 1. Initialize i=m-1 to point at the m-1 index of the `nums2` array. 
    Initialize j=n-1 to point at the n-1 index of the nums2 array.
 2. Initialize `k` to `m + n - 1`, indicating the last position in the merged `nums1` array.
@@ -22,7 +21,8 @@ If we were to place the element of `nums2` from the beginning of `nums1`, we wou
 - Time complexity: O(m+n) as we are inserting m+n elements in the nums1 array.
 - Space complexity: O(1) We are not using any extra space.
 
-```Javascript
+## Code
+```javascript
 /**
  * @param {number[]} nums1
  * @param {number} m
@@ -45,4 +45,5 @@ var mergeSortedArray = function(nums1, m, nums2, n) {
         }
         k--;
     }
-};``
+};
+```

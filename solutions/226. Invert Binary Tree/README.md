@@ -14,15 +14,7 @@ We can invert a binary tree using a pre-order traversal.
 - Time complexity: O(N)
 - Space complexity: O(N) Recursive stack space
 
-```Javascript
-/**
- * Definition for a binary tree node.
- * function TreeNode(val, left, right) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.left = (left===undefined ? null : left)
- *     this.right = (right===undefined ? null : right)
- * }
- */
+```javascript
 /**
  * @param {TreeNode} root
  * @return {TreeNode}

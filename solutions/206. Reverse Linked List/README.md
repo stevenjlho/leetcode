@@ -18,7 +18,7 @@ Initialize `current` to the `head` of the original list. This is the node we sta
 - Space complexity: O(1)
 
 ## Code
-```Javascript
+```javascript
 /**
  * @param {ListNode} head
  * @return {ListNode}
