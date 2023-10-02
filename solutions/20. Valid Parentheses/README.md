@@ -13,8 +13,8 @@ We can use a stack data structure to keep track of opening brackets and check if
 
 
 ## Complexity
-- Time complexity: O(N)
-- Space complexity: O(N) as the stack could store all the opening brackets in the string
+- Time complexity: O(n), the algorithm iterates through the array of s once.
+- Space complexity: O(n) as the stack could store all the opening brackets in the string.
 
 ## Code
 ```javascript

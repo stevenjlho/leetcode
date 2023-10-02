@@ -13,8 +13,8 @@ We can create a dummy node as the starting point for the merged list to avoid ed
 4. Finally, return the merged list starting from the next node of the dummy node.
 
 ## Complexity
-- Time complexity: O(n).
-- Space complexity: O(1).
+- Time complexity: O(m+n), the algorithm iterates through the linked list of list1 and list2 once.
+- Space complexity: O(1) We are not using any extra space.
 
 ## Code
 ```javascript

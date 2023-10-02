@@ -14,8 +14,8 @@ Initialize `current` to the `head` of the original list. This is the node we sta
 3. Finally, return the node `prev`, which represents the reverse of linked list. 
 
 ## Complexity
-- Time complexity: O(N)
-- Space complexity: O(1)
+- Time complexity: O(n), the algorithm iterates through linked list once.
+- Space complexity: O(1), we are not using any extra space.
 
 ## Code
 ```javascript

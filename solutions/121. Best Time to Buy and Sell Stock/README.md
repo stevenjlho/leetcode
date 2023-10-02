@@ -12,7 +12,7 @@ We can iterate through the array and keep track of minimum stock price seen `min
 3. Finally, return the value of `maxProfit`, which represents the maximum profit that can be obtained.
 
 ## Complexity
-- Time complexity: O(N) The algorithm iterates through the array of stock prices once, performing constant-time operations at each step.
+- Time complexity: O(n) The algorithm iterates through the array of stock prices once, performing constant-time operations at each step.
 - Space complexity: O(1) The algorithm uses a constant amount of extra space to store variables.
 
 

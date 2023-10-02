@@ -13,8 +13,8 @@ The `index` pointer represents the position where a unique element should be pla
 4. Finally, return the value of `index`, which represents the length of the modified array.
 
 ## Complexity
-- Time complexity: O(n).
-- Space complexity: O(1).
+- Time complexity: O(n), the algorithm iterates through the array of nums once.
+- Space complexity: O(1), the algorithm modifies the array in-place and does not use any additional data structures.
 
 ## Code
 ```javascript

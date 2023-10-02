@@ -11,8 +11,8 @@ We can find the maximum sum of a subarray by scanning through the array and keep
 3. Finally, we return the value of `maxSum` as the result, representing the maximum sum of a contiguous subarray within the given array nums
 
 ## Complexity
-- Time complexity: O(N)
-- Space complexity: O(1)
+- Time complexity: O(n), the algorithm iterates through the array of nums once.
+- Space complexity: O(1) We are not using any extra space.
 
 ## Code
 ```javascript

@@ -11,8 +11,8 @@ We can invert a binary tree using a pre-order traversal.
 4. Finally, we return the node root, which represents the inverted binary tree.
 
 ## Complexity
-- Time complexity: O(N)
-- Space complexity: O(N) Recursive stack space
+- Time complexity: O(n)
+- Space complexity: O(n) Recursive stack space
 
 ```javascript
 /**
