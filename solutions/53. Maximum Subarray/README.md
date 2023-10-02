@@ -21,16 +21,20 @@ We can find the maximum sum of a subarray by scanning through the array and keep
  * @return {number}
  */
 var maxSubArray = function(nums) {
-    let maxSum = Number.MIN_SAFE_INTEGER;
+    let maxSum = Number.MIN_SAFE_INTEGER; // Initialize maxSum to negative infinity
     let currentSum = 0;
 
-    for(let i = 0; i < nums.length; i++) {
+    for (let i = 0; i < nums.length; i++) {
         currentSum += nums[i];
+        
         if (currentSum > maxSum) {
             maxSum = currentSum;
         }
-        // reset it to 0 to avoid reducing the overall sum.
-        if(currentSum < 0) currentSum = 0;
+        
+        // If currentSum becomes negative, reset it to 0
+        if (currentSum < 0) {
+            currentSum = 0;
+        }
     }
 
     return maxSum;

@@ -8,9 +8,9 @@ The `index` pointer represents the position where a unique element should be pla
 1. We initialize the pointer `index` to 1 as the first element in the array is always unique and doesn't need to be changed. 
 2. We initialize the pointer `i` to 1 as we need to compare each element with its previous element to check for duplicates.
 3. Iterate through each element using the `i` pointer, and check if nums[i] is not equal to the previous element `nums[i - 1]` to identify a new unique element.
-    - If `nums[i]` is not equal to `nums[i - 1]`, it means we should set the value of `nums[index]` to `nums[i]`.
-    - Increment `index` by 1 to move to the next position for the next unique element.
-4. Finally, return the value of `index`, which represents the length of the modified array.
+4. If `nums[i]` is not equal to `nums[i - 1]`, it means we should set the value of `nums[index]` to `nums[i]`.
+5. Increment `index` by 1 to move to the next position for the next unique element.
+6. Finally, return the value of `index`, which represents the length of the modified array.
 
 ## Complexity
 - Time complexity: O(n), the algorithm iterates through the array of nums once.

@@ -7,9 +7,9 @@ The `index` pointer represents the position where the next non-target element sh
 # Approach
 1. We initialize index to 0, representing the current position.
 2. We iterate through each element of the array using the i pointer, we check if `nums[i]` is equal to the target value val.
-  - If nums[i] is not equal to val, it means we should keep this element. So, we set the value of nums[index] to nums[i].
-  - We then increment index by 1 to move to the next position for the next non-target element.
-3. Finally, we return the value of index, which represents the length of the modified array.
+3. If `nums[i]` is not equal to `val`, it means we should keep this element. So, we set the value of `nums[index]` to `nums[i]`.
+4. We then increment `index` by 1 to move to the next position for the next non-target element.
+5.  Finally, we return the value of `index`, which represents the length of the modified array.
 
 # Complexity
 - Time complexity: O(n), where n is the length of the input array nums.
@@ -34,3 +34,4 @@ var removeElement = function(nums, val) {
     return index;
 };
 ```
+

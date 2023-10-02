@@ -5,17 +5,15 @@
 We can use two pointers `i` and `j` to merge the two arrays and iterate through `nums2` from the end.
 If we were to place the element of `nums2` from the beginning of `nums1`, we would occasionally miss out the element of `nums1`.
 
-
 ## Approach
-1. Initialize i=m-1 to point at the m-1 index of the `nums2` array. 
-   Initialize j=n-1 to point at the n-1 index of the nums2 array.
-2. Initialize `k` to `m + n - 1`, indicating the last position in the merged `nums1` array.
-3. Iterate through the `nums2` array from the end, starting with pointers `i` and `j`. Compare the elements at these positions.
-4. If `i` is greater than or equal to 0, and the element at index `i` in `nums1` is greater than the element at index `j` in `nums2`, it means the element at `i` in `nums1` is larger and should be placed in position k in `nums1`. Afterward, decrement i to compare the next element in `nums1`.
-5. If the condition in the previous step is not met, it has the opposite meaning of last step but do the similar thing, we place the element at index `j` in `nums2` into position `k` in `nums1` and decrement `j` to compare the next element in `nums2`.
-6. Decrease `k` after placing an element in `nums1`.
-7. Continue step3 to step 6 until all elements from `nums2` are merged into `nums1`.
-
+1. Initialize `i` to `m - 1` to point at the last valid index of `nums1`.
+   Initialize `j` to `n - 1` to point at the last index of `nums2`. 
+   Initialize `k` to `m + n - 1`, indicating the last position in the merged `nums1` array.
+2. Iterate through the `nums2` array from the end, starting with pointers `i` and `j`. Compare the elements at these positions.
+3. If `i` is greater than or equal to 0 and the element at index `i` in `nums1` is greater than the element at index `j` in `nums2`, it means the element at `i` in `nums1` is larger and should be placed in position `k` in `nums1`. Afterward, decrement `i` to compare the next element in `nums1`.
+4. If the condition in the previous step is not met, it means that either the element at `j` index of `nums2` is greater than the element at `i` index of `nums1`, or there are no elements left in `nums1` to compare. In this case, we place the element at index `j` in `nums2` into position `k` in `nums1` and decrement `j` to compare the next element in `nums2`.
+5. Decrease `k` after placing an element in `nums1`.
+6. Continue steps 2 to 5 until all elements from `nums2` are merged into `nums1`.
 
 ## Complexity
 - Time complexity: O(m+n) as we are inserting m+n elements in the nums1 array.
@@ -30,10 +28,10 @@ If we were to place the element of `nums2` from the beginning of `nums1`, we wou
  * @param {number} n
  * @return {void} Do not return anything, modify nums1 in-place instead.
  */
-var mergeSortedArray = function(nums1, m, nums2, n) {
-    var i = m - 1;
-    var j = n - 1;
-    var k = m + n - 1;
+var merge = function(nums1, m, nums2, n) {
+    let i = m - 1;
+    let j = n - 1;
+    let k = m + n - 1;
 
     while (j >= 0) {
         if (i >= 0 && nums1[i] > nums2[j]) {
