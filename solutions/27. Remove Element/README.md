@@ -5,7 +5,7 @@ We will iterate through the array and maintain two pointers: `index` and `i`.
 The `index` pointer represents the position where the next non-target element should be placed, while the `i` pointer iterates through the array elements.
 	
 # Approach
-1. We initialize index to 0, representing the current position.
+1. We initialize the index to 0, which keeps track of the position for the next non-target element.
 2. We iterate through each element of the array using the i pointer, we check if `nums[i]` is equal to the target value val.
 3. If `nums[i]` is not equal to `val`, it means we should keep this element. So, we set the value of `nums[index]` to `nums[i]`.
 4. We then increment `index` by 1 to move to the next position for the next non-target element.
