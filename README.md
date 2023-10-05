@@ -15,6 +15,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 - [121. Best Time to Buy and Sell Stock](https://github.com/stevenjlho/leetcode/blob/main/solutions/121.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock/README.md)
 - [169. Majority Element](https://github.com/stevenjlho/leetcode/blob/main/solutions/169.%20Majority%20Element/README.md)
 - [206. Reverse Linked List](https://github.com/stevenjlho/leetcode/blob/main/solutions/206.%20Reverse%20Linked%20List/README.md)
+- [217. Contains Duplicate](https://github.com/stevenjlho/leetcode/blob/main/solutions/217.%20Contains%20Duplicate/README.md)
 - [226. Invert Binary Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/226.%20Invert%20Binary%20Tree/README.md)
 
 ### Medium 
