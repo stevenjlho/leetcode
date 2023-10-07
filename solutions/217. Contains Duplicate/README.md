@@ -13,7 +13,7 @@ Using a hash map is an effective approach to solving this problem because hash m
 
 ## Complexity
 - Time complexity: O(n), the algorithm iterates through array once.
-- Space complexity: O(n), the hash map can store all elements of the input array..
+- Space complexity: O(n), the hash map can store all elements of the input array.
 
 ## Code
 ```javascript
