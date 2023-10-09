@@ -19,6 +19,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 - [206. Reverse Linked List](https://github.com/stevenjlho/leetcode/blob/main/solutions/206.%20Reverse%20Linked%20List/README.md)
 - [217. Contains Duplicate](https://github.com/stevenjlho/leetcode/blob/main/solutions/217.%20Contains%20Duplicate/README.md)
 - [226. Invert Binary Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/226.%20Invert%20Binary%20Tree/README.md)
+- [234. Palindrome Linked List](https://github.com/stevenjlho/leetcode/blob/main/solutions/2.%20Palindrome%20Linked%20List/README.md)
 - [383. Ransom Note](https://github.com/stevenjlho/leetcode/blob/main/solutions/383.%20Ransom%20Note/README.md)
 
 ### Medium 
