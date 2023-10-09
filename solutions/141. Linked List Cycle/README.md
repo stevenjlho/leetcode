@@ -1,36 +1,36 @@
 # [141. Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/description)
 
 ## Intuition
-
-We can use two pointers traverse the linked list, `slow` pointer moves forward to one node while `fast` pointer moves forward two node, if `slow` equals `fast`, it means there is a cycle.
+We can use two pointers traverse the linked list, `slow` pointer moves one step while `fast` pointer moves two steps, if `slow` equals `fast`, it means there is a cycle.
 
 ## Approach
-
-1. Initialize `slow`, which will keep track of moving forward one node. Initialize `fast`, which will keep track of moving forward two nodes.
-2. Traverse the linked list, and at each step, move `slow` one step and `fast` two steps.
-3. If at any point `slow` and `fast` meet, it means there is a cycle in the linked list, so we return `true`.
-4. If `fast` becomes `null` or `fast.next` becomes `null`, it means there is no cycle, and we return `false`.
+1. Initialize two pointers, `slow` and `fast`, both initially pointing to the head of the linked list.
+2. Traverse the linked list while moving `slow` one step at a time and `fast` two steps at a time.
+3. If there is no cycle in the linked list, `fast` will reach the end (`fast` or `fast.next` becomes `null`) before `slow`.
+4. If there is a cycle, `fast` will eventually catch up to `slow` inside the cycle, causing them to meet at the same node.
+5. If a cycle is present, return `true`; otherwise, return `false`.
 
 ## Complexity
-
-- Time complexity: O(n), the algorithm traverse linked list once.
-- Space complexity: O(1), we are not using any extra space.
+- Time complexity: O(n), where "n" is the number of nodes in the linked list.
+- Space complexity: O(1), the algorithm uses a constant amount of extra space regardless of the input size.
 
 ## Code
-
 ```javascript
 /**
  * @param {ListNode} head
  * @return {boolean}
  */
 var hasCycle = function (head) {
-  let slow = head,
-    fast = head;
+  // Initialize slow and fast pointers to the head of the list.
+  let slow = head;
+  let fast = head;
 
   while (fast !== null && fast.next !== null) {
+    // Move slow by one step and fast by two steps.
     slow = slow.next;
     fast = fast.next.next;
 
+    // If the two pointers meet, there is a cycle.
     if (slow === fast) {
       return true;
     }
