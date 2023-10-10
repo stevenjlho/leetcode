@@ -1,8 +1,7 @@
-# [217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate/description/)
-
+# [242. Valid Anagram](https://leetcode.com/problems/valid-anagram/description/)
 
 ## Intuition
-Using a hash map is an effective approach to solving this problem because hash maps provide constant-time average case lookups, making it efficient to check for duplicate elements in an array.
+Use a hash map to check for duplicate elements in an array.
 
 ## Approach
 1. Initialize `map` to keep track of the count of occurrences for each element.
@@ -22,12 +21,16 @@ Using a hash map is an effective approach to solving this problem because hash m
  * @return {boolean}
  */
 var containsDuplicate = function(nums) {
+    // Create a hash map to store the count of each element
     const map = new Map();
 
     for(let i = 0; i < nums.length; i++) {
+         // Check if the element exists in the map
         if(map.has(nums[i]) && map.get(nums[i]) >= 1) {
+            // If it exists, it's a duplicate, so return true
             return true;
         } else {
+            // If it doesn't exist, add it to the map with a count of 1
             map.set(nums[i], 1)
         }
     }
