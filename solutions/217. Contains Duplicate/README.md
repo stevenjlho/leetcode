@@ -1,4 +1,4 @@
-# [242. Valid Anagram](https://leetcode.com/problems/valid-anagram/description/)
+# [217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate/description/)
 
 ## Intuition
 Use a hash map to check for duplicate elements in an array.

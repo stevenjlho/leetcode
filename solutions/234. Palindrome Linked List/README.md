@@ -9,7 +9,7 @@ We can use two pointers `slow` and `fast` to find the middle node, then reverse 
 3. If the number of nodes in the linked list is odd, move `slow` one more step to the next node as it represents the middle node.
 4. Reverse the second half of the linked list, starting from the middle node.
 5. Compare the first half and the reversed second half of the linked list. Start by iterating through both halves, checking if the values of corresponding nodes match.
-6. If a mismatch is encountered at any stage,, return `false` as the linked list is not a palindrome.
+6. If a mismatch is encountered at any stage, return `false` as the linked list is not a palindrome.
 7. If the entire linked list is traversed without any mismatches, return `true`, indicating that it is a palindrome.
 
 ## Complexity
