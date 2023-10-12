@@ -7,6 +7,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 ## Solutions
 
 ### Easy
+- [1. Two Sum](https://github.com/stevenjlho/leetcode/blob/main/solutions/1.%20Two%20Sum/README.md)
 - [20. Valid Parentheses](https://github.com/stevenjlho/leetcode/blob/main/solutions/20.%20Valid%20Parentheses/README.md)
 - [21. Merge Two Sorted Lists](https://github.com/stevenjlho/leetcode/blob/main/solutions/21.%20Merge%20Two%20Sorted%20Lists/README.md)
 - [26. Remove Duplicates from Sorted Array](https://github.com/stevenjlho/leetcode/blob/main/solutions/26.%20Remove%20Duplicates%20from%20Sorted%20Array/README.md)
@@ -15,7 +16,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 - [121. Best Time to Buy and Sell Stock](https://github.com/stevenjlho/leetcode/blob/main/solutions/121.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock/README.md)
 - [141. Linked List Cycle](https://github.com/stevenjlho/leetcode/blob/main/solutions/141.%20Linked%20List%20Cycle/README.md)
 - [169. Majority Element](https://github.com/stevenjlho/leetcode/blob/main/solutions/169.%20Majority%20Element/README.md)
-- [169. Majority Element](https://github.com/stevenjlho/leetcode/blob/main/solutions/169.%20Majority%20Element/README.md)
+- [202. Happy Number](https://github.com/stevenjlho/leetcode/blob/main/solutions/202.%20Happy%20Number/README.md)
 - [206. Reverse Linked List](https://github.com/stevenjlho/leetcode/blob/main/solutions/206.%20Reverse%20Linked%20List/README.md)
 - [217. Contains Duplicate](https://github.com/stevenjlho/leetcode/blob/main/solutions/217.%20Contains%20Duplicate/README.md)
 - [226. Invert Binary Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/226.%20Invert%20Binary%20Tree/README.md)
