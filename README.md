@@ -8,6 +8,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 
 ### Easy
 - [1. Two Sum](https://github.com/stevenjlho/leetcode/blob/main/solutions/1.%20Two%20Sum/README.md)
+- [14. Longest Common Prefix](https://github.com/stevenjlho/leetcode/blob/main/solutions/14.%20Longest%20Common%20Prefix/README.md)
 - [20. Valid Parentheses](https://github.com/stevenjlho/leetcode/blob/main/solutions/20.%20Valid%20Parentheses/README.md)
 - [21. Merge Two Sorted Lists](https://github.com/stevenjlho/leetcode/blob/main/solutions/21.%20Merge%20Two%20Sorted%20Lists/README.md)
 - [26. Remove Duplicates from Sorted Array](https://github.com/stevenjlho/leetcode/blob/main/solutions/26.%20Remove%20Duplicates%20from%20Sorted%20Array/README.md)
