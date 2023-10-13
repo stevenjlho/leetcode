@@ -30,6 +30,9 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 ### Medium 
 - [53. Maximum Subarray](https://github.com/stevenjlho/leetcode/blob/main/solutions/53.%20Maximum%20Subarray/README.md)
 
+### Todo
+- [ ] [415. Add Strings](https://leetcode.com/problems/add-strings/description/)
+
 ## Test
 ```
 bun install
