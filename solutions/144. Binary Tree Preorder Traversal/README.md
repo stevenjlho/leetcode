@@ -1,0 +1,59 @@
+[144. Binary Tree Preorder Traversal](https://leetcode.com/problems/binary-tree-preorder-traversal/description/)
+
+# Intuition
+
+The goal is to perform a preorder traversal of a binary tree, which involves visiting the current node, then recursively traversing its left and right subtrees.
+
+# Approach
+
+1. Initialize an empty array `result` to store the nodes in the preorder traversal order.
+2. Define a recursive function `traversal` that takes a `root` node as its parameter.
+3. In the `traversal` function:
+   - Check if the current node `root` is null. If it is, return, as there's nothing to process.
+   - Push the value of the current node `root.val` into the `result` array to record the visitation order.
+   - Recursively call `traversal` for the left subtree(`root.left`) and right subtree (`root.right`) of the current node.
+4. Call the `traversal` function, starting with the root of the binary tree.
+5. After the recursive traversal, return the `result` array containing the nodes in the preorder traversal order.
+
+# Complexity
+
+- Time complexity: O(n), where n is the number of nodes in the binary tree. We visit each node once.
+- Space complexity: O(n), as the `result` array stores the values of all nodes in the traversal.
+
+# Code
+
+```javascript
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number[]}
+ */
+var preorderTraversal = function (root) {
+  let result = [];
+
+  var traversal = (root) => {
+    // If the current node is null, there's nothing to process
+    if (root === null) {
+      return;
+    }
+
+    // Push the value of the current node into the result array.
+    result.push(root.val);
+
+    traversal(root.left);
+    traversal(root.right);
+  };
+
+  // Start the traversal with the root node.
+  traversal(root);
+
+  return result;
+};
+```
