@@ -21,9 +21,8 @@ The goal is to check if a given binary tree is symmetric, meaning the left and r
 
 ## Complexity
 
-- Time complexity: O(n) where n is the number of nodes in the binary tree. We visit each node once.
-- Space complexity: O(h), where h is the height of the binary tree. This is because the recursive calls made by the solution consume memory on the call stack equal to the height of the tree.
-
+- Time complexity: O(n), where n is the number of nodes in the binary tree. We visit each node once.
+- Space complexity: O(h), where h is the height of the binary tree. In the worst case, the space complexity is O(n) for a skewed tree, but for a balanced tree, it's O(log n).
 ## Code
 
 ```javascript
