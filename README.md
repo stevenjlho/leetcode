@@ -15,6 +15,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 - [26. Remove Duplicates from Sorted Array](https://github.com/stevenjlho/leetcode/blob/main/solutions/26.%20Remove%20Duplicates%20from%20Sorted%20Array/README.md)
 - [27. Remove Element](https://github.com/stevenjlho/leetcode/blob/main/solutions/27.%20Remove%20Element/README.md)
 - [88. Merge Sorted Array](https://github.com/stevenjlho/leetcode/blob/main/solutions/88.%20Merge%20Sorted%20Array/README.md)
+- [101. Symmetric Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/101.%20Symmetric%20Tree/README.md)
 - [121. Best Time to Buy and Sell Stock](https://github.com/stevenjlho/leetcode/blob/main/solutions/121.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock/README.md)
 - [141. Linked List Cycle](https://github.com/stevenjlho/leetcode/blob/main/solutions/141.%20Linked%20List%20Cycle/README.md)
 - [144. Binary Tree Preorder Traversal](https://github.com/stevenjlho/leetcode/blob/main/solutions/144.%20Binary%20Tree%20Preorder%20Traversal/README.md)
