@@ -18,6 +18,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 - [88. Merge Sorted Array](https://github.com/stevenjlho/leetcode/blob/main/solutions/88.%20Merge%20Sorted%20Array/README.md)
 - [101. Symmetric Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/101.%20Symmetric%20Tree/README.md)
 - [104. Maximum Depth of Binary Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/104.%20Maximum%20Depth%20of%20Binary%20Tree/README.md)
+- [111. Minimum Depth of Binary Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/111.%20Minimum%20Depth%20of%20Binary%20Tree/README.md)
 - [121. Best Time to Buy and Sell Stock](https://github.com/stevenjlho/leetcode/blob/main/solutions/121.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock/README.md)
 - [141. Linked List Cycle](https://github.com/stevenjlho/leetcode/blob/main/solutions/141.%20Linked%20List%20Cycle/README.md)
 - [144. Binary Tree Preorder Traversal](https://github.com/stevenjlho/leetcode/blob/main/solutions/144.%20Binary%20Tree%20Preorder%20Traversal/README.md)
