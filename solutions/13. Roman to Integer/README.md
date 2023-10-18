@@ -1,16 +1,19 @@
 [13. Roman to Integer](https://leetcode.com/problems/roman-to-integer/description/)
 
 # Intuition
-To convert Roman numerals into integers, we need to analyze the structure of the Roman numeral and add or subtract values accordingly.
+
+To convert Roman numerals to integers, recognize patterns of subtraction (like "IV" for 4) and sum the corresponding values.
 
 # Approach
 
-1. Create a map called `romanToIntMap` that associates Roman numerals with their corresponding integer values.
-2. Initialize a variable `ans` to store the final integer result.
+1. Create a map (`romanToIntMap`) to associate Roman numerals with their integer values.
+2. Start with a result variable (`ans`) initialized to 0.
 3. Iterate through the characters of the input string `s`.
-4. Check if the current index is less than `s.length - 1` and if the value of the character at index `i` is less than the value of the character at index `i+1`.
-5. If the condition in step 4 is met, subtract the value of the character at index `i` from `ans`. If the condition in step 4 is not met, add the value of the character at index `i` to `ans`.
-6. Finally, return the value of `ans`, which represents the integer equivalent of the Roman numeral string.
+
+   - If the current character represents a value less than the next character (indicating subtraction, like "IV" or "IX"), subtract the value of the current character from `ans`.
+   - Otherwise, add the value of the current character to `ans`.
+
+4. Finally, return the value of `ans`, which represents the integer equivalent of the Roman numeral string.
 
 # Complexity
 
