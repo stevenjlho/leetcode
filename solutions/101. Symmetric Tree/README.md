@@ -2,27 +2,26 @@
 
 ## Intuition
 
-The goal is to check if a given binary tree is symmetric, meaning the left and right subtrees of the root are mirror images of each other. If it is symmetric, the tree is a symmetric tree; otherwise, it's not.
+To determine if a tree is symmetric, the left subtree of the root must be a mirror reflection of the right subtree of the root, and vice versa.
 
 ## Approach
 
-1. Define a helper function `compareNode` that takes two tree nodes, `left` and `right`.
-
-   - 1.1 First, check if either `left` or `right` is `null` while the other is not. If this condition is met, it indicates an asymmetry, so return `false`.
-   - 1.2 Next, check if both `left` and `right` are `null`. If they are, it means the subtrees at this level are symmetric, so return `true`.
-   - 1.3 Finally, check if the values of `left` and `right` nodes are not equal. If they differ, it's not a symmetric pair, so return `false`.
-   - 1.4 If none of the above conditions are met, recursively check the subtrees:
-   - 1.5 Create a variable of `outside`, which corresponds to comparing the left subtree of `left` with the right subtree of `right`.
-   - 1.6 Create a variable of `inside`, which corresponds to comparing the right subtree of `left` with the left subtree of `right`.
-   - 1.7 The result for the current pair of nodes is `outside && inside`, which ensures both sides are symmetric.
-
-2. In the main function, check if the root is `null`. If the tree is empty, it's symmetric by definition, so return `true`.
-3. If the root is not `null`, return the result from calling the `compareNode` function to check if the left and right subtrees of the root are symmetric.
+1. **Base Checks**: If the root is null, the tree is symmetric.
+2. Define a helper function `compareNode` to check if two nodes are symmetric.
+   - If one of the two nodes is null while the other is not, they aren't symmetric.
+   - If both nodes are null, they are symmetric.
+   - If the values of the two nodes differ, they aren't symmetric.
+   - For a tree to be symmetric around its center, its left subtree must be a mirror reflection of its right subtree. This means:
+   - The left child of the left node should be symmetric with the right child of the right node (outside symmetry).
+   - The right child of the left node should be symmetric with the left child of the right node (inside symmetry).
+   - If both `outside` and `inside` conditions hold true, then the nodes are symmetric.
+3. Invoke the compareNode function on the root's left and right subtrees to determine if the tree is symmetric.
 
 ## Complexity
 
 - Time complexity: O(n), where n is the number of nodes in the binary tree. We visit each node once.
 - Space complexity: O(h), where h is the height of the binary tree. In the worst case, the space complexity is O(n) for a skewed tree, but for a balanced tree, it's O(log n).
+
 ## Code
 
 ```javascript
@@ -58,12 +57,14 @@ var isSymmetric = function (root) {
       return false;
     }
 
-    // 'outside' and 'inside' variables compare two pairs of child nodes to check for symmetry.
     const outside = compareNode(left.left, right.right);
     const inside = compareNode(left.right, right.left);
+
+    // If both "outside" and "inside" checks are symmetric, return true. Otherwise, return false.
     return outside && inside;
   };
 
+  // If the tree is empty, it's symmetric.
   if (root === null) {
     return true;
   }
