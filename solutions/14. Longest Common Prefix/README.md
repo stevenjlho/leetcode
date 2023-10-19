@@ -59,20 +59,24 @@ Our approach is to use the first string as the initial prefix and iteratively up
 
 ## Approach
 
-1. We begin by checking for an edge case: when the input array `strs` is empty. If it's empty, we return an empty string as there is no common prefix.
-2. We initialize the `prefix` variable with the first string in the array, assuming that this string is the common prefix.
-3. We then iterate through the remaining strings in the array, starting from the second string (index 1).
-4. In each iteration, we call the `lcp` function to find the common prefix between the current `prefix` and the current string from the array.
-5. If the `lcp` function returns an empty string, it means there is no common prefix with the current string, and we break out of the loop because there cannot be a common prefix with other strings either.
-6. If the `lcp` function returns a valid common prefix, we update the `prefix` variable with this new common prefix.
-7. We repeat steps 4-6 for all strings in the array.
-8. Finally, we return the `prefix`, which now contains the longest common prefix shared by all strings in the array.
+1. If it's empty, we return an empty string as there is no common prefix.
+2. We initialize the `prefix` with the first string in the `strs` array. This will serve as our starting point.
+3. We then iterate through the remaining strings in the array. For each string:
+   - We update the `prefix` by determining the LCP of the current `prefix` and the `s[i]` using the helper function `lcp`.
+   - If at any point the `prefix` becomes empty, we break out of the loop. An empty `prefix` means no common prefix exists among the strings.
+4. The purpose of the `lcp` function is to determine the longest common prefix between two strings, `str1` and `str2`.
+
+   - We begin by determining the minimum length between the two strings to ensure we don't run into an out-of-bounds error during iteration.
+   - We then iterate over both strings until we find characters that don't match or until we've checked all characters up to the minimum length.
+   - The moment we find non-matching characters or reach the end of our iteration, we know the common prefix between the two strings and can return it.
+
+5. After processing all strings, the `prefix` variable contains the longest common prefix among all the strings in the array, and we return it.
 
 **_Used charAt instead of indexing with brackets to avoid possible issues with empty strings._**
 
 ## Complexity
 
-- Time complexity: O(N\*M), where N is the number of strings (length of strs), and M is the average length of the strings.
+- Time complexity:  O(S * min(N, M)), where N and M are the lengths of the two strings being compared, where S is the number of strings in the array.
 - Space complexity: O(1), we are not using any extra space.
 
 ## Code
