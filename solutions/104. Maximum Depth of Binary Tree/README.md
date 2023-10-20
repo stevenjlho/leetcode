@@ -2,15 +2,13 @@
 
 ## Intuition
 
-The maximum depth or height of a binary tree represents the length of the longest path from the root node to a leaf node. If the tree is empty, the depth is zero.
+We'll recursively explore each branch to its deepest point, keeping track of the depth as we go.
 
 ## Approach
 
-1. Check if the `root` node is null. If it is, return 0, as there are no nodes to traverse.
-2. If the `root` is not null, recursively find the maximum depth of the left and right subtrees:
-3. Call `maxDepth` for the left subtree, which calculates the maximum depth of the left branch.
-4. Call `maxDepth` for the right subtree, which calculates the maximum depth of the right branch.
-5. Return the maximum depth of the current node by taking the maximum of the depths of the left and right subtrees and adding 1 (for the current level).
+1. If the current `root` node is null (indicating a leaf node has been surpassed), return a depth of 0.
+2. Using recursive calls, compute the depth for the left subtree and the right subtree.
+3. The depth of the current node will be 1 (representing the node itself) plus the maximum depth between its left and right subtrees.
 
 ## Complexity
 
@@ -28,20 +26,15 @@ The maximum depth or height of a binary tree represents the length of the longes
  *     this.right = (right===undefined ? null : right)
  * }
  */
+
 /**
  * @param {TreeNode} root
  * @return {number}
  */
 var maxDepth = function (root) {
-  if (root === null) {
-    return 0;
-  }
-
-  // Recursively calculate the maximum depth of the left and right subtrees.
-  let left = maxDepth(root.left);
-  let right = maxDepth(root.right);
-
-  // The depth of the current node is the maximum depth of its left and right subtrees, plus 1 for the current node.
-  return Math.max(left, right) + 1;
+  if (root === null) return 0; // Base case: If the node is null, its depth is 0
+  let left = maxDepth(root.left); // Calculate the depth of the left subtree
+  let right = maxDepth(root.right); // Calculate the depth of the right subtree
+  return Math.max(left, right) + 1; // Determine the node's depth as 1 + max of left and right depths
 };
 ```
