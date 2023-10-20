@@ -27,6 +27,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 - [206. Reverse Linked List](https://github.com/stevenjlho/leetcode/blob/main/solutions/206.%20Reverse%20Linked%20List/README.md)
 - [217. Contains Duplicate](https://github.com/stevenjlho/leetcode/blob/main/solutions/217.%20Contains%20Duplicate/README.md)
 - [219. Contains Duplicate II](https://github.com/stevenjlho/leetcode/blob/main/solutions/219.%20Contains%20Duplicate%20II/README.md)
+- [222. Count Complete Tree Nodes](https://github.com/stevenjlho/leetcode/blob/main/solutions/222.%20Count%20Complete%20Tree%20Nodes/README.md)
 - [226. Invert Binary Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/226.%20Invert%20Binary%20Tree/README.md)
 - [234. Palindrome Linked List](https://github.com/stevenjlho/leetcode/blob/main/solutions/234.%20Palindrome%20Linked%20List/README.md)
 - [242. Valid Anagram](https://github.com/stevenjlho/leetcode/blob/main/solutions/242.%20Valid%20Anagram/README.md)
