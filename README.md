@@ -40,6 +40,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 
 ### Todo
 - [ ] [415. Add Strings](https://leetcode.com/problems/add-strings/description/)
+- [ ] [257. Binary Tree Paths](https://leetcode.com/problems/binary-tree-paths/)
 
 ## Test
 ```
