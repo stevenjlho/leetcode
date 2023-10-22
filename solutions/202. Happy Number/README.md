@@ -2,18 +2,20 @@
 
 ## Intuition
 
-We let `slow` pointer moves one step and `fast` pointer moves two step, if `slow` equals `fast`, it means there is a cycle. Finally, we just check if slow is 1.
+we use the two-pointer technique with slow and fast pointers. If the two pointers ever meet and slow is not 1, it indicates a cycle and the number isn't happy number.
 
 ## Approach
 
-1. Initialize two pointers, `slow` and `fast`, with the initial value `n`.
-2. Create a `square` function to calculate the sum of the squares of the digits of a number:
-   - 2.1 Calculate the remainder when `num` is divided by 10. This remainder represents the last digit of the number.
-   - 2.2 Square the remainder by multiplying it by itself and add the result to the `ans` variable.
-   - 2.3 Update `num` by removing the last digit using integer division (e.g., dividing by 10 and taking the floor to get rid of the last digit).
-3. Enter a do-while loop, move the `slow` pointer one step ahead by calculating the square of its digits. Simultaneously, move the `fast` pointer two steps ahead by applying the same operation twice.
-4. Continue step 3 until `slow` and `fast` meet or a cycle is detected.
-5. After exiting the loop, check whether `slow` is equal to 1. If it is, the number is a happy number, and we return `true`. If `slow` is not equal to 1, it indicates a cycle, and we return `false`.
+1. Initialize two pointers, `slow` and `fast`, both set to `n`.
+2. Create a helper function `square(num)` that calculates and returns the sum of the squares of each digit in `num`.
+   - Initialize a variable `ans` to 0 to keep the running sum of squared digits.
+   - Extract the last digit of the `num` using modulo 10 operation (`remainder = num % 10`).
+   - Using a loop, break the number down digit by digit:
+   - Square the extracted digit and add to the sum.
+   - Remove the last digit from the `num` using integer division (i.e., `num = Math.floor(num / 10)`).
+   - Once all digits are processed, return `ans`.
+3. Use a do-while loop to progress the `slow` pointer by one step and the `fast` pointer by two steps (using the `square` function). If a cycle is detected (when `slow` equals `fast`), exit the loop.
+4. After the loop, if `slow` is 1, the number is happy, so return `true`. Otherwise, there's a cycle, and return `false`.
 
 ## Complexity
 
@@ -31,26 +33,27 @@ var isHappy = function (n) {
   let slow = n;
   let fast = n;
 
+  // Using the two-pointer technique to detect a cycle, if a cycle is detected, exit the loop.
   do {
-    //slow moving one step ahead and fast moving two steps ahead
     slow = square(slow);
     fast = square(fast);
     fast = square(fast);
   } while (slow !== fast);
 
-  // if a cycle exists, then the number is not a happy number and slow will have a value other than 1
+  // Determine if it's a happy number post-cycle detection
   return slow === 1;
 };
 
-//Finding the square of the digits of a number
+// Calculate the sum of squares of digits
 var square = function (num) {
   let ans = 0;
 
   while (num > 0) {
-    // Calculate the remainder when dividing by 10 to get the last digit
+    // Extract the last digit of the number
     const remainder = num % 10;
+    // Square the extracted digit and add to the sum
     ans += remainder * remainder;
-    // Remove the last digit using integer division
+    // Remove the last digit from the number
     num = Math.floor(num / 10);
   }
 
