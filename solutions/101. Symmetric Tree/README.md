@@ -6,16 +6,16 @@ To determine if a tree is symmetric, the left subtree of the root must be a mirr
 
 ## Approach
 
-1. **Base Checks**: If the root is null, the tree is symmetric.
-2. Define a helper function `compareNode` to check if two nodes are symmetric.
-   - If one of the two nodes is null while the other is not, they aren't symmetric.
-   - If both nodes are null, they are symmetric.
-   - If the values of the two nodes differ, they aren't symmetric.
-   - For a tree to be symmetric around its center, its left subtree must be a mirror reflection of its right subtree. This means:
-   - The left child of the left node should be symmetric with the right child of the right node (outside symmetry).
-   - The right child of the left node should be symmetric with the left child of the right node (inside symmetry).
-   - If both `outside` and `inside` conditions hold true, then the nodes are symmetric.
-3. Invoke the compareNode function on the root's left and right subtrees to determine if the tree is symmetric.
+1. Create a helper function, `isMirror`, that checks if two given trees, `left` and `right`, are mirrors of each other.
+
+   - If both subtrees are `null`, they're symmetric.
+   - If only one of them is `null`, they aren't symmetric.
+   - If the values of the `left` and `right` nodes aren't the same, they aren't symmetric.
+   - Recursively check if the left subtree of the `left` tree mirrors the right subtree of the `right` tree, and vice versa.
+   - If both conditions are true, return true. Otherwise, return false.
+
+2. If the `root` is `null`, the tree is symmetric.
+3. Check if the left and right subtrees of the root are mirror reflections of each other using the `isMirror` function.
 
 ## Complexity
 
@@ -38,37 +38,23 @@ To determine if a tree is symmetric, the left subtree of the root must be a mirr
  * @return {boolean}
  */
 var isSymmetric = function (root) {
-  const compareNode = function (left, right) {
-    // Check if either 'left' or 'right' is 'null' while the other is not.
-    if (
-      (left === null && right !== null) ||
-      (left !== null && right === null)
-    ) {
-      return false;
-    }
+  const isMirror = function (left, right) {
+    // Both trees are empty, so they're symmetric.
+    if (!left && !right) return true;
 
-    // Check if both 'left' and 'right' are 'null', indicating symmetry.
-    if (left === null && right === null) {
-      return true;
-    }
+    // One tree is empty, and the other isn't, so they're not symmetric.
+    if (!left || !right) return false;
 
-    // Check if the values of 'left' and 'right' nodes differ.
-    if (left.val !== right.val) {
-      return false;
-    }
+    // If the values differ, the trees aren't symmetric.
+    if (left.val !== right.val) return false;
 
-    const outside = compareNode(left.left, right.right);
-    const inside = compareNode(left.right, right.left);
-
-    // If both "outside" and "inside" checks are symmetric, return true. Otherwise, return false.
-    return outside && inside;
+    // Recursively check outer (left-left vs right-right) and inner (left-right vs right-left) subtrees.
+    return isMirror(left.left, right.right) && isMirror(left.right, right.left);
   };
 
-  // If the tree is empty, it's symmetric.
-  if (root === null) {
-    return true;
-  }
+  if (!root) return true;
 
-  return compareNode(root.left, root.right);
+  // Check if left and right subtrees are mirrors of each other.
+  return isMirror(root.left, root.right);
 };
 ```
