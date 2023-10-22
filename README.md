@@ -14,7 +14,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 - [21. Merge Two Sorted Lists](https://github.com/stevenjlho/leetcode/blob/main/solutions/21.%20Merge%20Two%20Sorted%20Lists/README.md)
 - [26. Remove Duplicates from Sorted Array](https://github.com/stevenjlho/leetcode/blob/main/solutions/26.%20Remove%20Duplicates%20from%20Sorted%20Array/README.md)
 - [27. Remove Element](https://github.com/stevenjlho/leetcode/blob/main/solutions/27.%20Remove%20Element/README.md)
-- [58. Length of Last Word](https://github.com/stevenjlho/leetcode/blob/main/solutions/58.%20%Length20of%20Last%20Word/README.md)
+- [58. Length of Last Word](https://github.com/stevenjlho/leetcode/blob/main/solutions/58.%20Length%20of%20Last%20Word/README.md)
 - [88. Merge Sorted Array](https://github.com/stevenjlho/leetcode/blob/main/solutions/88.%20Merge%20Sorted%20Array/README.md)
 - [101. Symmetric Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/101.%20Symmetric%20Tree/README.md)
 - [104. Maximum Depth of Binary Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/104.%20Maximum%20Depth%20of%20Binary%20Tree/README.md)
