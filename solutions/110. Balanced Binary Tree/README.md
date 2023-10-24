@@ -9,17 +9,17 @@ To determine if a tree is height-balanced, we need to ensure that the difference
 1. Define a helper function getHeight that computes the height of a given node.
 
    - Use a recursive method to obtain the heights for both left and right children.
-   - If any subtree (either left or right) is detected to be unbalanced, we instantly signal this using a height value of `-1`.
+   - If a subtree (either left or right) is found to be unbalanced, indicate this using a height value of `-1`.
    - If the absolute difference between the heights of the left and right subtrees is greater than `1`, return `-1` to signal imbalance.
-   - If the subtree is balanced, return its height as `1 + max(leftHeight, rightHeight)`.
+   - If the subtree is balanced, determine its height by counting the current node (adding one) to the maximum height between its left and right subtrees.
 
-2. Compute the height of the root node using `getHeight`.
+2. valuate the tree's balance by computing the height of the root node using `getHeight`.
 3. If the height is `-1`, it indicates the tree is unbalanced; otherwise, it's balanced.
 
 ## Complexity
 
 - Time complexity: O(n) where n is the number of nodes in the binary tree. We visit each node once.
-- Space complexity: O(m), where m is the maximum number of nodes at any level in the binary tree. In the worst case, when the tree is a perfect binary tree, m is approximately n/2, making it O(n).
+- Space complexity: O(h), where h is the height of the binary tree. In the worst case, the space complexity is O(n) for a skewed tree, but for a balanced tree, it's O(log n).
 
 ## Code
 
@@ -63,6 +63,6 @@ const getHeight = (root) => {
   if (Math.abs(left - right) > 1) return -1;
 
   // Return height of current subtree rooted at the node
-  return Math.max(left, right) + 1;
+  return 1 + Math.max(left, right);
 };
 ```
