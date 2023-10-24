@@ -30,27 +30,28 @@ We can use the first element of preorder as the root of the current subtree, and
  *     this.right = (right===undefined ? null : right)
  * }
  */
-/**
- * @param {number[]} preorder
- * @param {number[]} inorder
- * @return {TreeNode}
- */
 var buildTree = function(preorder, inorder) {
+    // Base case: if no elements, return null.
     if(preorder.length === 0) {
         return null;
     }
 
+    // The first element of preorder is the current root.
     let rootVal = preorder[0];
+    // Finding the index of root in inorder to divide the tree.
     let rootIndex = inorder.indexOf(rootVal);
 
     let root = new TreeNode(rootVal);
 
+    // Dividing inorder traversal into left and right subtrees.
     let inorderLeft = inorder.slice(0, rootIndex);
     let inorderRight = inorder.slice(rootIndex + 1);
 
+    // Dividing preorder traversal based on the inorder division.
     let preorderLeft = preorder.slice(1, inorderLeft.length + 1);
     let preorderRight = preorder.slice(inorderLeft.length + 1);
 
+    // Recursive calls to construct left and right subtrees.
     root.left = buildTree(preorderLeft, inorderLeft);
     root.right = buildTree(preorderRight, inorderRight);
 
