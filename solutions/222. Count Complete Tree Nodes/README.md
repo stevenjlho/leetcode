@@ -2,13 +2,13 @@
 
 ## Intuition
 
-To count the total nodes in a binary tree, we can traverse each node of the tree once and increment a counter for every node visited.
+We can traverse each node once and increment the counter for every node encountered.
 
 ## Approach
 
-1. If the `root` node is null, return 0 since there are no nodes to count.
+1. Return `0` if the `root` node is null as there are no nodes to count.
 2. Invoke the function recursively for the left and right children to count their nodes.
-3. The sum of nodes in a tree rooted at root is the count of the root node (which is 1) added to the nodes of the left and right subtrees.
+3. The number of nodes in a tree rooted at a particular node is the sum of the left and right subtrees plus the current node.
 
 ## Complexity
 
@@ -42,7 +42,7 @@ var countNodes = function (root) {
   // Count nodes in the right subtree
   const right = countNodes(root.right);
 
-  // Current tree's node count is 1 (for the root) plus nodes on the left and right
+  // Return the total node count: 1 (current node) + left subtree nodes + right subtree nodes
   return 1 + left + right;
 };
 ```
