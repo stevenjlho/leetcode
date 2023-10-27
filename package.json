@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/stevenjlho/leetcode#readme",
   "devDependencies": {
-    "mnemonist": "^0.39.5"
+    "mnemonist": "^0.39.5",
+    "leettree": "^0.3.0"
   }
 }
