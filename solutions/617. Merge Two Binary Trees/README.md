@@ -8,8 +8,8 @@ We need to merge them such that if two nodes overlap, their values are summed. I
 
 1.  If `root1` is null, return `root2`. Conversely, if `root2` is null, return `root1`. These cases handle the situations where one tree has a node at a position while the other does not.
 2.  For overlapping nodes of both trees, sum up their values and update `root1.val`.
-3.  For subtrees, recursively merge the left subtree of `root1` with the left subtree of `root2` and assign the result to `root1.left`.
-4.  Similarly, merge the right subtrees of both `root1` and `root2` and assign the result to `root1.right`. This ensures that the merged tree is constructed correctly.
+3.  For subtrees, recursively merge the left subtree of both `root1` and `root2` and assign the result to `root1.left`.
+4.  Similarly, recursively merge the right subtrees of both `root1` and `root2` and assign the result to `root1.right`. This ensures that the merged tree is constructed correctly.
 5.  Return `root1` as the merged tree, since the updates are performed in place.
 
 ## Complexity

@@ -36,13 +36,14 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 - [290. Word Pattern](https://github.com/stevenjlho/leetcode/blob/main/solutions/290.%20Word%20Pattern/README.md)
 - [344. Reverse String](https://github.com/stevenjlho/leetcode/blob/main/solutions/344.%20Reverse%20String/README.md)
 - [383. Ransom Note](https://github.com/stevenjlho/leetcode/blob/main/solutions/383.%20Ransom%20Note/README.md)
+- [617. Merge Two Binary Trees](https://github.com/stevenjlho/leetcode/blob/main/solutions/617.%20Merge%20Two%20Binary%20Tree/README.md)
 
 ### Medium 
 - [53. Maximum Subarray](https://github.com/stevenjlho/leetcode/blob/main/solutions/53.%20Maximum%20Subarray/README.md)
 - [102. Binary Tree Level Order Traversal](https://github.com/stevenjlho/leetcode/blob/main/solutions/102.%20Binary%20Tree%20Level%20Order%20Traversal/README.md)
 - [105. Construct Binary Tree from Preorder and Inorder Traversal](https://github.com/stevenjlho/leetcode/blob/main/solutions/105.%20Construct%20Binary%20Tree%20from%20%Preorder%20and%20Inorder%20Traversal/README.md)
 - [106. Construct Binary Tree from Inorder and Postorder Traversal](https://github.com/stevenjlho/leetcode/blob/main/solutions/106.%20Construct%20Binary%20Tree%20from%20Inorder%20and%20Postorder%20Traversal/README.md)
-- [654. Maximum Binary Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/654.%20Maximum%20Binary%20Tree/README.md)
+- [617. Merge Two Binary Trees](https://github.com/stevenjlho/leetcode/blob/main/solutions/654.%20Maximum%20Binary%20Tree/README.md)
 
 ### Todo
 - [ ] [415. Add Strings](https://leetcode.com/problems/add-strings/description/)
