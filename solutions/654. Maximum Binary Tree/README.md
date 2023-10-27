@@ -16,8 +16,8 @@ The problem requires constructing a maximum binary tree where each tree's root i
 
 ## Complexity
 
-- Time complexity: O(n²) in the worst-case scenario. This is because, in the worst case, we might need to go through the entire list for every node to find the maximum value.
-- Space complexity: O(n), O(n) for the recursion call stack in the worst case. This is the depth of the tree.
+- Time complexity: Time complexity: O(n²). In the worst case, we traverse the entire list to find the maximum value for each element.
+- Space complexity: O(n). The recursion call stack depth could be as large as the number of list elements in the worst case.
 
 ## Code
 
