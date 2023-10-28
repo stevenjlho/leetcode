@@ -40,6 +40,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 
 ### Medium 
 - [53. Maximum Subarray](https://github.com/stevenjlho/leetcode/blob/main/solutions/53.%20Maximum%20Subarray/README.md)
+- [98. Validate Binary Search Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/98.%20Validate%20Binary%20Search%20Tree/README.md)
 - [102. Binary Tree Level Order Traversal](https://github.com/stevenjlho/leetcode/blob/main/solutions/102.%20Binary%20Tree%20Level%20Order%20Traversal/README.md)
 - [105. Construct Binary Tree from Preorder and Inorder Traversal](https://github.com/stevenjlho/leetcode/blob/main/solutions/105.%20Construct%20Binary%20Tree%20from%20%Preorder%20and%20Inorder%20Traversal/README.md)
 - [106. Construct Binary Tree from Inorder and Postorder Traversal](https://github.com/stevenjlho/leetcode/blob/main/solutions/106.%20Construct%20Binary%20Tree%20from%20Inorder%20and%20Postorder%20Traversal/README.md)
