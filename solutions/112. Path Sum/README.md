@@ -1,13 +1,13 @@
 # [112. Path Sum](https://leetcode.com/problems/path-sum/description/)
 
 ## Intuition
+Determine if a tree has a root-to-leaf path such that the sum of its node values matches a given target.
 
-We can add up all the values along the path to check if the total equals the given target sum. 
 
 ## Approach
 
-1. If the tree is empty (`root` is `null`), there cannot exist a path sum equal to the target. Thus, return `false`.
-2. When at a leaf node (both left and right children are `null`), compare the node's value to the remaining target sum. If they match, we have found a path.
+1. If `root` is `null`, return `false` because an empty tree cannot satisfy the path sum condition.
+2. See if the value of a leaf node(both children are `null`) matches the remaining target sum. If so, we've found the required path.
 3. For non-leaf nodes, recursively check:
    - The left child of the current node with the updated `targetSum - root.val`.
    - The right child with the same updated target sum.
