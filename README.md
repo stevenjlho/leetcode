@@ -38,6 +38,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 - [344. Reverse String](https://github.com/stevenjlho/leetcode/blob/main/solutions/344.%20Reverse%20String/README.md)
 - [383. Ransom Note](https://github.com/stevenjlho/leetcode/blob/main/solutions/383.%20Ransom%20Note/README.md)
 - [617. Merge Two Binary Trees](https://github.com/stevenjlho/leetcode/blob/main/solutions/617.%20Merge%20Two%20Binary%20Tree/README.md)
+- [700. Search in a Binary Search Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/700.%20Search%20in%20a%20Binary%20Search%20Tree/README.md)
 
 ### Medium 
 - [53. Maximum Subarray](https://github.com/stevenjlho/leetcode/blob/main/solutions/53.%20Maximum%20Subarray/README.md)
