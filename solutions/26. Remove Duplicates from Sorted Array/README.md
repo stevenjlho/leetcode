@@ -9,8 +9,7 @@ A sorted array allows us to find duplicates by simply comparing each element wit
 1. Start with two pointers: `index` for the position to place the next unique element, and `i` for the current element being checked.
 2. Initialize `index` at 1, as the first element is unique by default.
 3. From the second element (i = 1), iterate over the array.
-   - If `nums[i]` is different from its predecessor (`nums[i - 1]`), it is unique and should be moved to the position at `index`.
-   - Update `nums[index]` with `nums[i]` and increment `index` by 1.
+   - If the current element differs from the previous one, it's unique. Move it to the `index` position and increment `index`.
 4. Return the final value of `index` as the count of unique elements.
 
 ## Complexity

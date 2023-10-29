@@ -6,13 +6,13 @@ We can use the first element of preorder as the root of the current subtree, and
 
 ## Approach
 
-1.  If the `preorder` list is empty, return `null`.
-2.  Extract the first item from `preorder` as the current root's value and store it in `rootVal`.
-3.  Find the `rootVal` index in the inorder traversal and assign this to `rootIndex`.
-4.  Divide `inorder` into `inorderLeft` and `inorderRight` using `rootIndex`.
-5.  Similarly, split `preorder` into two: `preorderLeft` (which has the same length as `inorderLeft`) and the rest as `preorderRight`. Exclude the first element when splitting `preorderLeft` because it represents the root of the current tree.
-6.  Recursively build the left and right subtrees using the split preorder and inorder arrays, then assign them to the current root's left and right pointers, respectively.
-7.  Return the built tree's root.
+1. Return `null` if the `preorder` list is empty since there's no tree to build.
+2. Identify the root of the current subtree using the first element of `preorder`, and find its index in `inorder`.
+3. Create the root node with the identified root value.
+4. Split `inorder` into `inorderLeft` (before `rootIndex`) and `inorderRight` (after `rootIndex`) using `rootIndex`. `inorderLeft` lengths will dictate how to split the `preorder` array.
+5. Split `preorder` into `preorderLeft` (matching the length of `inorderLeft`) and `postorderRight`, excluding the first element, which is used as the root.
+6. Recursively call buildTree for the left and right segments of `preorder` and `inorder` to construct left and right subtrees, respectively.
+7. Return the `root`, which now points to a subtree constructed from `preorder` and `inorder`.
 
 ## Complexity
 
@@ -30,31 +30,31 @@ We can use the first element of preorder as the root of the current subtree, and
  *     this.right = (right===undefined ? null : right)
  * }
  */
-var buildTree = function(preorder, inorder) {
-    // Base case: if no elements, return null.
-    if(preorder.length === 0) {
-        return null;
-    }
+var buildTree = function (preorder, inorder) {
+  // Base case: if no elements, return null.
+  if (preorder.length === 0) {
+    return null;
+  }
 
-    // The first element of preorder is the current root.
-    let rootVal = preorder[0];
-    // Finding the index of root in inorder to divide the tree.
-    let rootIndex = inorder.indexOf(rootVal);
+  // The first element of preorder is the current root.
+  let rootVal = preorder[0];
+  // Finding the index of root in inorder to divide the tree.
+  let rootIndex = inorder.indexOf(rootVal);
 
-    let root = new TreeNode(rootVal);
+  let root = new TreeNode(rootVal);
 
-    // Dividing inorder traversal into left and right subtrees.
-    let inorderLeft = inorder.slice(0, rootIndex);
-    let inorderRight = inorder.slice(rootIndex + 1);
+  // Dividing inorder traversal into left and right subtrees.
+  let inorderLeft = inorder.slice(0, rootIndex);
+  let inorderRight = inorder.slice(rootIndex + 1);
 
-    // Dividing preorder traversal based on the inorder division.
-    let preorderLeft = preorder.slice(1, inorderLeft.length + 1);
-    let preorderRight = preorder.slice(inorderLeft.length + 1);
+  // Dividing preorder traversal based on the inorder division.
+  let preorderLeft = preorder.slice(1, inorderLeft.length + 1);
+  let preorderRight = preorder.slice(inorderLeft.length + 1);
 
-    // Recursive calls to construct left and right subtrees.
-    root.left = buildTree(preorderLeft, inorderLeft);
-    root.right = buildTree(preorderRight, inorderRight);
+  // Recursive calls to construct left and right subtrees.
+  root.left = buildTree(preorderLeft, inorderLeft);
+  root.right = buildTree(preorderRight, inorderRight);
 
-    return root;
+  return root;
 };
 ```

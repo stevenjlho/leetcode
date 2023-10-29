@@ -6,13 +6,13 @@ We can use the last element of postorder as the root of the current subtree, and
 
 ## Approach
 
-1.  If the postorder list is empty, return `null`.
-2.  Extract the last item from `postorder` as the current root's value and store it in `rootVal`.
-3.  Find the `rootVal` index in the inorder traversal and assign this to `rootIndex`.
-4.  Divide `inorder` into `inorderLeft` and `inorderRight` using `rootIndex`.
-5.  Similarly, split `postorder` into two: `postorderLeft` (which has the same length as `inorderLeft`) and the rest as `postorderRight`. Exclude the last element when splitting `postorderRight` because it represents the root of the current tree.
-6.  Recursively build the left and right subtrees using the split inorder and postorder arrays, then assign them to the current root's left and right pointers, respectively.
-7.  Return the built tree's root.
+1. Return `null` if the `postorder` list is empty since there's no tree to build.
+2. Identify the root of the current subtree using the last element of `postorder`, and find its index in `inorder`.
+3. Create the root node with the identified root value.
+4. Split `inorder` into `inorderLeft` (before `rootIndex`) and `inorderRight` (after `rootIndex`) using `rootIndex`. `inorderLeft` lengths will dictate how to split the `postorder` array.
+5. Split `postorder` into `postorderLeft` (matching the length of `inorderLeft`) and `postorderRight`, excluding the last element, which is used as the root.
+6. Recursively call buildTree for the left and right segments of `inorder` and `postorder` to construct left and right subtrees, respectively.
+7. Return the `root`, which now points to a subtree constructed from `inorder` and `postorder`.
 
 ## Complexity
 
@@ -42,7 +42,7 @@ var buildTree = function (inorder, postorder) {
   let rootVal = postorder[postorder.length - 1];
   // Find its index in the inorder array
   let rootIndex = inorder.indexOf(rootVal);
-
+  // Create the root node
   let root = new TreeNode(rootVal);
 
   // Split inorder array into left and right subtrees
