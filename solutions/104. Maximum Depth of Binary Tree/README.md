@@ -32,9 +32,14 @@ We'll recursively explore each branch to its deepest point, keeping track of the
  * @return {number}
  */
 var maxDepth = function (root) {
-  if (root === null) return 0; // Base case: If the node is null, its depth is 0
-  let left = maxDepth(root.left); // Calculate the depth of the left subtree
-  let right = maxDepth(root.right); // Calculate the depth of the right subtree
-  return Math.max(left, right) + 1; // Determine the node's depth as 1 + max of left and right depths
+  // If the node is null, its depth is 0
+  if (root === null) return 0; // Base case: 
+
+  // Recursively find the depth of the left and right subtrees.
+  let left = maxDepth(root.left); 
+  let right = maxDepth(root.right); 
+
+  // Determine the node's depth as 1 + max of left and right depths
+  return Math.max(left, right) + 1;
 };
 ```

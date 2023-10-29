@@ -6,13 +6,11 @@ The minimum depth of a binary tree is measured by the shortest path from the roo
 
 ## Approach
 
-1. Define the `getDepth` function to calculate the minimum the depth of binary tree.
-   - **Base Case**: If the subtree is empty, return depth as 0.
-   - For every node, recursively calculate the depth of its left and right subtrees.
-   - If the left subtree is absent but the right subtree exists, return the depth of the right subtree + 1.
-   - If the right subtree is absent but the left subtree exists, return the depth of the left subtree + 1.
-   - If both subtrees exist, return the smaller depth of the two subtrees + 1.
-2. Return the calculated depth using the `getDepth` function.
+1. If the current `root` node is null (indicating a leaf node has been surpassed), return a depth of 0.
+2. Calculate the minimum depth of the left and right subtrees recursively.
+3. If the left subtree is absent but the right subtree exists, return the depth of the right subtree + 1.
+4. If the right subtree is absent but the left subtree exists, return the depth of the left subtree + 1.
+5. If both subtrees are present, the minimum depth is the lesser of the two depths plus one for the current node.
 
 ## Complexity
 
@@ -35,27 +33,17 @@ The minimum depth of a binary tree is measured by the shortest path from the roo
  * @return {number}
  */
 var minDepth = function (root) {
-  const getDepth = (node) => {
-    // Base Case: If the subtree is empty, return depth as 0.
-    if (node === null) return 0;
+  if (root === null) return 0;
 
-    const leftDepth = getDepth(node.left);
-    const rightDepth = getDepth(node.right);
+  // Recursively find the depth of the left and right subtrees.
+  const leftDepth = minDepth(root.left);
+  const rightDepth = minDepth(root.right);
 
-    // Left subtree is absent, consider only right subtree
-    if (node.left === null && node.right !== null) {
-      return 1 + rightDepth;
-    }
+  // If one subtree is missing, ignore its depth.
+  if (root.left === null) return 1 + rightDepth;
+  if (root.right === null) return 1 + leftDepth;
 
-    // Right subtree is absent, consider only left subtree
-    if (node.left !== null && node.right === null) {
-      return 1 + leftDepth;
-    }
-
-    // If both children exist, consider the minimum of their depths
-    return 1 + Math.min(leftDepth, rightDepth);
-  };
-
-  return getDepth(root);
+  // Choose the lesser depth of the two subtrees and add one for the current node.
+  return 1 + Math.min(leftDepth, rightDepth);
 };
 ```
