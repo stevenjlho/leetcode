@@ -1,49 +1,51 @@
 # [383. Ransom Note](https://leetcode.com/problems/ransom-note/description/)
 
-
 ## Intuition
-We can solve this problem using a hashmap to keep track of the letter counts in the magazine. The key idea is to iterate through both the ransom note and the magazine and check if we can construct the ransom note using the letters available in the magazine.
+
+We can check if a ransom note can be constructed from a magazine by using a map to track how often each letter appears in the magazine. By comparing these counts with the frequency of each letter in the ransom note, we can determine if the magazine contains all the necessary letters.
 
 ## Approach
-1. Initialize a hashmap called `chars` to store the counts of unique letters in the magazine.
-2. Iterate through the letters of the magazine. If a letter can be found in `chars`, increment its count by 1; otherwise, initialize it with a count of 1.
-3. Next, iterate through the letters of the ransom note to check if each letter can be matched in the `chars` hashmap.
-4. If a letter from the ransom note is found in the `chars` hashmap, and its count is greater than 0, it means this letter can be used to contruct `ransom`, decrement its count in `chars` by 1.
-5. If a letter cannot be matched or if its count in `chars` becomes zero, return `false` early, as the ransom note cannot be constructed.
-6. Finally, if we successfully iterate through the entire ransom note, return `true` because we were able to construct it.
+
+1. Initialize a map `chars` to store the frequency of each unique letter found in the magazine.
+2. Iterate through the magazine's letters, updating the frequency count in `chars` for each letter encountered.
+3. Iterate through the letters of the ransom note to check if each letter can be matched in the `chars` hashmap.
+4. When a letter from the ransom note is found in `chars`, decrement its frequency by 1 to simulate using that letter.
+5. If at any point a required letter is not found or is equal to `0`, return `false`, as the ransom note cannot be constructed.
+6. If the entire ransom note is processed without issues, return `true`.
 
 ## Complexity
+
 - Time complexity: O(m + n), where m is the length of the magazine and n is the length of the ransom note. We iterate through both strings once.
 - Space complexity: O(m), where m is the number of unique characters in the magazine.
 
 ## Code
+
 ```javascript
 /**
  * @param {string} ransomNote
  * @param {string} magazine
  * @return {boolean}
  */
-var canConstruct = function(ransomNote, magazine) {
-    let chars = {};
+var canConstruct = function (ransomNote, magazine) {
+  let chars = new Map(); // Using Map to store character counts
 
-    // Iterate through the magazine to count letter occurrences
-    for (const char of magazine) {
-        if(char in chars) {
-            chars[char] += 1;
-        } else {
-            chars[char] = 1;
-        }
+  // Populate the map with characters from the magazine
+  for (const char of magazine) {
+    chars.set(char, (chars.get(char) || 0) + 1);
+  }
+
+  // Check if the ransom note can be constructed using the chars map
+  for (const char of ransomNote) {
+    if (!chars.has(char) || chars.get(char) === 0) {
+      // Character not available or count is zero
+      return false;
     }
 
-    // Iterate through the ransom note to check if each letter can be matched in the chars 
-    for (const char of ransomNote) {
-        if (char in chars && chars[char] > 0) {
-            chars[char]--;
-        } else {
-            return false
-        }
-    }
+    // Use one occurrence of the character
+    chars.set(char, chars.get(char) - 1);
+  }
 
-    return true;
+  // Ransom note can be successfully constructed
+  return true;
 };
 ```
