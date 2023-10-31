@@ -2,7 +2,7 @@
 
 ## Intuition
 
-The Lowest Common Ancestor (LCA) of two nodes in a binary tree is the deepest node that has both `p` and `q` as descendants (where we allow a node to be a descendant of itself). The binary tree's properties allow us to search for the LCA using a divide and conquer approach.
+The Lowest Common Ancestor (LCA) is the furthest node from the root that is an ancestor of both `p` and `q`. We can find the LCA by recursively traversing the tree and identifying the point where the paths to p and q split.
 
 ## Approach
 
