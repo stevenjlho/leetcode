@@ -19,6 +19,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 - [100. Same Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/100.%20Same%20Tree/README.md)
 - [101. Symmetric Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/101.%20Symmetric%20Tree/README.md)
 - [104. Maximum Depth of Binary Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/104.%20Maximum%20Depth%20of%20Binary%20Tree/README.md)
+- [108. Convert Sorted Array to Binary Search Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/108.%20Convert%20Sorted%20Array%20to%20Binary%20Search%20Tree/README.md)
 - [111. Minimum Depth of Binary Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/111.%20Minimum%20Depth%20of%20Binary%20Tree/README.md)
 - [110. Balanced Binary Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/110.%20Balanced%20Binary%20Tree/README.md)
 - [112. Path Sum](https://github.com/stevenjlho/leetcode/blob/main/solutions/112.%20Path%20Sum/README.md)
