@@ -72,11 +72,9 @@ Our approach is to use the first string as the initial prefix and iteratively up
 
 5. After processing all strings, the `prefix` variable contains the longest common prefix among all the strings in the array, and we return it.
 
-**_Used charAt instead of indexing with brackets to avoid possible issues with empty strings._**
-
 ## Complexity
 
-- Time complexity:  O(S * min(N, M)), where N and M are the lengths of the two strings being compared, where S is the number of strings in the array.
+- Time complexity: O(S \* min(N, M)), where N and M are the lengths of the two strings being compared, where S is the number of strings in the array.
 - Space complexity: O(1), we are not using any extra space.
 
 ## Code
@@ -100,16 +98,16 @@ var longestCommonPrefix = function (strs) {
     // Update the prefix by finding the common prefix with the current string.
     prefix = lcp(prefix, strs[i]);
 
-    // If the prefix becomes empty, there's no common prefix left, so break the loop.
-    if (!prefix) {
-      break;
-    }
+    // If the prefix is empty, there is no common prefix.
+    if (prefix === "") break;
   }
 
   return prefix;
 };
 
 /**
+ * A helper function to find the longest common prefix between two strings.
+ * @param {string} str1
  * @param {string} str1
  * @param {string} str2
  * @return {string}
@@ -119,12 +117,12 @@ var lcp = function (str1, str2) {
   const length = Math.min(str1.length, str2.length);
   let index = 0;
 
-  // Iterate to find the common prefix characters.
-  while (index < length && str1.charAt(index) === str2.charAt(index)) {
+  // Iterate until a mismatch is found or the end of the shorter string is reached.
+  while (index < minLength && str1[index] === str2[index]) {
     index++;
   }
 
   // Return the common prefix up to the index.
-  return str1.slice(0, index);
+  return str1.substring(0, index);
 };
 ```
