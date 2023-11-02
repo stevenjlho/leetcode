@@ -2,15 +2,14 @@
 
 ## Intuition
 
-The Lowest Common Ancestor (LCA) is the furthest node from the root that is an ancestor of both `p` and `q`. We can find the LCA by recursively traversing the tree and identifying the point where the paths to p and q split.
+The Lowest Common Ancestor (LCA) of two nodes `p` and `q` in a binary tree is the deepest (i.e., farthest from the root) node that has both `p` and `q` as descendants. We find the LCA by recursively traversing the tree and identifying the node where the paths to `p` and `q` from the root converge."
 
 ## Approach
 
-1. If the current node is either `p`, `q`, or `null`, return it. This means we've either found one of the nodes we're looking for or reached the end of a branch.
-2. Recursively search for `p` and `q` in the left and right subtrees.
+1. Return the current node if it is `null`, indicating it reached end of a branch. Or if it is either `p` or `q`, indicating we've found one of the target nodes.
+2. Recursively search for `p` and `q` starting from the left and right children of the current node.
 3. If both sides return a node, which means `p` and `q` are found in different branches, then the current node is the LCA.
-4. If only one of the recursive calls returns a non-null value, return that non-null value, indicating the LCA is higher in the tree.
-5. If both sides are null, propagate null upwards, showing neither `p` nor `q` are found in this subtree.
+4. If only one recursive call returns a non-null node, that node is the LCA. If both calls return null, propagate the null upward, indicating the absence of both `p` and `q` in this part of the tree.
 
 ## Complexity
 
@@ -35,19 +34,18 @@ The Lowest Common Ancestor (LCA) is the furthest node from the root that is an a
  * @return {TreeNode} - The lowest common ancestor of nodes p and q.
  */
 var lowestCommonAncestor = function (root, p, q) {
-  // If we've found one of the nodes or reached the end of a branch, return the node.
-  if (root === p || root === q || root === null) return root;
+  // Base case: if root is null or matches either p or q, return root.
+  if (root === null || root === p || root === q) return root;
 
-  // Recursive search in the left and right subtrees
+  // Recurse on left and right subtrees.
   let left = lowestCommonAncestor(root.left, p, q);
   let right = lowestCommonAncestor(root.right, p, q);
 
-  // If both left and right are non-null, root is the LCA
-  if (left !== null && right !== null) {
-    return root;
-  }
+  // If both left and right are non-null, we have found the LCA.
+  // It's the point where paths to p and q converge.
+  if (left !== null && right !== null) return root;
 
-  // If one side is null, return the non-null result.
-  return left === null ? right : left;
+  // If one subtree returns null, the LCA must be in the other subtree.
+  return left !== null ? left : right;
 };
 ```
