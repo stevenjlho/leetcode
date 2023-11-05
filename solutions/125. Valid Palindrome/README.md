@@ -11,7 +11,7 @@ We disregard non-alphanumeric characters and case sensitivity by iterating from 
 3.  Use a while loop to traverse the string from both ends inward.
 4.  Inside the loop, increment `start` if the current character is not alphanumeric; similarly, decrement `last`.
 5.  When both pointers are at alphanumeric characters, compare them, ignoring case.
-    - If they don't match, return false.
+    - If they are not equal, the string is not a palindrome—return false.
     - If they match, move both pointers closer to the center.
 6.  If the entire string is traversed without mismatch, return true as it's a palindrome.
 
