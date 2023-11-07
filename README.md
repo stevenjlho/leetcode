@@ -53,6 +53,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 - [235. Lowest Common Ancestor of a Binary Search Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/235.%20Lowest%20BCommon%20Ancestor%20of%20a%20Binary%20Search%20Tree/README.md)
 - [236. Lowest Common Ancestor of a Binary Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/236.%20Lowest%20BCommon%20Ancestor%20of%20a%20Binary%20Tree/README.md)
 - [654. Maximum Binary Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/654.%20Maximum%20Binary%20Tree/README.md)
+- [797. All Paths From Source to Target](https://github.com/stevenjlho/leetcode/blob/main/solutions/797.%20All%20Paths%20From%20Source%20to%20Target/README.md)
 
 ### Todo
 - [ ] [415. Add Strings](https://leetcode.com/problems/add-strings/description/)
