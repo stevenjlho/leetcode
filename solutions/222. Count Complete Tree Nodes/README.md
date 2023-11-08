@@ -8,7 +8,7 @@ We can traverse each node once and increment the counter for every node encounte
 
 1. Return `0` if the `root` node is null as there are no nodes to count.
 2. Invoke the function recursively for the left and right children to count their nodes.
-3. The number of nodes in a tree rooted at a particular node is the sum of the left and right subtrees plus the current node.
+3. Add `1` for the current node to the sum of counts from step 2 and return this as the total count for the subtree rooted at the current node.
 
 ## Complexity
 
@@ -36,11 +36,10 @@ var countNodes = function (root) {
     return 0;
   }
 
-  // Count nodes in the left subtree
-  const left = countNodes(root.left);
-
-  // Count nodes in the right subtree
-  const right = countNodes(root.right);
+  // Recursively count nodes in the left subtree
+  const leftCount = countNodes(root.left);
+  // Recursively count nodes in the right subtree
+  const rightCount = countNodes(root.right);
 
   // Return the total node count: 1 (current node) + left subtree nodes + right subtree nodes
   return 1 + left + right;
