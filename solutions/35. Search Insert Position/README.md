@@ -9,9 +9,10 @@ By comparing the target with the midpoint of the current search interval in a so
 1.  Initialize `low` and `high` pointers to define the search range as the start and end of the array, respectively.
 2.  While `low` is not greater than `high`, perform the following:
     - Find the middle index between `low` and `high`.
-    - If the middle element is less than the target, narrow the search to the right half by moving `low` just past `mid`.
-    - If the middle element is equal to or greater than the target, narrow the search to the left half by moving `high` just before `mid`.
-3.  The loop terminates when `low` surpasses `high`, indicating that the target is not present and `low` is the correct insertion index to maintain the array's order.
+    - If the target is found at the midpoint, return the middle index immediately as the target's position.
+    - If the middle element is less than the target, narrow the search to the right half by moving `low` just past `middle`.
+    - If the middle element is equal to or greater than the target, narrow the search to the left half by moving `high` just before `middle`.
+3.  The loop terminates when `low` surpasses `high`, indicating that the target is not present and `low` represents the position where the target can be inserted to maintain the sorted order of the array.
 
 ## Complexity
 
@@ -22,29 +23,31 @@ By comparing the target with the midpoint of the current search interval in a so
 
 ```javascript
 /**
- * Uses binary search to find the insert position for a target value in a sorted array.
- * @param {number[]} nums - The input sorted array.
- * @param {number} target - The target value to insert.
- * @return {number} - The index to insert the target value at.
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
  */
 var searchInsert = function (nums, target) {
-  let low = 0; // Start of the search interval.
-  let high = nums.length - 1; // End of the search interval.
+  let low = 0; // Start index of the search range
+  let high = nums.length - 1; // End index of the search range
 
-  // Perform binary search.
   while (low <= high) {
-    // Calculate the mid-point.
-    let mid = low + Math.floor((high - low) / 2);
+    const middle = Math.floor((low + high) / 2); // Middle index
 
-    // Narrow down the search interval.
-    if (nums[mid] < target) {
-      low = mid + 1; // Target must be in the upper half.
-    } else {
-      high = mid - 1; // Target must be in the lower half or at mid.
+    // If the target is found, return the index
+    if (nums[middle] === target) return middle;
+
+    // If the target is greater than the middle element, search the right half
+    if (nums[middle] < target) {
+      low = middle + 1;
+    }
+    // If the target is less than the middle element, search the left half
+    else {
+      high = middle - 1;
     }
   }
 
-  // Low is now the insert position for the target.
+  // If the target is not found, `low` will be the insert position
   return low;
 };
 ```
