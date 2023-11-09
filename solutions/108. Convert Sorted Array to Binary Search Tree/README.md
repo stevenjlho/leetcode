@@ -9,9 +9,8 @@ The most balanced binary search tree (BST) can be created by using the middle el
 1. Implement a recursive helper function `buildBST` that constructs and returns a balanced BST from the subset of `nums` between `left` and `right`.
 
    - If `left > right`, return `null` as no BST can be formed.
-   - Calculate the middle index `mid` to equally divide the subarray.
-   - Create a new `TreeNode` using the value at index `mid` as its root.
-   - Construct left and right subtrees recursively using the subarrays before and after `mid`.
+   - Calculate the middle index `mid` and create a new `TreeNode` with `nums[mid]` as the root.
+   - Recursively build the left subtree using elements before `mid` and the right subtree using elements after `mid`.
    - Attach the left and right subtrees to the root and return the root.
 
 2. Invoke `buildBST` initially with the full range of the sorted array `nums`.

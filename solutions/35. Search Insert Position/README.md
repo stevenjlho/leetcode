@@ -7,10 +7,10 @@ By comparing the target with the midpoint of the current search interval in a so
 ## Approach
 
 1.  Initialize `low` and `high` pointers to define the search range as the start and end of the array, respectively.
-2.  Employ a while loop to conduct the search as long as `low` is less than or equal to `high`:
+2.  While `low` is not greater than `high`, perform the following:
     - Find the middle index between `low` and `high`.
-    - If the middle element is less than the target, adjust the `low` pointer to the index right after `mid` to search the upper half of the array.
-    - If the middle element is equal to or greater than the target, adjust the `high` pointer to the index right before `mid` to search the lower half.
+    - If the middle element is less than the target, narrow the search to the right half by moving `low` just past `mid`.
+    - If the middle element is equal to or greater than the target, narrow the search to the left half by moving `high` just before `mid`.
 3.  The loop terminates when `low` surpasses `high`, indicating that the target is not present and `low` is the correct insertion index to maintain the array's order.
 
 ## Complexity
