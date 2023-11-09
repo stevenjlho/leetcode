@@ -1,44 +1,52 @@
 # [20. Valid Parentheses](https://leetcode.com/problems/valid-parentheses/description/)
 
 ## Intuition
-We can use a stack data structure to keep track of opening brackets and check if they match with the corresponding closing brackets.
+
+Leveraging a stack allows us to validate the sequence of parentheses by ensuring that each closing bracket is preceded by a matching opening bracket in the correct order.
 
 ## Approach
-1. Initialize an empty `stack`. Initialize `map` that maps opening brackets to closing brackets.
-2. Iterate through the array `s`.
-3. If `s[i]` is an opening bracket, use `map` to map the closing brackets and push it onto the `stack`.
-4. If `s[i]` is a closing bracket, check if the stack is empty and pop the top element from the stack using `stack.pop()` to ensure this closing bracket matches the correct opening bracket.
-5. If the wrong type of closing bracket is found, exit early and return `false`.
-6. Finally, return the result by checking if the length of the `stack` equals 0. If it does, it means that all the opening brackets have been closed.
 
+1.  Initialize a `stack` to keep track of open brackets.
+2.  Create a mapping of open to close bracket types for easy lookup.
+3.  Iterate over each character in the string `s`:
+    - If an opening bracket is encountered, push its corresponding closing bracket onto the stack.
+    - If a closing bracket is encountered, check if it matches the expected bracket at the top of the stack. If it does, pop the stack; otherwise, the sequence is invalid.
+4.  After processing all characters, check if the `stack` is empty. An empty stack indicates that all open brackets have been properly matched and closed.
 
 ## Complexity
-- Time complexity: O(n), the algorithm iterates through the array of s once.
-- Space complexity: O(n) as the stack could store all the opening brackets in the string.
+
+- Time complexity: O(n), where n is the length of the input string. Each character is processed once.
+- Space complexity: O(n) in the worst case (when all characters are open brackets), due to the stack storing them.
 
 ## Code
+
 ```javascript
 /**
- * @param {string} s
- * @return {boolean}
+ * Determines if a string of parentheses is valid.
+ * @param {string} s - The input string containing only parentheses.
+ * @return {boolean} - True if the string is valid; otherwise, false.
  */
-var isValid = function(s) {
-    const stack = [];
-    const map = {
-        '{': '}',
-        '(': ')',
-        '[': ']',
-    }
+var isValid = function (s) {
+  const stack = [];
+  const map = new Map([
+    ["(", ")"],
+    ["{", "}"],
+    ["[", "]"],
+  ]);
 
-    for(let i = 0; i < s.length; i++) {
-        if(s[i] in map) {
-            stack.push(s[i])
-        } else if(stack.length > 0 && s[i] !== map[stack.pop()]) {
-            // check if this closing bracket match recent opening bracket 
-            return false;
-        }
+  for (const char of s) {
+    if (map.has(char)) {
+      // If the character is an opening bracket, push its closing counterpart.
+      stack.push(map.get(char));
+    } else {
+      // If the stack is empty or the closing bracket does not match the stack's top, return false.
+      if (!stack.length || stack.pop() !== char) {
+        return false;
+      }
     }
+  }
 
-    return stack.length === 0
+  // If the stack is empty, all brackets were matched; otherwise, return false.
+  return stack.length === 0;
 };
 ```
