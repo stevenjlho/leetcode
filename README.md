@@ -43,6 +43,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 - [530. Minimum Absolute Difference in BST](https://github.com/stevenjlho/leetcode/blob/main/solutions/530.%20Minimum%20Absolute%20Difference%20in%20BST/README.md)
 - [617. Merge Two Binary Trees](https://github.com/stevenjlho/leetcode/blob/main/solutions/617.%20Merge%20Two%20Binary%20Tree/README.md)
 - [700. Search in a Binary Search Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/700.%20Search%20in%20a%20Binary%20Search%20Tree/README.md)
+- [704. Binary Search](https://github.com/stevenjlho/leetcode/blob/main/solutions/704.%20Binary%20Search/README.md)
 
 ### Medium 
 - [53. Maximum Subarray](https://github.com/stevenjlho/leetcode/blob/main/solutions/53.%20Maximum%20Subarray/README.md)
@@ -59,6 +60,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 ### Todo
 - [ ] [415. Add Strings](https://leetcode.com/problems/add-strings/description/)
 - [ ] [257. Binary Tree Paths](https://leetcode.com/problems/binary-tree-paths/)
+- [ ] [160. Intersection of Two Linked Lists](https://leetcode.com/problems/intersection-of-two-linked-lists/description/)
 
 ## Test
 ```
