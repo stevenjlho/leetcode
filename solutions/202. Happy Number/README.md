@@ -7,19 +7,16 @@ we use the two-pointer technique with slow and fast pointers. If the two pointer
 ## Approach
 
 1. Initialize two pointers, `slow` and `fast`, both set to `n`.
-2. Create a helper function `square(num)` that calculates and returns the sum of the squares of each digit in `num`.
+2. Define a `square` function that returns the sum of the squares of each digit in `num`.
    - Initialize a variable `ans` to 0 to keep the running sum of squared digits.
-   - Extract the last digit of the `num` using modulo 10 operation (`remainder = num % 10`).
-   - Using a loop, break the number down digit by digit:
-   - Square the extracted digit and add to the sum.
-   - Remove the last digit from the `num` using integer division (i.e., `num = Math.floor(num / 10)`).
-   - Once all digits are processed, return `ans`.
-3. Use a do-while loop to progress the `slow` pointer by one step and the `fast` pointer by two steps (using the `square` function). If a cycle is detected (when `slow` equals `fast`), exit the loop.
-4. After the loop, if `slow` is 1, the number is happy, so return `true`. Otherwise, there's a cycle, and return `false`.
+   - Looping through the digits of `num`, extracting each digit (`remainder = num % 10`), squaring it, and adding to a cumulative sum (`ans`).
+   - Continuously dividing `num` by 10 to remove the last digit.
+3. Use a do-while loop to progress the `slow` pointer by one step and the `fast` pointer by two steps (using the `square` function). If `slow` equals `fast`, indicating a cycle, break the loop.
+4. After exiting the loop, check if `slow` equals 1. If so, return `true` (indicating a happy number); otherwise, return `false`.
 
 ## Complexity
 
-- Time complexity: O(n), as it depends on the input number 'n'.
+- Time complexity: O(log n), as the number of digits in each step reduces significantly, leading to fewer iterations than n.
 - Space complexity: O(1), we are not using any extra space.
 
 ## Code
