@@ -2,25 +2,24 @@
 
 ## Intuition
 
-We can use two pointers `slow` and `fast` to find the middle node, then reverse the rest of linked list from middle node. Finally, compare the start and reverse end half.
+We can use the two-pointer approach to find the middle of the list. Then, we reverse the second half and compare it with the first half.
 
 ## Approach
 
 1. Initialize two pointers, `slow` and `fast`, both pointing to the head of the linked list.
-2. `slow` will move one step at a time, while `fast` will move two steps at a time. This way, `slow` will reach the middle of the list when `fast` reaches the end.
-3. If the number of nodes in the linked list is odd, move `slow` one more step to the next node as it represents the middle node.
-4. Reverse the second half of the list. To do this:
+2. `slow` moves one step at a time, `fast` moves two steps. When `fast` reaches the end, `slow` will be at the middle. For odd-sized lists, move `slow` one step further.
+3. Reverse the second half of the list starting from `slow`. Use a `prev` pointer to facilitate the reversal.
    - Initialize a variable `prev` to `null`.
    - Iterate through the second half of the list (from `slow` to the end):
    - Store the `next` node of `slow`.
    - Update the `next` pointer of `slow` to point to `prev`, effectively reversing the list.
    - Move `prev` to the current `slow` node and move `slow` to the `next`, this can continue reversing the list.
-5. Compare the original first half and the reversed second half.
+4. Compare the first half with the reversed second half node by node. If any node doesn't match, return `false`.
    - Initialize a loop while `prev` is not `null`:
    - Compare the `val` of the current node in the first half (denoted by `head`) with the `val` of the current node in the reversed second half (denoted by `prev`).
    - If they are not equal, return `false` as it's not a palindrome.
    - Move `head` and `prev` to their respective next nodes.
-6. If the loop completes without finding any non-matching elements, return `true` as it's a palindrome.
+5. If the loop completes without finding any non-matching elements, return `true` as it's a palindrome.
 
 ## Complexity
 
