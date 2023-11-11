@@ -1,22 +1,21 @@
 # [112. Path Sum](https://leetcode.com/problems/path-sum/description/)
 
 ## Intuition
-Determine if a tree has a root-to-leaf path such that the sum of its node values matches a given target.
 
+We can recursively subtract node values from the target sum and check if any leaf node matches the remaining sum.
 
 ## Approach
 
-1. If `root` is `null`, return `false` because an empty tree cannot satisfy the path sum condition.
-2. See if the value of a leaf node(both children are `null`) matches the remaining target sum. If so, we've found the required path.
-3. For non-leaf nodes, recursively check:
-   - The left child of the current node with the updated `targetSum - root.val`.
-   - The right child with the same updated target sum.
-4. If either subtree (left or right) has a valid path, return `true`.
+1. If `root` is `null`, return `false` because an empty tree cannot have the required path sum.
+2. Check if the value of a leaf node(both children are `null`) matches the remaining target sum. If so, we've found the required path.
+3. For non-leaf nodes, recursively check both left and right subtrees, updating the `targetSum` by subtracting `root.val`.
+4. Return `true` if either the left or right subtree contains a valid path sum. Otherwise, return `false`.
+
 
 ## Complexity
 
 - Time complexity: O(n), we might have to visit all nodes in the worst case scenario.
-- Space complexity: O(h), recursion stack can go as deep as the height of the tree. In the worst case (when the tree is unbalanced), the recursion stack will be O(n). But for balanced trees, it would be O(log n).
+- Space complexity: O(h), where `h` is the height of the tree. In the worst case (for a skewed tree), this becomes O(n), but for a balanced tree, it's O(log n).
 
 ## Code
 
