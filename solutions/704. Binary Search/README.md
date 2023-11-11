@@ -12,7 +12,7 @@ Binary search efficiently locates an element in a sorted array by repeatedly hal
     - If the middle element is equal to `target`, return the `middle` index as the found location of `target`.
     - If the middle element is less than `target`, move the `low` pointer to `middle + 1` to search the right half.
     - If the middle element is greater than `target`, move the `high` pointer to `middle - 1` to search the left half.
-3.  If the `target` is not found by the time `low` exceeds `high`, return `-1` to indicate its absence in the array.
+3.  If the loop ends without finding the target, return `-1`.
 
 ## Complexity
 
