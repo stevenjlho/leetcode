@@ -8,12 +8,11 @@ The goal is to perform a preorder traversal of a binary tree, which involves vis
 
 1. Initialize an empty array `result` to store the nodes in the preorder traversal order.
 2. Define a recursive function `traversal` that takes a `root` node as its parameter.
-3. In the `traversal` function:
    - Check if the current node `root` is null. If it is, return, as there's nothing to process.
    - Push the value of the current node `root.val` into the `result` array to record the visitation order.
    - Recursively call `traversal` for the left subtree(`root.left`) and right subtree (`root.right`) of the current node.
-4. Call the `traversal` function, starting with the root of the binary tree.
-5. After the recursive traversal, return the `result` array containing the nodes in the preorder traversal order.
+3. Call the `traversal` function, starting with the root of the binary tree.
+4. After the recursive traversal, return the `result` array containing the nodes in the preorder traversal order.
 
 # Complexity
 
