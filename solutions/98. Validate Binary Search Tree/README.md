@@ -6,16 +6,16 @@ We need to ensure that the inorder traversal of the tree results is a strictly i
 
 ## Approach
 
-1. Initialize an empty array `result` to record the inorder traversal sequence of the tree.
+1. Initialize an empty array `result` to store the inorder traversal sequence.
 2. Define a helper function `traversal` to perform inorder traversal:
-   - If the current node (`root`) is `null`, simply return (base case).
+   - Return immediately if the current node (`root`) is null.
    - Recursively traverse the left subtree of the current node.
-   - Record the value of the current node in the `result` array.
+   - Append the value of the current node to `result`.
    - Recursively traverse the right subtree of the current node.
 3. Call the `traversal` function starting from the root of the tree.
-4. Iterate through the `result` array:
-   - Compare adjacent values. If any value at index `i` is less than or equal to the value at index `i - 1`, the tree is not a BST. In this case, return `false`.
-5. If the tree is a BST, return `true`.
+4. Verify that `result` forms a strictly increasing sequence:
+   - Iterate through `result` and check if each element is greater than its predecessor. If any element is not, the tree is not a valid BST. Return `false` in this case.
+5. Return `true` if the entire sequence is strictly increasing, confirming the tree is a valid BST.
 
 ## Complexity
 
