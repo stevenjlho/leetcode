@@ -9,10 +9,9 @@ The problem requires constructing a maximum binary tree where each tree's root i
 1. Use the helper function `buildTree` to construct the tree from a sublist of `nums`:
    - The sublist to consider for the tree construction is defined by the indices `left` (inclusive) and `right` (exclusive).
    - If the sublist is empty (i.e., `left` is equal to or greater than `right`), return `null`.
-   - Find the maximum value and its index within the sublist to set as the current root. The search for the maximum value is performed within the indices `left` to `right - 1` (since `right` is exclusive).
-   - Use the index of the maximum value, `maxIndex`, to partition the list into left and right sublists
-   - Construct the left child by recursively applying the function on the left sublist which is everything from `left` to just before `maxIndex` and the right child on the right sublist which is everything from just after `maxIndex` to `right` (`maxIndex+1` to `right-1`).
-2. Initiate the tree construction by invoking `buildTree` with the entire `nums` list.
+   - Find the maximum value and its index within the sublist. This maximum value becomes the root of the current subtree. The index of maximum value is used to partition the list into left and right sublists.
+   - Recursively construct the left subtree from elements before the maximum value and the right subtree from elements after the maximum value.
+2. Invoke `buildTree` with the entire `nums` list, starting from index 0 to `nums.length`.
 
 ## Complexity
 
