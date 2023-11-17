@@ -9,7 +9,7 @@ The problem requires constructing a maximum binary tree where each tree's root i
 1. Use the helper function `buildTree` to construct the tree from a sublist of `nums`:
    - The sublist to consider for the tree construction is defined by the indices `left` (inclusive) and `right` (exclusive).
    - If the sublist is empty (i.e., `left` is equal to or greater than `right`), return `null`.
-   - Find the maximum value and its index within the sublist. This maximum value becomes the root of the current subtree. The index of maximum value is used to partition the list into left and right sublists.
+   - Iterate through `nums` from `left` to `right` to find the maximum value and its index within the sublist. This maximum value becomes the root of the current subtree. The index of maximum value is used to partition the list into left and right sublists.
    - Recursively construct the left subtree from elements before the maximum value and the right subtree from elements after the maximum value.
 2. Invoke `buildTree` with the entire `nums` list, starting from index 0 to `nums.length`.
 
