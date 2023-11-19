@@ -9,7 +9,7 @@ Binary search efficiently locates an element in a sorted array by repeatedly hal
 1.  Start with two pointers representing the bounds (`low` and `high`) of the current search interval within the array.
 2.  Enter a while loop which continues as long as `low` is less than or equal to `high`.
     - Calculate the middle index between `low` and `high`.
-    - If the middle element is equal to `target`, return the `middle` index as the found location of `target`.
+    - If equal, return `middle` as the found index.
     - If the middle element is less than `target`, move the `low` pointer to `middle + 1` to search the right half.
     - If the middle element is greater than `target`, move the `high` pointer to `middle - 1` to search the left half.
 3.  If the loop ends without finding the target, return `-1`.
