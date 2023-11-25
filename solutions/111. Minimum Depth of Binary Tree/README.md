@@ -6,11 +6,13 @@ The minimum depth of a binary tree is measured by the shortest path from the roo
 
 ## Approach
 
-1. If the current `root` node is null (indicating a leaf node has been surpassed), return a depth of 0.
+1. If the current `root` node is null, return a depth of 0. This indicates that we have surpassed a leaf node.
 2. Calculate the minimum depth of the left and right subtrees recursively.
-3. If the left subtree is absent but the right subtree exists, return the depth of the right subtree + 1.
-4. If the right subtree is absent but the left subtree exists, return the depth of the left subtree + 1.
-5. If both subtrees are present, the minimum depth is the lesser of the two depths plus one for the current node.
+3. If the left subtree is absent (i.e., `root.left` is null) but the right subtree exists, return the depth of the right subtree plus one.
+4. Conversely, if the right subtree is absent (i.e., `root.right` is null) but the left subtree exists, return the depth of the left subtree plus one.
+5. If both left and right subtrees are present, the minimum depth is the lesser of the two depths plus one (to account for the current node).
+
+
 
 ## Complexity
 
