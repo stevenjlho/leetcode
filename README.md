@@ -62,7 +62,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 - [797. All Paths From Source to Target](https://github.com/stevenjlho/leetcode/blob/main/solutions/797.%20All%20Paths%20From%20Source%20to%20Target/README.md)
 
 ### Todo
-- [ ] [415. Add Strings](https://leetcode.com/problems/add-strings/description/)
+- [x] [415. Add Strings](https://leetcode.com/problems/add-strings/description/)
 - [ ] [257. Binary Tree Paths](https://leetcode.com/problems/binary-tree-paths/)
 - [ ] [160. Intersection of Two Linked Lists](https://leetcode.com/problems/intersection-of-two-linked-lists/description/)
 
