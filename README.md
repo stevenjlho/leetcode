@@ -44,6 +44,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 - [383. Ransom Note](https://github.com/stevenjlho/leetcode/blob/main/solutions/383.%20Ransom%20Note/README.md)
 - [392. Is Subsequence](https://github.com/stevenjlho/leetcode/blob/main/solutions/392.%20Is%20Subsequence/README.md)
 - [530. Minimum Absolute Difference in BST](https://github.com/stevenjlho/leetcode/blob/main/solutions/530.%20Minimum%20Absolute%20Difference%20in%20BST/README.md)
+- [543. Diameter of Binary Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/543.%20Diameter%20of%20Binary%20Tree/README.md)
 - [617. Merge Two Binary Trees](https://github.com/stevenjlho/leetcode/blob/main/solutions/617.%20Merge%20Two%20Binary%20Trees/README.md)
 - [700. Search in a Binary Search Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/700.%20Search%20in%20a%20Binary%20Search%20Tree/README.md)
 - [704. Binary Search](https://github.com/stevenjlho/leetcode/blob/main/solutions/704.%20Binary%20Search/README.md)
