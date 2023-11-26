@@ -4,11 +4,11 @@
 We can use two pointers traverse the linked list, `slow` pointer moves one step while `fast` pointer moves two steps, if `slow` equals `fast`, it means there is a cycle.
 
 ## Approach
-1. Initialize two pointers, `slow` and `fast`, both initially pointing to the head of the linked list.
-2. Traverse the linked list while moving `slow` one step at a time and `fast` two steps at a time.
-3. If there is no cycle in the linked list, `fast` will reach the end (`fast` or `fast.next` becomes `null`) before `slow`.
-4. If there is a cycle, `fast` will eventually catch up to `slow` inside the cycle, causing them to meet at the same node.
-5. If a cycle is present, return `true`; otherwise, return `false`.
+1.  Initialize two pointers, `slow` and `fast`, both initially pointing to the head of the linked list.
+2.  Traverse the linked list while moving `slow` one step at a time and `fast` two steps at a time.
+3.  If there is no cycle in the linked list, `fast` will reach the end (`fast` or `fast.next` becomes `null`) before `slow`.
+4.  If there is a cycle, `fast` will eventually catch up to `slow` inside the cycle, as each step reduces the gap between them by one node. This leads to them meeting at the same node.
+5.  If a cycle is present, return `true`; otherwise, return `false`.
 
 ## Complexity
 - Time complexity: O(n), where "n" is the number of nodes in the linked list.
