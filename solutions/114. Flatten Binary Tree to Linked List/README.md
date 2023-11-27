@@ -1,0 +1,60 @@
+# [114. Flatten Binary Tree to Linked List](https://leetcode.com/problems/flatten-binary-tree-to-linked-list/description/)
+
+## Intuition
+
+Flattening a binary tree into a linked list is achieved by rearranging nodes in a preorder traversal order, ensuring each node's left child is null and its right child points to the next node in the sequence.
+
+## Approach
+
+1. Initialize `prev` to track the last processed node
+2. Use a recursive function to flatten the tree.
+
+   - Traverse the tree in reverse postorder (right subtree, left subtree, then root). This order ensures that when a node is processed, its right subtree has already been flattened.
+   - Recursively flatten the right and left subtrees
+   - Set the node's right child to `prev` (previously processed node) and its left child to null.
+   - Update `prev` to the current node, so it becomes the previously visited node for the next iteration.
+
+3. Begin the flattening process from the tree's root.
+
+## Complexity
+
+- Time complexity: O(n), where n is the number of nodes in the tree. Each node is visited exactly once.
+- Space complexity: O(h), where h is the height of the binary tree. In the worst case, the tree is completely unbalanced, and the recursion would go as deep as N, leading to a space complexity of O(N). But in the best case (the tree is completely balanced), the height of the tree would be log(N).
+
+## Code
+
+```javascript
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {void} Do not return anything, modify root in-place instead.
+ */
+var flatten = function (root) {
+  // Initialize prev to track the last processed node
+  let prev = null;
+
+  function flattenTree(node) {
+    if (node === null) return;
+
+    // Recursively flatten the right and left subtrees
+    flattenTree(node.right);
+    flattenTree(node.left);
+
+    // Set right child to the last processed node
+    node.right = prev;
+    // Set left child to null
+    node.left = null;
+    // Update prev to the current node
+    prev = node;
+  }
+
+  flattenTree(root);
+};
+```
