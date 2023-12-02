@@ -59,6 +59,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 - [130. Surrounded Regions](https://github.com/stevenjlho/leetcode/blob/main/solutions/130.%20Surrounded%20Regions/README.md)
 - [199. Binary Tree Right Side View](https://github.com/stevenjlho/leetcode/blob/main/solutions/199.%20Binary%20Tree%20Right%20Side%20View/README.md)
 - [200. Number of Islands](https://github.com/stevenjlho/leetcode/blob/main/solutions/200.%20Number%20of%20Islands/README.md)
+- [230. Kth Smallest Element in a BST](https://github.com/stevenjlho/leetcode/blob/main/solutions/230.%20Kth%20Smallest%20Element%20oin%20a%20BST/README.md)
 - [235. Lowest Common Ancestor of a Binary Search Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/235.%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Search%20Tree/README.md)
 - [236. Lowest Common Ancestor of a Binary Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/236.%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree/README.md)
 - [654. Maximum Binary Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/654.%20Maximum%20Binary%20Tree/README.md)
