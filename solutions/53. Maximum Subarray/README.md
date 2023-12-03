@@ -10,7 +10,7 @@ The maximum subarray sum can be identified by tracking the current sum of subarr
 2. Start with `currentSum` at 0, representing the sum of the current subarray.
 3. Loop through each element in `nums`.
    - Add the current element (`nums[i]`) to `currentSum`.
-   - If `currentSum` becomes greater than `maxSum`, update `maxSum` to `currentSum`.
+   - Update `maxSum` to `currentSum` if `currentSum` is greater, capturing the highest subarray sum found so far.
    - Reset `currentSum` to 0 if it becomes negative. This is necessary to avoid reducing the overall sum when the current subarray is not contributing positively.
      the start of a new subarray.
 4. After processing all elements, `maxSum` holds the maximum subarray sum.
