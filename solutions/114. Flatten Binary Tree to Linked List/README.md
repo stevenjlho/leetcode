@@ -1,13 +1,14 @@
 # [114. Flatten Binary Tree to Linked List](https://leetcode.com/problems/flatten-binary-tree-to-linked-list/description/)
 
 ## Intuition
-We rearrange the nodes of a given binary tree into a linked list following a depth-first approach by setting each node's right child to the previously processed node and nullifying its left child.
 
+We rearrange the nodes of a given binary tree into a linked list following a depth-first approach by setting each node's right child to the previously processed node and nullifying its left child.
 
 ## Approach
 
 1. Initialize `prev` to track the last processed node
 2. Use a recursive function to flatten the tree.
+
    - If the current node (`node`) is `null`, return, as there's nothing to process.
    - Flatten the right subtree first, then the left subtree. This reverse postorder traversal ensures that when a node is processed, its right subtree is already in a flattened form.
    - Set `node.right` to `prev`, effectively linking the current node to the previously processed node in the flattened structure.

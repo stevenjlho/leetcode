@@ -1,10 +1,10 @@
-[199. Binary Tree Right Side View](https://leetcode.com/problems/binary-tree-right-side-view/description/)
+# [199. Binary Tree Right Side View](https://leetcode.com/problems/binary-tree-right-side-view/description/)
 
-# Intuition
+## Intuition
 
 We need to ensure that for each depth level of the tree, the rightmost node is visible. This can be achieved by a modified depth-first search that prioritizes the right subtree.
 
-# Approach
+## Approach
 
 1. Create an array `result` to store the rightmost node's value at each depth level of the tree.
 2. Implement a recursive helper function `collect` that traverses the tree. The function takes two parameters: `node` (the current node) and `depth` (the current depth level in the tree).
@@ -16,12 +16,12 @@ We need to ensure that for each depth level of the tree, the rightmost node is v
 3. Call collect starting from the root node (`root`) with an initial depth of 0.
 4. After the traversal, return the `result` array, which now contains the rightmost view of the binary tree.
 
-# Complexity
+## Complexity
 
 - Time complexity: O(n), where n is the number of nodes in the binary tree. Each node is visited once.
 - Space complexity: O(h), where h is the height of the tree. This space is used by the call stack during the recursive traversal. In the worst case, the tree could be skewed, leading to a space complexity of O(n).
 
-# Code
+## Code
 
 ```javascript
 /**
