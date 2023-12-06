@@ -50,6 +50,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 - [704. Binary Search](https://github.com/stevenjlho/leetcode/blob/main/solutions/704.%20Binary%20Search/README.md)
 
 ### Medium 
+- [33. Search in Rotated Sorted Array](https://github.com/stevenjlho/leetcode/blob/main/solutions/33.%20Search%20in%20Rotated%20Sorted%20Array/README.md)
 - [53. Maximum Subarray](https://github.com/stevenjlho/leetcode/blob/main/solutions/53.%20Maximum%20Subarray/README.md)
 - [98. Validate Binary Search Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/98.%20Validate%20Binary%20Search%20Tree/README.md)
 - [102. Binary Tree Level Order Traversal](https://github.com/stevenjlho/leetcode/blob/main/solutions/102.%20Binary%20Tree%20Level%20Order%20Traversal/README.md)
