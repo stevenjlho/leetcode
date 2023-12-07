@@ -7,7 +7,7 @@ We need to ensure that for each depth level of the tree, the rightmost node is v
 ## Approach
 
 1. Create an array `result` to store the rightmost node's value at each depth level of the tree.
-2. Implement a recursive helper function `collect` that traverses the tree. The function takes two parameters: `node` (the current node) and `depth` (the current depth level in the tree).
+2. Implement a recursive helper function `rightView` that traverses the tree. The function takes two parameters: `node` (the current node) and `depth` (the current depth level in the tree).
 
    - If the current node is null, return, as there's nothing to process.
    - Check if the current depth is equal to the length of the result array. If true, it indicates this depth level hasn't been processed yet, so add the current node's value to `result`.
@@ -40,7 +40,7 @@ We need to ensure that for each depth level of the tree, the rightmost node is v
 var rightSideView = function (root) {
   let result = [];
 
-  function collect(node, depth) {
+  function rightView(node, depth) {
     if (node === null) {
       return;
     }
@@ -50,13 +50,13 @@ var rightSideView = function (root) {
       result.push(node.val);
     }
     // Prioritize right subtree to ensure rightmost nodes are seen first
-    collect(node.right, depth + 1);
+    rightView(node.right, depth + 1);
     // Then process the left subtree
-    collect(node.left, depth + 1);
+    rightView(node.left, depth + 1);
   }
 
   // Start collecting from root
-  collect(root, 0);
-  return result; // Return the array containing the right side view
+  rightView(root, 0);
+  return result;
 };
 ```
