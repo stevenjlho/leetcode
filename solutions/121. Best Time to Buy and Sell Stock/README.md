@@ -7,10 +7,10 @@ By iterating through the array, we keep track of the minimum stock price seen, m
 ## Approach
 
 1.  Initialize `minPrice` to the first stock price and `maxProfit` to 0. `maxProfit` will store our answer.
-2.  Iterate through each stock price.
-3.  Update `minPrice` if the current price is lower, ensuring `minPrice` always contains the lowest price seen.
-4.  Determine the potential profit by subtracting `minPrice` from the current price. Update `maxProfit` if this potential profit exceeds the current `maxProfit`.
-5.  Return `maxProfit`, which represents the maximum profit that can be obtained.
+2.  Iterate through each stock price to examine all potential buying points.
+3.  Update `minPrice` to the current price if it's lower than the existing `minPrice`.This step is crucial as buying at the lowest possible price is key to maximizing profit.
+4.  Calculate potential profit (`prices[i] - minPrice`) and update `maxProfit` if this profit exceeds the current `maxProfit`. This step ensures that you are always keeping track of the highest possible profit.
+5.  Finally, `maxProfit` is returned, which represents the maximum profit obtainable from the stock prices.
 
 ## Complexity
 
