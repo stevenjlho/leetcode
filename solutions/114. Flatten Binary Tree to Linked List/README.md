@@ -2,7 +2,7 @@
 
 ## Intuition
 
-We rearrange the nodes of a given binary tree into a linked list following a depth-first approach by setting each node's right child to the previously processed node and nullifying its left child.
+We can use a depth-first approach by setting each node's right child to the previously processed node and nullifying its left child.
 
 ## Approach
 
