@@ -6,15 +6,19 @@ This is achieved by identifying which half is correctly sorted and then checking
 
 ## Approach
 
-1.  Set `low` and `high` to the start and end of the array, respectively.
-2.  Use a while loop to iterate while `low <= high`.
+1.  Set `low` and `high` to the start and end of the array to define the search boundaries.
+2.  Continue as long as `low` is less than or equal to `high`, ensuring the entire search range is covered.
 
     - Calculate the middle index `mid`, which is used to divide the array into two halves.
     - If `nums[mid]` equals the target, return the index `mid`.
-    - If the left half is sorted (`nums[low] <= nums[mid]`):
-      - Check if the target is within this range (`nums[low]` to `nums[mid]`). If so, move `high` to `mid - 1`; otherwise, move `low` to `mid + 1`.
+    - Identify Sorted Half: If the left half is sorted (`nums[low] <= nums[mid]`):
+
+      - If the target is within the left half's range, move `high` to `mid - 1`.
+      - Otherwise, shift `low` to `mid + 1` to search in the right half.
+
     - If the right half is sorted:
-      - Check if the target is within this range (`nums[mid]` to `nums[high]`). If so, move `low` to `mid + 1`; otherwise, move `high` to `mid - 1`.
+      - If the target is within the right half's range, move `low` to `mid + 1`.
+      - Otherwise, shift `high` to `mid - 1` to search in the left half.
 
 3.  If the loop ends without finding the target, return -1, indicating that the target is not in the array.
 
@@ -33,7 +37,7 @@ This is achieved by identifying which half is correctly sorted and then checking
  */
 var search = function (nums, target) {
   if (!nums || nums.length === 0) {
-    return -1;
+    return -1; // Handle edge case of empty array
   }
   let low = 0,
     high = nums.length - 1;
@@ -42,27 +46,27 @@ var search = function (nums, target) {
     let mid = Math.floor((low + high) / 2);
 
     if (nums[mid] === target) {
-      return mid;
+      return mid; // Target found
     }
 
-    // Check if the left half is sorted
+    // Left half is sorted
     if (nums[low] <= nums[mid]) {
       if (target >= nums[low] && target <= nums[mid]) {
-        high = mid - 1;
+        high = mid - 1; // Target in left sorted half
       } else {
-        low = mid + 1;
+        low = mid + 1; // Search in right half
       }
     }
     // Right half is sorted
     else {
       if (target >= nums[mid] && target <= nums[high]) {
-        low = mid + 1;
+        low = mid + 1; // Target in right sorted half
       } else {
-        high = mid - 1;
+        high = mid - 1; // Search in left half
       }
     }
   }
 
-  return -1;
+  return -1; // Target not found
 };
 ```
