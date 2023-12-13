@@ -9,7 +9,7 @@ we can leverage the property of BSTs where the left subtree only contains nodes 
 1. If `root` is `null` or `root.val` equals `val`, return `root`; this node is either the target or indicates the target is not present.
 2. If the current node's value is greater than the target `val`, search recursively in the left subtree.
 3. If the current node's value is less than the target `val`, search recursively in the right subtree.
-4. Return the result of the recursive search.
+4. The recursive call itself returns the node containing the target value or `null`.
 
 ## Complexity
 

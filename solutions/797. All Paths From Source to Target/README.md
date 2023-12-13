@@ -9,7 +9,7 @@ By using DFS, we explore all potential paths from the source to the target in a 
 1.  Initialize a `res` array to store the successful paths and a `path` array to keep track of the current exploration path.
 2.  Implement a `dfs` function that:
     - Records the current `path` to `res` if the current node (`start`) is the target.
-    - Iterates over all the neighbors of the current node, adding each to `path`, and recursively calls `dfs` for each neighbor.
+    - Iterating over neighbors of the current node, recursively calling `dfs` for each, and managing the `path` array accordingly.
     - Performs backtracking by removing the last node from `path` after all paths through that node have been explored.
 
 3.  Initiate DFS from node 0, adding it to the `path`.
@@ -46,8 +46,8 @@ var allPathsSourceTarget = function (graph) {
     }
   };
 
-  path.push(0); // Start with the first node in the path
-  dfs(0); // Begin DFS with the first node
+  path.push(0); // Start with the first node in the path   
+  dfs(0); // Begin DFS with the first node   
   return res; // Return all paths found
 };
 ```
