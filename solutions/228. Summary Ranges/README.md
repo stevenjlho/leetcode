@@ -9,9 +9,7 @@ This problem is approached by iterating through the array `nums` and identifying
 1. Initialize a Result Array (`result`) to store the formatted range strings.
 2. Iterate over each element in the array to find continuous ranges.
    - Setting a variable `start` to mark the beginning of a new range.
-   - For each number (`start`), check consecutive elements to determine if they form a continuous range.
-   - Increment `i` as long as the current element and the next element form a part of the continuous range (i.e., `nums[i] + 1 === nums[i + 1]`).
-   - Using a while loop within the for loop to extend a range is efficient. This ensures that you increment `i` only when a continuous sequence is found, avoiding unnecessary comparisons.
+   - Using a while loop for this purpose ensures that you only increment `i` when a continuous sequence is found.
    - If a range is found, formatting it as `"start->end"` and adding it to `result`.
    - If no range is found (only a single number), adding the single number as a range.
 3. Return the `result` array containing all the formatted ranges.
