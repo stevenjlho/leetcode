@@ -2,7 +2,7 @@
 
 ## Intuition
 
-The critical strategy is to first protect 'O's on the boundaries and those connected to them since these cannot be flipped. We then flip the remaining 'O's, which are effectively surrounded by 'X's.
+The key strategy is indeed to first identify and mark 'O's that are connected to the boundaries (as these cannot be flipped) and then handle the flipping of the remaining 'O's. This ensures that only the surrounded regions are flipped.
 
 ## Approach
 
