@@ -10,15 +10,14 @@ Traverse the binary tree level by level and collect the nodes at each level in s
 2. Initialize an empty array `result` to store the level order traversal results, and `queue` to keep track of the nodes waiting to be dequeued.
 3. Push the root node into the queue.
 4. Perform a while loop while the queue is not empty:
-   - Get the number of nodes in the current level, don't directly use queue.length, because its length is not fixed.
+   - Get the number of nodes of `queue` in the current level, don't directly use queue.length, because its length is not fixed.
    - Initialize an empty array `curLevel` to store the value of nodes at the current level.
    - Run a for loop for the number of nodes in the current level (based on the `length`):
      - Dequeue a node from the queue.
      - Push the value of the dequeued node into the `curLevel` array.
-     - Enqueue the left and right children into the `queue`, if they exist.
+     - Enqueue the left and right children of the dequeued node into the `queue`, if they exist.
    - Push the `curLevel` array into the `result` array to record the nodes at the current level.
-5. Repeat the loop for each level until all nodes are processed.
-6. Return the `result` array containing the level order traversal of the binary tree.
+5. Return the `result` array containing the level order traversal of the binary tree.
 
 ## Complexity
 
