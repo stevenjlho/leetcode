@@ -1,4 +1,4 @@
-[2. Add Two Numbers](https://leetcode.com/problems/add-two-numbers/description/)
+# [2. Add Two Numbers](https://leetcode.com/problems/add-two-numbers/description/)
 
 # Intuition
 
@@ -10,7 +10,7 @@ The key idea is to iterate through both linked lists simultaneously, adding corr
 2.  Iterate Through Lists: Loop through `l1` and `l2` as long as at least one of them has not reached the end, or there is a carry-over.
     - Extract the current digit from each list (`digit1` and `digit2`). If a list has ended, use 0 as its digit.
     - Add the two digits along with the carry from the previous addition. The new digit for the resulting list is `sum % 10`, and the new carry is `Math.floor(sum / 10)`.
-    - Append the new digit to the result list.
+    - Create a new node for the digits and append it to `tail.next`. Move tail to the next node to keep track of the next new node.
     - Move to the next node in each list, handling cases where a list may have ended.
 3.  Since the first node is a dummy, return `dummyHead.next`.
 
