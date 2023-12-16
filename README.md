@@ -51,6 +51,8 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 - [704. Binary Search](https://github.com/stevenjlho/leetcode/blob/main/solutions/704.%20Binary%20Search/README.md)
 
 ### Medium 
+- [2. Add Two Numbers](https://github.com/stevenjlho/leetcode/blob/main/solutions/2.%20Add%20Two%20Numbers/README.md)
+- [19. Remove Nth Node From End of List](https://github.com/stevenjlho/leetcode/blob/main/solutions/19.%20Remove%20Nth%20Node%20From%20End%20of%20List/README.md)
 - [33. Search in Rotated Sorted Array](https://github.com/stevenjlho/leetcode/blob/main/solutions/33.%20Search%20in%20Rotated%20Sorted%20Array/README.md)
 - [53. Maximum Subarray](https://github.com/stevenjlho/leetcode/blob/main/solutions/53.%20Maximum%20Subarray/README.md)
 - [98. Validate Binary Search Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/98.%20Validate%20Binary%20Search%20Tree/README.md)
