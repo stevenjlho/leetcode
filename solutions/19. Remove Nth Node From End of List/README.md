@@ -7,9 +7,9 @@ The idea is to use two pointers, `fast` and `slow`, where `fast` advances `n` st
 # Approach
 
 1.  Starting with both `fast` and `slow` at the head is a logical first step.
-2.  Advance `fast` by `n` Steps. This creates a gap of `n` nodes between `fast` and `slow`.
-3.  Checking if `fast` is null after advancing `n` steps handles the case where the list length is exactly `n`, and the head needs to be removed.
-4.  Move `fast` and `slow` Until `fast` reaches the end. This ensures that when `fast` is at the last node, `slow` is just before the node to be removed.
+2.  Advance `fast` by `n` Steps. This creates a gap of `n` nodes between `fast` and `slow`, which is crucial for identifying the Nth node from the end.
+3.  If `fast` is null after advancing `n` steps, the head is the Nth node from the end. Returning `head.next` effectively removes the head.
+4.  Move `fast` and `slow` Until `fast` reaches the end. This ensures that when `fast` reaches the end of the list, `slow` will be just before the Nth node from the end.
 5.  Skipping the next node in `slow` correctly removes the targeted node by pointing `slow.next` to `slow.next.next`
 6.  Returning `head` provides the updated list.
 
