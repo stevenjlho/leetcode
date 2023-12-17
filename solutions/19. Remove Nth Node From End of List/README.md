@@ -6,7 +6,7 @@ The idea is to use two pointers, `fast` and `slow`, where `fast` advances `n` st
 
 # Approach
 
-1.  Starting with both `fast` and `slow` at the head is a logical first step.
+1.  Starting with `fast` and `slow` at the head is the correct setup for the two-pointer method.
 2.  Advance `fast` by `n` Steps. This creates a gap of `n` nodes between `fast` and `slow`, which is crucial for identifying the Nth node from the end.
 3.  If `fast` is null after advancing `n` steps, the head is the Nth node from the end. Returning `head.next` effectively removes the head.
 4.  Move `fast` and `slow` Until `fast` reaches the end. This ensures that when `fast` reaches the end of the list, `slow` will be just before the Nth node from the end.
