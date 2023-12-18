@@ -14,7 +14,7 @@ The core idea is to traverse the list and swap each pair of nodes. The task is p
 4.  Traverse and Swap Pairs: While there are at least two nodes left to process (`curNode` and `curNode.next` are not null):
     - Update `prevNode.next` to point to `curNode.next`, effectively moving the second node of the pair ahead.
     - Set `curNode.next` to the node after its pair (skip one node)
-    - Link the second node of the pair (`prevNode.next`) to `curNode`, completing the swap.
+    - Link the second node of the pair (`prevNode.next` now first) back to `curNode`, completing the swap.
     - Move `prevNode` to `curNode` and advance `curNode` to `curNode.next` to continue the traversal through the list.
 5.  Return `dummyNode.next`, which points to the new head of the swapped list.
 
