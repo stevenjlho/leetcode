@@ -10,13 +10,12 @@ The core idea is to traverse the list and swap each pair of nodes. The task is p
 
 1.  If the list has fewer than two nodes (`head` is null or `head.next` is null), return the head as no swapping is needed.
 2.  Initialize a dummy node to simplify the handling of the head node and ensure a consistent approach for all node pairs.
-3.  Setting up `prevNode` at the dummy node and `currNode` at the head prepares for the iterative traversal and swapping.
-4.  Traverse and Swap Pairs: While there are at least two nodes left to process (`currNode` and `currNode.next` are not null):
-    - Update `prevNode.next` to point to `currNode.next`, effectively moving the second node of the pair ahead.
-    - Set `currNode.next` to the node following the next node, detaching the second node from its original next node.
-    - Link the second node of the pair (`prevNode.next`) to `currNode`, completing the swap.
-    - Move `prevNode` to `currNode` to progress to the next pair. Advance `currNode` to `currNode.next` to continue the traversal. 
-    - Moving `prevNode` and `currNode` after each swap ensures continued progress through the list.
+3.  Setting up `prevNode` at the dummy node and `curNode` at the head prepares for the iterative traversal and swapping.
+4.  Traverse and Swap Pairs: While there are at least two nodes left to process (`curNode` and `curNode.next` are not null):
+    - Update `prevNode.next` to point to `curNode.next`, effectively moving the second node of the pair ahead.
+    - Set `curNode.next` to the node after its pair (skip one node)
+    - Link the second node of the pair (`prevNode.next`) to `curNode`, completing the swap.
+    - Move `prevNode` to `curNode` and advance `curNode` to `curNode.next` to continue the traversal through the list.
 5.  Return `dummyNode.next`, which points to the new head of the swapped list.
 
 ## Complexity
@@ -39,25 +38,31 @@ The core idea is to traverse the list and swap each pair of nodes. The task is p
  * @return {ListNode}
  */
 var swapPairs = function (head) {
-  // Edge case: if the list has fewer than 2 nodes
+  // Handle cases where the list is empty or has only one node
   if (!head || !head.next) return head;
 
-  let dummyNode = new ListNode(0); // Dummy node to handle head operations
-  let prevNode = dummyNode; // Previous node, starting at dummy
-  let currNode = head; // Current node, starting at head
+  // Initialize a dummy node to act as a placeholder before the head
+  let dummyNode = new ListNode(0);
+  // Set prevNode to dummyNode; it will always point to the node before the current pair
+  let prevNode = dummyNode;
+  // Start curNode at the head; it represents the first node of the current pair
+  let curNode = head;
 
-  // Loop through the list while there are nodes to swap
-  while (currNode && currNode.next) {
-    prevNode.next = currNode.next; // Point previous node to the second node of the pair
-    currNode.next = currNode.next.next; // Detach the first node of the pair
-    prevNode.next.next = currNode; // Complete the swap by linking second node to first
+  // Iterate through the list, swapping pairs of nodes
+  while (curNode && curNode.next) {
+    // Step 1: Link prevNode to the second node of the current pair
+    prevNode.next = curNode.next;
+    // Step 2: Link curNode to the node after its pair (skip one node)
+    curNode.next = curNode.next.next;
+    // Step 3: Link the second node of the pair (now first) back to curNode
+    prevNode.next.next = curNode;
 
-    // Move to the next pair
-    prevNode = currNode;
-    currNode = currNode.next;
+    // Move to the next pair: set prevNode to curNode, and advance curNode
+    prevNode = curNode;
+    curNode = curNode.next;
   }
 
-  // Return the new head of the list
+  // Return the new head of the list, which follows the dummy node
   return dummyNode.next;
 };
 ```
