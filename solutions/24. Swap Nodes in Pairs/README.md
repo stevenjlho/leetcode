@@ -10,13 +10,13 @@ The core idea is to traverse the list and swap each pair of nodes. The task is p
 
 1.  If the list has fewer than two nodes (`head` is null or `head.next` is null), return the head as no swapping is needed.
 2.  Initialize a dummy node to simplify the handling of the head node and ensure a consistent approach for all node pairs.
-3.  `prevNode` starts at `dummyNode` to maintain the connection with the head of the list. `currNode` begins at the head of the list and represents the current node being processed.
+3.  Setting up `prevNode` at the dummy node and `currNode` at the head prepares for the iterative traversal and swapping.
 4.  Traverse and Swap Pairs: While there are at least two nodes left to process (`currNode` and `currNode.next` are not null):
     - Update `prevNode.next` to point to `currNode.next`, effectively moving the second node of the pair ahead.
     - Set `currNode.next` to the node following the next node, detaching the second node from its original next node.
     - Link the second node of the pair (`prevNode.next`) to `currNode`, completing the swap.
-    - Move `prevNode` to `currNode` to progress to the next pair.
-    - Advance `currNode` to `currNode.next` to continue the traversal.
+    - Move `prevNode` to `currNode` to progress to the next pair. Advance `currNode` to `currNode.next` to continue the traversal. 
+    - Moving `prevNode` and `currNode` after each swap ensures continued progress through the list.
 5.  Return `dummyNode.next`, which points to the new head of the swapped list.
 
 ## Complexity

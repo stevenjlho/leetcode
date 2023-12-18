@@ -12,6 +12,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 - [14. Longest Common Prefix](https://github.com/stevenjlho/leetcode/blob/main/solutions/14.%20Longest%20Common%20Prefix/README.md)
 - [20. Valid Parentheses](https://github.com/stevenjlho/leetcode/blob/main/solutions/20.%20Valid%20Parentheses/README.md)
 - [21. Merge Two Sorted Lists](https://github.com/stevenjlho/leetcode/blob/main/solutions/21.%20Merge%20Two%20Sorted%20Lists/README.md)
+- [24. Swap Nodes in Pairs](https://github.com/stevenjlho/leetcode/blob/main/solutions/24.%20Swap%20Nodes%20in%20Pairs/README.md)
 - [26. Remove Duplicates from Sorted Array](https://github.com/stevenjlho/leetcode/blob/main/solutions/26.%20Remove%20Duplicates%20from%20Sorted%20Array/README.md)
 - [27. Remove Element](https://github.com/stevenjlho/leetcode/blob/main/solutions/27.%20Remove%20Element/README.md)
 - [28. Find the Index of the First Occurrence in a String](https://github.com/stevenjlho/leetcode/blob/main/solutions/28.%20Find%20the%20Index%20of%20the%20First%20Occurrence%20in%20a%20String/README.md)
