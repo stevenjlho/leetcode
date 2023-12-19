@@ -29,6 +29,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 - [125. Valid Palindrome](https://github.com/stevenjlho/leetcode/blob/main/solutions/125.%20Valid%20Palindrome/README.md)
 - [141. Linked List Cycle](https://github.com/stevenjlho/leetcode/blob/main/solutions/141.%20Linked%20List%20Cycle/README.md)
 - [144. Binary Tree Preorder Traversal](https://github.com/stevenjlho/leetcode/blob/main/solutions/144.%20Binary%20Tree%20Preorder%20Traversal/README.md)
+- [160. Intersection of Two Linked Lists](https://github.com/stevenjlho/leetcode/blob/main/solutions/160.%20Intersection%20of%20Two%20Linked%20Lists/README.md)
 - [169. Majority Element](https://github.com/stevenjlho/leetcode/blob/main/solutions/169.%20Majority%20Element/README.md)
 - [202. Happy Number](https://github.com/stevenjlho/leetcode/blob/main/solutions/202.%20Happy%20Number/README.md)
 - [206. Reverse Linked List](https://github.com/stevenjlho/leetcode/blob/main/solutions/206.%20Reverse%20Linked%20List/README.md)
@@ -75,7 +76,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 ### Todo
 - [x] [415. Add Strings](https://leetcode.com/problems/add-strings/description/)
 - [ ] [257. Binary Tree Paths](https://leetcode.com/problems/binary-tree-paths/)
-- [ ] [160. Intersection of Two Linked Lists](https://leetcode.com/problems/intersection-of-two-linked-lists/description/)
+- [x] [160. Intersection of Two Linked Lists](https://leetcode.com/problems/intersection-of-two-linked-lists/description/)
 
 ## Test
 ```
