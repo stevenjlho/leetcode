@@ -12,7 +12,6 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 - [14. Longest Common Prefix](https://github.com/stevenjlho/leetcode/blob/main/solutions/14.%20Longest%20Common%20Prefix/README.md)
 - [20. Valid Parentheses](https://github.com/stevenjlho/leetcode/blob/main/solutions/20.%20Valid%20Parentheses/README.md)
 - [21. Merge Two Sorted Lists](https://github.com/stevenjlho/leetcode/blob/main/solutions/21.%20Merge%20Two%20Sorted%20Lists/README.md)
-- [24. Swap Nodes in Pairs](https://github.com/stevenjlho/leetcode/blob/main/solutions/24.%20Swap%20Nodes%20in%20Pairs/README.md)
 - [26. Remove Duplicates from Sorted Array](https://github.com/stevenjlho/leetcode/blob/main/solutions/26.%20Remove%20Duplicates%20from%20Sorted%20Array/README.md)
 - [27. Remove Element](https://github.com/stevenjlho/leetcode/blob/main/solutions/27.%20Remove%20Element/README.md)
 - [28. Find the Index of the First Occurrence in a String](https://github.com/stevenjlho/leetcode/blob/main/solutions/28.%20Find%20the%20Index%20of%20the%20First%20Occurrence%20in%20a%20String/README.md)
@@ -54,6 +53,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 ### Medium 
 - [2. Add Two Numbers](https://github.com/stevenjlho/leetcode/blob/main/solutions/2.%20Add%20Two%20Numbers/README.md)
 - [19. Remove Nth Node From End of List](https://github.com/stevenjlho/leetcode/blob/main/solutions/19.%20Remove%20Nth%20Node%20From%20End%20of%20List/README.md)
+- [24. Swap Nodes in Pairs](https://github.com/stevenjlho/leetcode/blob/main/solutions/24.%20Swap%20Nodes%20in%20Pairs/README.md)
 - [33. Search in Rotated Sorted Array](https://github.com/stevenjlho/leetcode/blob/main/solutions/33.%20Search%20in%20Rotated%20Sorted%20Array/README.md)
 - [53. Maximum Subarray](https://github.com/stevenjlho/leetcode/blob/main/solutions/53.%20Maximum%20Subarray/README.md)
 - [98. Validate Binary Search Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/98.%20Validate%20Binary%20Search%20Tree/README.md)
