@@ -7,12 +7,13 @@ The key idea is to iterate through both linked lists simultaneously, adding corr
 # Approach
 
 1.  Initialize a Dummy Head to simplify edge cases, allowing for the easy addition of new nodes.
-2.  Iterate Through Lists: Loop through `l1` and `l2` as long as at least one of them has not reached the end, or there is a carry-over.
+2.  Initialize `tail` to keep track of the end of resulting list and `carry` for addition.
+3.  Iterate Through Lists: Loop through `l1` and `l2` as long as at least one of them has not reached the end, or there is a carry-over.
     - Extract the current digit from each list (`digit1` and `digit2`). If a list has ended, use 0 as its digit.
     - Add the two digits along with the carry from the previous addition. The new digit for the resulting list is `sum % 10`, and the new carry is `Math.floor(sum / 10)`.
     - Create a new node for the digits and append it to `tail.next`. Move tail to the next node to keep track of the next new node.
-    - Move to the next node in each list, handling cases where a list may have ended.
-3.  Since the first node is a dummy, return `dummyHead.next`.
+    - Moving `l1` and `l2` pointers ensures that each digit of the lists is considered.
+4.  Since the first node is a dummy, return `dummyHead.next`.
 
 # Complexity
 
