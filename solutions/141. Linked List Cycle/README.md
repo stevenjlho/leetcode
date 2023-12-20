@@ -21,10 +21,11 @@ We can use two pointers traverse the linked list, `slow` pointer moves one step 
  * @return {boolean}
  */
 var hasCycle = function (head) {
-  // Initialize slow and fast pointers to the head of the list.
+  // Initialize two pointers, both starting at the head of the list
   let slow = head;
   let fast = head;
 
+  // Traverse the list until 'fast' reaches the end
   while (fast !== null && fast.next !== null) {
     // Move slow by one step and fast by two steps.
     slow = slow.next;
