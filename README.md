@@ -63,6 +63,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 - [106. Construct Binary Tree from Inorder and Postorder Traversal](https://github.com/stevenjlho/leetcode/blob/main/solutions/106.%20Construct%20Binary%20Tree%20from%20Inorder%20and%20Postorder%20Traversal/README.md)
 - [114. Flatten Binary Tree to Linked List](https://github.com/stevenjlho/leetcode/blob/main/solutions/114.%20Flatten%20Binary%20Tree%20to%20Linked%20List/README.md)
 - [130. Surrounded Regions](https://github.com/stevenjlho/leetcode/blob/main/solutions/130.%20Surrounded%20Regions/README.md)
+- [142. Linked List Cycle II](https://github.com/stevenjlho/leetcode/blob/main/solutions/142.%20Linked%20List%20Cycle%20II/README.md)
 - [199. Binary Tree Right Side View](https://github.com/stevenjlho/leetcode/blob/main/solutions/199.%20Binary%20Tree%20Right%20Side%20View/README.md)
 - [200. Number of Islands](https://github.com/stevenjlho/leetcode/blob/main/solutions/200.%20Number%20of%20Islands/README.md)
 - [230. Kth Smallest Element in a BST](https://github.com/stevenjlho/leetcode/blob/main/solutions/230.%20Kth%20Smallest%20Element%20in%20a%20BST/README.md)
