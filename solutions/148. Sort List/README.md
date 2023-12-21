@@ -6,12 +6,21 @@ Merge sort involves dividing the list into halves, recursively sorting each half
 
 ## Approach
 
-1.  If the list is empty or contains only one node, it is already sorted. Return the head.
+1.  Check if the list is empty (`head === null`) or contains only one node (`head.next === null`).
 2.  Finding the middle using Tortoise and Hare Algorithm.
-    - Use the slow and fast pointer approach (Tortoise and Hare algorithm) to find the middle of the list. Move `slow` by one step and `fast` by two steps. When `fast` reaches the end, `slow` will be at the middle.
-    - Break the list into two halves by setting the node before `slow` (`temp`) to point to null.
-3.  Recursively call `sortList` on the first half (starting from `head`) and the second half (starting from `slow`).
-4.  Use the `mergeList` function to merge the two sorted halves into a single sorted list.
+    - Initialize two pointers, `slow` and `fast`, both starting at `head`. The `slow` pointer moves one node at a time, while `fast` moves two nodes at a time. This way, when `fast` reaches the end of the list, `slow` will be at the middle.
+    - `temp` is used to mark the end of the first half. It's initially set to `null` and updated in each iteration of the while loop to point to the node just before `slow`.
+3.  After finding the middle, the list is split into two halves. `temp.next` is set to `null` to mark the end of the first half.
+4.  Recursively sort each half of the list. `sortList(head)` sorts the first half, and `sortList(slow)` sorts the second half.
+5.  Use the `mergeList` function to merge the two sorted halves into a single sorted list and the merged list is returned.
+    - A dummy node (`dummyHead`) is created to simplify the merging process, especially when dealing with the head of the new list.
+    - A `current` pointer is initialized to point to `dummyHead`. This pointer is used to construct the merged list.
+    - Enter a loop that continues as long as there are nodes left in both `l1` and `l2`.
+      - In each iteration, it compares the current nodes of `l1` and `l2`.
+      - The node with the smaller value is appended to the merged list by setting `current.next` to that node and advance the pointer of the list from which the node was taken (`l1` or `l2`).
+      - The `current` pointer is then advanced to `current.next`
+    - After the loop, if either `l1` or `l2` still has nodes left (meaning the lists were of unequal lengths), these remaining nodes are appended to the end of the merged list.
+    - The function returns `dummyHead.next`, which points to the start of the merged list
 
 ## Complexity
 
@@ -20,7 +29,7 @@ Merge sort involves dividing the list into halves, recursively sorting each half
 
 ## Code
 
-```javascript
+````javascript
 /**
  * Definition for singly-linked list.
  * function ListNode(val, next) {
@@ -60,24 +69,24 @@ var sortList = function (head) {
 
 // Merging two sorted linked lists.
 function mergeList(l1, l2) {
-  let dummyHead = new ListNode(0);
-  let current = dummyHead;
+  let dummyHead = new ListNode(0); // Dummy node as a placeholder
+  let current = dummyHead; // Pointer to build the merged list
 
-  // Merge the lists by choosing the smaller node from l1 or l2.
+  // Iteratively merge the lists
   while (l1 !== null && l2 !== null) {
     if (l1.val < l2.val) {
-      current.next = l1;
-      l1 = l1.next;
+      current.next = l1; // Attach smaller node from l1
+      l1 = l1.next; // Advance l1
     } else {
-      current.next = l2;
-      l2 = l2.next;
+      current.next = l2; // Attach smaller node from l2
+      l2 = l2.next; // Advance l2
     }
-    current = current.next;
+    current = current.next; // Advance current to next in merged list
   }
 
-  // Attach any remaining nodes from either list.
+  // Append any remaining nodes
   current.next = l1 !== null ? l1 : l2;
 
-  return dummyHead.next;
+  return dummyHead.next; // Return merged list, excluding dummy head
 }
-```
+````
