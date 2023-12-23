@@ -2,13 +2,12 @@
 
 ## Intuition
 
-We need to ensure that for each depth level of the tree, the rightmost node is visible. This can be achieved by a modified depth-first search that prioritizes the right subtree.
+Using a depth-first search (DFS) approach that prioritizes the right subtree, It ensures that the rightmost node at each depth level is visited first.
 
 ## Approach
 
-1. Create an array `result` to store the rightmost node's value at each depth level of the tree.
-2. Implement a recursive helper function `rightView` that traverses the tree. The function takes two parameters: `node` (the current node) and `depth` (the current depth level in the tree).
-
+1. Create an array `result` to store the rightmost node at each depth level.
+2. Implement a recursive helper function `rightView` that traverses the tree. 
    - If the current node is null, return, as there's nothing to process.
    - Check if the current depth is equal to the length of the result array. If true, it indicates this depth level hasn't been processed yet, so add the current node's value to `result`.
    - Recursively traverses first the right subtree and then the left subtree, ensuring that rightmost nodes are processed first.
