@@ -6,16 +6,14 @@ We explore each cell marked as '1' (land) using Depth-First Search (DFS), calcul
 
 ## Approach
 
-1.  Initialize `maxArea` to 0 to keep track of the largest island area found.
+1.  Initialize a variable `maxArea` to store the maximum area found.
 2.  Loop through each cell in the grid:
-    - If the cell value is '1', it's part of an unvisited island.
-    - Use DFS (via `getArea`) starting from this cell to calculate the island's area.
-    - Update `maxArea` with the maximum of `maxArea` and the area returned by `getArea`.
-3.  In the `getArea` function, which performs DFS:
-    - Check if the current cell is out of bounds or water ('0'); if so, return 0.
-    - Mark the current cell as visited by setting it to '0'.
-    - Recursively explore adjacent cells (up, down, left, right) and sum their areas.
-    - Return the sum of the areas from all directions plus 1 for the current cell.
+    - If a cell contains `1`, it's part of an island. This triggers a DFS call to explore this island fully.
+    - After each DFS call, update `maxArea` if the calculated area is larger.
+3.  Depth-First Search (DFS) Function - `getArea`:
+    - Check for out-of-bounds conditions or if the current cell is water (`0`). If so, return `0` as there's no island area to add.
+    - Set the current cell (`grid[i][j]`) to `0` to avoid revisiting.
+    - Explore all four directions (up, down, left, right) from the current cell. The sum of `1` (for the current cell) and the areas returned from these recursive calls gives the total area of the island.
 
 ## Complexity
 
@@ -35,13 +33,13 @@ var maxAreaOfIsland = function (grid) {
   for (let i = 0; i < grid.length; i++) {
     for (let j = 0; j < grid[0].length; j++) {
       if (grid[i][j] === 1) {
-        // Start DFS from this cell
+        // Found a new island, start DFS
         let area = getArea(grid, i, j);
-        maxArea = Math.max(maxArea, area);
+        maxArea = Math.max(maxArea, area); // Update max area if necessary
       }
     }
   }
-  return maxArea;
+  return maxArea; // Largest island area
 };
 
 /**
@@ -52,19 +50,18 @@ var maxAreaOfIsland = function (grid) {
  * @return {number} - The area of the island.
  */
 var getArea = function (grid, i, j) {
-  // Boundary check for the grid
   if (
     i < 0 ||
     i >= grid.length ||
     j < 0 ||
     j >= grid[0].length ||
     grid[i][j] === 0
-  )
-    return 0;
+  ) {
+    return 0; // Base case: out-of-bounds or water cell
+  }
 
-  // Mark the cell as visited
-  grid[i][j] = 0;
-  // Count the current cell and recursively explore adjacent cells
+  grid[i][j] = 0; // Mark cell as visited
+  // Calculate area by exploring all adjacent cells
   return (
     1 +
     getArea(grid, i + 1, j) +
