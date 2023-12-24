@@ -9,7 +9,7 @@ Merge sort involves dividing the list into halves, recursively sorting each half
 1.  Check if the list is empty (`head === null`) or contains only one node (`head.next === null`).
 2.  Finding the middle using Tortoise and Hare Algorithm.
     - Initialize two pointers, `slow` and `fast`, both starting at `head`. The `slow` pointer moves one node at a time, while `fast` moves two nodes at a time. This way, when `fast` reaches the end of the list, `slow` will be at the middle.
-    - `temp` is used to mark the end of the first half. Setting `temp.next = null` is crucial for separating the list into two distinct sublists, allowing each half to be sorted independently in the recursive steps of the merge sort algorithm.
+    - Initialize `temp` to `null` then keeping track of track the node before `slow`. Once the middle of the list is found, Setting `temp.next` to `null` to effectively split the list into two halves, allowing each half to be sorted independently in the recursive steps of the merge sort algorithm.
 3.  After finding the middle, the list is split into two halves. `temp.next` is set to `null` to mark the end of the first half.
 4.  Recursively sort each half of the list. `sortList(head)` sorts the first half, and `sortList(slow)` sorts the second half.
 5.  Use the `mergeList` function to merge the two sorted halves into a single sorted list and the merged list is returned.
