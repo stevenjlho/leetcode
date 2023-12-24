@@ -4,19 +4,21 @@
 
 ## Intuition
 
-The core idea is to traverse the list and swap each pair of nodes. The task is performed iteratively, ensuring that each adjacent pair of nodes is swapped while maintaining the list's overall structure.
+The key strategy is to use pointers to rearrange the links between nodes without altering the data within them.
 
 ## Approach
 
 1.  If the list has fewer than two nodes (`head` is null or `head.next` is null), return the head as no swapping is needed.
-2.  Initialize a dummy node to simplify the handling of the head node and ensure a consistent approach for all node pairs.
-3.  Setting up `prevNode` at the dummy node and `curNode` at the head prepares for the iterative traversal and swapping.
-4.  Traverse and Swap Pairs: While there are at least two nodes left to process (`curNode` and `curNode.next` are not null):
-    - Update `prevNode.next` to point to `curNode.next`, effectively moving the second node of the pair ahead.
-    - Set `curNode.next` to the node after its pair (skip one node)
-    - Link the second node of the pair (`prevNode.next` now first) back to `curNode`, completing the swap.
-    - Move `prevNode` to `curNode` and advance `curNode` to `curNode.next` to continue the traversal through the list.
-5.  Return `dummyNode.next`, which points to the new head of the swapped list.
+2.  Create a dummy node to simplify the handling of edge cases.
+3.  Initialize `prevNode` to point to `dummyNode`, as a tracker or anchor that always points to the node just before the current pair of nodes that are being processed for swapping.
+4.  Initialize `curNode` to point to `head`, as the first node of the pair that is being swapped.
+5.  As long as `curNode` and `curNode.next` are not null (ensuring there are two nodes to swap), proceed with the swapping logic.
+    - Set `prevNode.next` to `curNode.next`, linking `prevNode` to the second node of the current pair.
+    - Set `curNode.next` to the node following its pair (effectively skipping one node), which detaches the first node of the pair from its original next node.
+    - Link the second node of the pair back to `curNode`, completing the swap by setting `prevNode.next.next` to `curNode`.
+    - Move `prevNode` to `curNode`, positioning it before the next pair to be swapped.
+    - Advance `curNode` to its next node, moving to the next pair.
+6.  Return `dummyNode.next`, which points to the new head of the swapped list.
 
 ## Complexity
 
