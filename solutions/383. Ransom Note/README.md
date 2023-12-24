@@ -2,16 +2,17 @@
 
 ## Intuition
 
-We can check if a ransom note can be constructed from a magazine by using a map to track how often each letter appears in the magazine. By comparing these counts with the frequency of each letter in the ransom note, we can determine if the magazine contains all the necessary letters.
+Check if `magazine` contains enough instances of each character in `ransomNote`.
 
 ## Approach
 
-1. Initialize a map `chars` to store the frequency of each unique letter found in the magazine.
-2. Iterate through the magazine's letters, updating the frequency count in `chars` for each letter encountered.
-3. Iterate through the letters of the ransom note to check if each letter can be matched in the `chars` hashmap.
-4. When a letter from the ransom note is found in `chars`, decrement its frequency by 1 to simulate using that letter.
-5. If at any point a required letter is not found or is equal to `0`, return `false`, as the ransom note cannot be constructed.
-6. If the entire ransom note is processed without issues, return `true`.
+1. Initialize a map `chars` to store the frequency of each character in `magazine`.
+2. Loop through each character in `magazine`.
+   - Increment the frequency count for each character in `chars`. If a character is not already in the map, it is initialized to `1`; otherwise, the existing count is incremented.
+3. Loop through each character in `ransomNote` to check if the ransom note can be constructed using the chars map.
+   - If it is not in `chars` or its count in `chars` is `0`, return `false`. This condition implies that `magazine` does not have enough instances of the character to construct `ransomNote`.
+   - Otherwise, decrement the count of the character in `chars`. This reflects using one instance of the character from `magazine`.
+4. If the entire ransom note is processed without issues, return `true`.
 
 ## Complexity
 
@@ -37,11 +38,11 @@ var canConstruct = function (ransomNote, magazine) {
   // Check if the ransom note can be constructed using the chars map
   for (const char of ransomNote) {
     if (!chars.has(char) || chars.get(char) === 0) {
-      // Character not available or count is zero
+      // If the character is not available or its count is zero, return false
       return false;
     }
 
-    // Use one occurrence of the character
+    // Decrement the count of the character to reflect its usage
     chars.set(char, chars.get(char) - 1);
   }
 
