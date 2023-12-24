@@ -6,18 +6,26 @@ We use a `Map` in JavaScript, which maintains insertion order, allowing easy ide
 
 ## Approach
 
-1.  Initialize a `Map` object to store key-value pairs and set the cache's capacity. The `Map` object ensures that the order of keys is maintained as per insertion order, which is crucial for the LRU mechanism.
-2.  `get` Method
-    - If the key is not present in the `Map`, return -1.
-    - If the key is found, get its value, delete the key from the `Map` to remove its current position, and then set it again with the same value. This updates its position to the most recently used.
-3.  `put` Method
-    - Delete the key if it already exists and set the key with its new value to ensure the order is updated when it's re-inserted.
-    - If the size of the `Map` exceeds the capacity, delete the least recently used item. The first item in the `Map` represents the least recently used, as `Map` maintains the insertion order.
+1.  Constructor (`constructor(capacity)`):
 
- 
+    - Initializes an empty `Map` object, `this.cache`, to store the key-value pairs of the cache.
+    - Sets the `this.capacity` property to the specified capacity, limiting the number of items the cache can hold.
+
+2.  Get Operation (`get(key)`):
+
+    - If the key is not present in the map (cache miss), return -1.
+    - Retrieve the value associated with the key.
+    - Delete the key from the map and then re-insert it with its value. This ensures the key is now the most recently used item (as `Map` in JavaScript maintains the order of keys based on their insertion/recent usage).
+    - Return the value.
+
+3.  Put Operation (`put(key, value)`):
+    - Delete the key from the map if it already exists (to update its order).
+    - Insert the key-value pair into the map, making it the most recently used item.
+    - If the size of the map exceeds the capacity, remove the least recently used item, which is the first item in the map (as per the insertion order).
+
 ## Complexity
 
-- Time complexity: For both get and put operations, the time complexity is O(1). 
+- Time complexity: For both get and put operations, the time complexity is O(1).
 - Space complexity: O(capacity). The space is used by the `Map` object, which holds at most `capacity` number of elements.
 
 ## Code
@@ -28,25 +36,28 @@ We use a `Map` in JavaScript, which maintains insertion order, allowing easy ide
  */
 class LRUCache {
   constructor(capacity) {
-    this.map = new Map(); // Map to store key-value pairs
+    this.cache = new Map(); // Map to store key-value pairs
     this.capacity = capacity; // Max capacity of the cache
   }
 
   get(key) {
-    if (!this.map.has(key)) return -1; // Key not present
-    const val = this.map.get(key); // Get the value
-    this.map.delete(key); // Remove the key to reset its order
-    this.map.set(key, val); // Re-insert to make it the most recently used
+    if (!this.cache.has(key)) return -1; // Key not present
+    const val = this.cache.get(key); // Get the value
+    this.cache.delete(key); // Remove the key to reset its order
+    this.cache.set(key, val); // Re-insert to make it the most recently used
     return val; // Return the value
   }
 
   put(key, value) {
-    this.map.delete(key); // Remove if exists to update its order
-    this.map.set(key, value); // Insert/Update the key
-    if (this.map.size > this.capacity) {
+    if (this.cache.has(key)) {
+      this.cache.delete(key);
+    }
+    this.cache.delete(key); // Remove if exists to update its order
+    this.cache.set(key, value); // Insert/Update the key
+    if (this.cache.size > this.capacity) {
       // Check if capacity exceeded
-      const firstItem = this.map.keys().next().value; // Get the least recently used key
-      this.map.delete(firstItem); // Remove the least recently used item
+      const firstItem = this.cache.keys().next().value; // Get the least recently used key
+      this.cache.delete(firstItem); // Remove the least recently used item
     }
   }
 }
