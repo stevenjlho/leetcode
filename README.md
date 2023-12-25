@@ -57,6 +57,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 - [24. Swap Nodes in Pairs](https://github.com/stevenjlho/leetcode/blob/main/solutions/24.%20Swap%20Nodes%20in%20Pairs/README.md)
 - [33. Search in Rotated Sorted Array](https://github.com/stevenjlho/leetcode/blob/main/solutions/33.%20Search%20in%20Rotated%20Sorted%20Array/README.md)
 - [53. Maximum Subarray](https://github.com/stevenjlho/leetcode/blob/main/solutions/53.%20Maximum%20Subarray/README.md)
+- [80. Remove Duplicates from Sorted Array II](https://github.com/stevenjlho/leetcode/blob/main/solutions/80.%20Remove%20Duplicates%20from%20Sorted%20Array%20II/README.md)
 - [98. Validate Binary Search Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/98.%20Validate%20Binary%20Search%20Tree/README.md)
 - [102. Binary Tree Level Order Traversal](https://github.com/stevenjlho/leetcode/blob/main/solutions/102.%20Binary%20Tree%20Level%20Order%20Traversal/README.md)
 - [105. Construct Binary Tree from Preorder and Inorder Traversal](https://github.com/stevenjlho/leetcode/blob/main/solutions/105.%20Construct%20Binary%20Tree%20from%20%Preorder%20and%20Inorder%20Traversal/README.md)
