@@ -14,12 +14,12 @@ Merge sort involves dividing the list into halves, recursively sorting each half
 4.  After finding the middle, setting `temp.next` to `null` to effectively split the list into two halves, allowing each half to be sorted independently in the recursive steps of the merge sort algorithm.
 5.  Recursively sort each half of the list. `sortList(head)` sorts the first half, and `sortList(slow)` sorts the second half.
 6.  Use the `mergeList` function to merge the two sorted halves into a single sorted list and the merged list is returned.
-    - A dummy node (`dummy`) is created to simplify the merging process, especially when dealing with the head of the new list.
-    - A `current` pointer is initialized to point to `dummy`. This pointer is used to construct the merged list.
+    - Create a dummy node (`dummy`) to deal with the head of the new list.
+    - Use a `current` pointer to point to `dummy`. This pointer is used to construct the merged list.
     - Enter a loop that continues as long as there are nodes left in both `list1` and `list2`.
       - In each iteration, it compares the current nodes of `list1` and `list2`.
       - The node with the smaller value is appended to the merged list by setting `current.next` to that node and advance the pointer of the list from which the node was taken (`list1` or `list2`).
-      - The `current` pointer is then advanced to `current.next`
+      - Advance `current` to `current.next`. This step ensures that `current` always points to the last node of the merged list.
     - After the loop, if either `list1` or `list2` still has nodes left (meaning the lists were of unequal lengths), these remaining nodes are appended to the end of the merged list.
     - The function returns `dummy.next`, which points to the start of the merged list
 
