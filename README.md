@@ -64,6 +64,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 - [106. Construct Binary Tree from Inorder and Postorder Traversal](https://github.com/stevenjlho/leetcode/blob/main/solutions/106.%20Construct%20Binary%20Tree%20from%20Inorder%20and%20Postorder%20Traversal/README.md)
 - [114. Flatten Binary Tree to Linked List](https://github.com/stevenjlho/leetcode/blob/main/solutions/114.%20Flatten%20Binary%20Tree%20to%20Linked%20List/README.md)
 - [130. Surrounded Regions](https://github.com/stevenjlho/leetcode/blob/main/solutions/130.%20Surrounded%20Regions/README.md)
+- [138. Copy List with Random Pointer](https://github.com/stevenjlho/leetcode/blob/main/solutions/138.%20Copy%20List%with%Random%20Pointer/README.md)
 - [142. Linked List Cycle II](https://github.com/stevenjlho/leetcode/blob/main/solutions/142.%20Linked%20List%20Cycle%20II/README.md)
 - [146. LRU Cache](https://github.com/stevenjlho/leetcode/blob/main/solutions/146.%20LRU%20Cache/README.md)
 - [148. Sort List](https://github.com/stevenjlho/leetcode/blob/main/solutions/148.%20Sort%20List/README.md)
