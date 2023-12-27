@@ -37,9 +37,9 @@ var countNodes = function (root) {
   }
 
   // Recursively count nodes in the left subtree
-  const leftCount = countNodes(root.left);
+  const left = countNodes(root.left);
   // Recursively count nodes in the right subtree
-  const rightCount = countNodes(root.right);
+  const right = countNodes(root.right);
 
   // Return the total node count: 1 (current node) + left subtree nodes + right subtree nodes
   return 1 + left + right;
