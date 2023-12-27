@@ -6,16 +6,17 @@ We can use a depth-first approach by setting each node's right child to the prev
 
 ## Approach
 
-1. Initialize `prev` to track the last processed node
-2. Use a recursive function to flatten the tree.
+1. Declare a variable `prev` to keep track of the last processed node. This variable will help in connecting each node's right child to its predecessor in the flattened structure.
+
+2. Define a recursive function `flattenTree` that accepts a `node` as a parameter.
 
    - If the current node (`node`) is `null`, return, as there's nothing to process.
-   - Flatten the right subtree first, then the left subtree. This reverse postorder traversal ensures that when a node is processed, its right subtree is already in a flattened form.
-   - Set `node.right` to `prev`, effectively linking the current node to the previously processed node in the flattened structure.
-   - Set `node.left` to `null`, as required in a "linked list" format.
+   - The function first recursively calls itself for `node.right` and then for `node.left`. This reverse postorder traversal ensures that each node's right subtree is already flattened when the node is processed.
+   - The current `node`'s right child is set to `prev`, which is the last processed node in the flattened tree.
+   - The left child of `node` is set to null, as per the requirements of a linked list.
    - Update `prev` to the current node for the next recursive.
 
-3. Begin the flattening process from the tree's root.
+3. Invoke `flattenTree` with `root` as the initial argument to begin the flattening process.
 
 ## Complexity
 
