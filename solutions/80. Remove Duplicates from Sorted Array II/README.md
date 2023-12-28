@@ -2,7 +2,7 @@
 
 ## Intuition
 
-A sorted array allows us to find duplicates by simply comparing each element with the previous one, enabling in-place removal.
+Maintain a slow-moving pointer (`i`) that tracks the position where the next non-duplicate or allowed duplicate element should be placed. 
 
 ## Approach
 
