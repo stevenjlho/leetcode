@@ -43,10 +43,8 @@ The hash map provides O(1) access to cache items, while the double-linked list m
 
 ## Complexity
 
-- Time complexity: For both get and put operations, the time complexity is O(1).
-- Space complexity: O(capacity). The space is used by the `Map` object, which holds at most `capacity` number of elements.
-- Time Complexity\*\*: Both `get` and `put` operations are O(1), as they involve map lookups and basic pointer updates in a doubly-linked list.
-- Space Complexity\*\*: O(capacity), as it stores at most `capacity + 1` elements in the cache and the linked list.
+- Time Complexity: Both `get` and `put` operations are O(1), as they involve map lookups and basic pointer updates in a doubly-linked list.
+- Space Complexity: O(capacity), as it stores at most `capacity + 1` elements in the cache and the linked list.
 
 ## Code
 
