@@ -2,7 +2,7 @@
 
 ## Intuition
 
-The fundamental concept here is using a depth-first search (DFS) approach with a hash map (cache) to keep track of the sum of the path up to each node. The cache is used to quickly retrieve the number of paths that sum up to the target sum at each node.
+The idea is to find the number of paths that sum up to a given target by checking the difference between the current cumulative sum and the target against the hashmap.
 
 ## Approach
 

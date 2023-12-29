@@ -6,13 +6,12 @@ To convert Roman numerals to integers, recognize patterns of subtraction (like "
 
 # Approach
 
-1. Create a map (`romanToIntMap`) to associate Roman numerals with their integer values.
-2. Start with a result variable (`ans`) initialized to 0.
+1. Create a map (`romanToIntMap`) to associate Roman numerals with their respective integer values.
+2. initializes a variable `ans` to accumulate the total value as you iterate through the string.
 3. Iterate through the characters of the input string `s`.
-
-   - If the current character represents a value less than the next character (indicating subtraction, like "IV" or "IX"), subtract the value of the current character from `ans`.
+   - The if-condition inside the loop checks if the current numeral should be subtracted rather than added.
+   - When true, subtracts the numeral's value from the total. This occurs when a smaller numeral precedes a larger one (like 'IV' or 'IX').
    - Otherwise, add the value of the current character to `ans`.
-
 4. Finally, return the value of `ans`, which represents the integer equivalent of the Roman numeral string.
 
 # Complexity
@@ -28,31 +27,31 @@ To convert Roman numerals to integers, recognize patterns of subtraction (like "
  * @return {number}
  */
 var romanToInt = function (s) {
-  // Create a map to associate Roman numerals with their integer values.
-  const romanToIntMap = new Map();
-  romanToIntMap.set("I", 1);
-  romanToIntMap.set("V", 5);
-  romanToIntMap.set("X", 10);
-  romanToIntMap.set("L", 50);
-  romanToIntMap.set("C", 100);
-  romanToIntMap.set("D", 500);
-  romanToIntMap.set("M", 1000);
+  // Map for Roman numeral to integer conversion
+  const romanToIntMap = new Map([
+    ["I", 1],
+    ["V", 5],
+    ["X", 10],
+    ["L", 50],
+    ["C", 100],
+    ["D", 500],
+    ["M", 1000],
+  ]);
 
-  // Initialize the variable to store the final result.
-  let ans = 0;
+  let ans = 0; // Initialize total sum
 
   for (let i = 0; i < s.length; i++) {
-    // Check if the current character represents subtraction (e.g., IV for 4).
+    // Check for subtraction rule (smaller before larger numeral)
     if (
       i < s.length - 1 &&
       romanToIntMap.get(s[i]) < romanToIntMap.get(s[i + 1])
     ) {
-      ans -= romanToIntMap.get(s[i]);
+      ans -= romanToIntMap.get(s[i]); // Subtract if smaller numeral before larger
     } else {
-      ans += romanToIntMap.get(s[i]);
+      ans += romanToIntMap.get(s[i]); // Regular addition for other cases
     }
   }
 
-  return ans;
+  return ans; // Final integer value of Roman numeral
 };
 ```
