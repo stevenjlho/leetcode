@@ -7,20 +7,21 @@ The fundamental concept here is using a depth-first search (DFS) approach with a
 ## Approach
 
 1. If the root node is `null`, there are no paths, so return `0`.
-2. A cache (hash map) is initialized to store the cumulative sum up to each node. Initially, it's set with a `0: 1` pair to handle the case where the path sum equals the target sum exactly at a node.
-3. `findPathSum` takes the current node, the cumulative sum up to that node, the target sum, and the cache. It returns the total number of paths that sum up to the target sum from that node downwards.
-
+2. Create a `Map` named `cache` to store the cumulative sums and their frequencies. Initialize it with `0` set to `1` to handle cases where the path sum equals the target from the root.
+3. `findPathSum` is a recursive function to perform DFS. It takes the current node (`curr`), the current cumulative sum (`currSum`), the target sum (`target`), and the cache.
    - If the current node is `null`, return `0` as there are no further paths.
    - Add the current node's value to `currSum` to update current sum.
-   - Retrieve the number of paths that have reached the required sum so far (`currSum - target`) from the cache.
-   - Add the current sum to the cache or increment its count.
-   - Recursively call `findPathSum` for the left and right children, adding their path counts to the current path count.
-   - After the recursive calls, decrement the count of the current sum in the cache to revert the state.
+   -  Calculate `numPathToCurr`, which is the number of paths ending at the current node that add up to `target`. This is done by checking if `currSum - target` is in the cache.
+   - Add the count of `currSum` in the cache or increment its count.
+   - Recursively call `findPathSum` for the left and right children, adding `numPathToCurr` to their results. This accumulates the total number of paths that sum to `target`.
+   - After exploring both children, decrement the count of `currSum` in the cache. It ensures the cache correctly represents the state of the current path being explored in the DFS.
+   - Return the total number of paths found.
+4. Begin the DFS process with `root`, an initial sum of 0, the target sum, and the cache.
 
 ## Complexity
 
 - Time complexity: O(n) where n is the number of nodes in the binary tree. We visit each node once.
-- Space complexity: O(h + k), where h is the height of the tree (for the recursion stack) and k is the number of entries in the cache. In the worst case, both are O(n).
+- Space complexity: O(n), primarily due to the recursion stack and the additional space for the cache. The cache could potentially have an entry for each node in the worst case.
 
 ## Code
 
@@ -39,34 +40,36 @@ The fundamental concept here is using a depth-first search (DFS) approach with a
  * @return {number}
  */
 
+
 var pathSum = function (root, sum) {
   if (root === null) {
-    return 0; // Base case: no tree
+    return 0; // No paths in an empty tree
   }
-  let cache = new Map(); // Cache to store path sum frequencies
-  cache.set(0, 1); // Initialize with 0 sum having one count
+  let cache = new Map(); 
+  cache.set(0, 1); // Base case for sum equal to target from the root
 
-  // Helper function for DFS
+  // Helper function for DFS traversal
   var findPathSum = function (curr, currSum, target, cache) {
     if (curr === null) {
-      return 0; // Base case: no path from null node
+      return 0; // No path from null node
     }
 
-    currSum += curr.val; // Add current node's value to running sum
-    let numPathToCurr = cache.get(currSum - target) || 0; // Get paths that reach the target sum
-    cache.set(currSum, (cache.get(currSum) || 0) + 1); // Update cache with current sum
+    currSum += curr.val; // Update the cumulative sum up to the current node
+    let numPathToCurr = cache.get(currSum - target) || 0; // Paths ending at curr that sum to target
+    cache.set(currSum, (cache.get(currSum) || 0) + 1); // Update the cache with the current sum
 
-    // Recursive calls for left and right subtree
+    // Recursively find paths in left and right subtree and add paths to curr
     let result =
       numPathToCurr +
       findPathSum(curr.left, currSum, target, cache) +
       findPathSum(curr.right, currSum, target, cache);
 
-    cache.set(currSum, cache.get(currSum) - 1); // Revert cache state
+    cache.set(currSum, cache.get(currSum) - 1); // Decrement cache count for backtracking
 
-    return result; // Return total paths for this subtree
+    return result; // Total paths that sum to target up to curr
   };
 
-  return findPathSum(root, 0, sum, cache); // Start DFS from the root
+  return findPathSum(root, 0, sum, cache); // Start DFS from root
 };
+
 ```
