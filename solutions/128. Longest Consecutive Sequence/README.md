@@ -6,14 +6,15 @@ We first convert the array into a Set to eliminate duplicates and allow for cons
 
 ## Approach
 
-1.  If the `nums` array is empty (`nums.length === 0`), return `0` since there's no sequence to consider.
-2.  Convert `nums` into a `Set`. This removes duplicates and enables O(1) lookups.
-3.  Set a variable `longest` to track the length of the longest consecutive sequence.
-4.  Use a `for-of` loop to iterate through each number in the set.
-    - Check if `num - 1` is not in the set. If true, it means `num` could be the start of a new sequence.
-    - If `num` is the start of a sequence, use a while loop to find the length of this sequence. Keep incrementing `consecutiveNum` and `curLongest` as long as `consecutiveNum + 1` exists in the set.
-    - After exiting the while loop, update `longest` if `curLongest` is greater than the current `longest`.
-5.  After iterating through the set, return `longest` as the length of the longest consecutive sequence.
+1.  If `nums` is empty, immediately return 0 as there are no elements to form a sequence.
+2. Convert `nums` into a `Set`. This removes duplicates and enables O(1) lookups.
+3. Start with a variable `longest` set to 1, which will hold the length of the longest consecutive sequence.
+4. Iterate through each unique number in `nums`. The `for...of` loop ensures that each unique element is considered.
+   - Check if `num - 1` is not in the set. If it's not, `num` is potentially the start of a new sequence.
+   - If a sequence start is found, initialize `curLongest` to 1 and `consecutiveNum` to `num`.
+   - Use a `while` loop to increment `consecutiveNum` and `curLongest` as long as the next consecutive number is in the set.
+   - After the end of each sequence, update `longest` if `curLongest` is greater.
+5. After iterating through the set, return `longest` as the length of the longest consecutive sequence.
 
 ## Complexity
 
@@ -28,31 +29,28 @@ We first convert the array into a Set to eliminate duplicates and allow for cons
  * @return {number}
  */
 var longestConsecutive = function (nums) {
-  // Return 0 for empty array
-  if (nums.length === 0) return 0;
+  if (nums.length === 0) return 0; // No sequence in empty array
 
-  // Convert array to set for efficient lookups and to remove duplicates
-  nums = new Set(nums);
-  let longest = 1; // Initialize longest consecutive sequence length
+  nums = new Set(nums); // Remove duplicates and allow efficient lookups
+  let longest = 1; // Initialize the length of the longest sequence
 
-  // Iterate through each unique number in the set
   for (num of nums) {
-    // Check if the current number is the start of a consecutive sequence
+    // Only start counting if 'num' is the start of a sequence
     if (!nums.has(num - 1)) {
-      let curLongest = 1; // Initialize current sequence length
-      let consecutiveNum = num; // Start of the current sequence
+      let curLongest = 1; // Start a new sequence
+      let consecutiveNum = num; // Current number in the sequence
 
-      // Count the length of the current consecutive sequence
+      // Count consecutive numbers in the sequence
       while (nums.has(consecutiveNum + 1)) {
-        consecutiveNum++;
-        curLongest++;
+        consecutiveNum++; // Move to the next consecutive number
+        curLongest++; // Increase the length of the current sequence
       }
 
-      // Update the longest sequence length if needed
+      // Update the longest sequence if necessary
       longest = Math.max(longest, curLongest);
     }
   }
 
-  return longest; // Return the longest consecutive sequence length
+  return longest; // Return the longest consecutive sequence
 };
 ```
