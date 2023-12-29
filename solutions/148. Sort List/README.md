@@ -8,12 +8,12 @@ Merge sort involves dividing the list into halves, recursively sorting each half
 
 1.  Check if the list is empty (`head === null`) or contains only one node (`head.next === null`).
 2.  Initialize two pointers, `slow` and `fast`, both starting at `head`, and create `temp` to `null`.
-3.  Start a loop while `fast` is not null and `fast.next` is not null to find the middle of the list.
+3.  Start a loop to find the middle of the list.
     - Use `temp` to track the node before `slow`.
     - The `slow` pointer moves one node at a time, while `fast` moves two nodes at a time. When `fast` reaches the end of the list, `slow` will be at the middle.
-4.  After finding the middle, setting `temp.next` to `null` to effectively split the list into two halves, allowing each half to be sorted independently in the recursive steps of the merge sort algorithm.
+4.  After finding the middle, setting `temp.next` to `null` to effectively split the list into two halves. This split allows independent sorting of each half.
 5.  Recursively sort each half of the list. `sortList(head)` sorts the first half, and `sortList(slow)` sorts the second half.
-6.  Use the `mergeList` function to merge the two sorted halves into a single sorted list and the merged list is returned.
+6.  Use the `mergeList` function to merge the sorted halves.
     - Create a dummy node (`dummy`) to deal with the head of the new list.
     - Use a `current` pointer to point to `dummy`. This pointer is used to construct the merged list.
     - Enter a loop that continues as long as there are nodes left in both `list1` and `list2`.
@@ -77,10 +77,10 @@ function mergeList(list1, list2) {
   while (list1 !== null && list2 !== null) {
     if (list1.val < list2.val) {
       current.next = list1; // Attach smaller node from list1
-      list1 = list1.next; 
+      list1 = list1.next;
     } else {
       current.next = list2; // Attach smaller node from list1
-      list2 = list2.next; 
+      list2 = list2.next;
     }
     current = current.next; // Advance current to next in merged list
   }
