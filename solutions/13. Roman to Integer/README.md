@@ -7,7 +7,7 @@ To convert Roman numerals to integers, recognize patterns of subtraction (like "
 # Approach
 
 1. Create a map (`romanToIntMap`) to associate Roman numerals with their respective integer values.
-2. initializes a variable `ans` to accumulate the total value as you iterate through the string.
+2. Initializes a variable `ans` to accumulate the total value as you iterate through the string.
 3. Iterate through the characters of the input string `s`.
    - The if-condition inside the loop checks if the current numeral should be subtracted rather than added.
    - When true, subtracts the numeral's value from the total. This occurs when a smaller numeral precedes a larger one (like 'IV' or 'IX').
