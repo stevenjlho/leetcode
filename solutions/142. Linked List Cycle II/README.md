@@ -2,20 +2,25 @@
 
 ## Intuition
 
-The detection of the cycle’s start node involves first confirming the presence of a cycle using two pointers moving at different speeds, and then using the distance properties of these pointers to pinpoint the cycle's start.
+Use two pointers (`slow` and `fast`) to move through the linked list at different speeds. If there's a cycle, they will eventually meet inside the cycle.
 
 ## Approach
 
-1.  Start with two pointers `slow` and `fast`, both at the head of the list. `slow` moves one step at a time, while `fast` moves two steps.
-2.  Traverse the list with `slow` and `fast`. If `fast` or `fast.next` becomes null, it indicates there's no cycle, so return null.
-3.  If `slow` equals `fast` (cycle detected), break out of the loop.
-4.  Once a cycle is detected, reset one pointer to the head of the list. Keep the other pointer at the meeting point.
-5.  Move both pointers one step at a time. The point where they meet again is the start of the cycle.
-6.  Return the node where both pointers meet, which is the start node of the cycle.
+1. Start with two pointers `slow` and `fast` at the head of the list. `slow` moves one step at a time, while `fast` moves two steps.
+2. Start a loop as long as `fast` is not null and `fast.next` is not null
+   - Move `slow` one step forward (`slow = slow.next`).
+   - Move `fast` two steps forward (`fast = fast.next.next`).
+   - If `slow` and `fast` meet (`slow === fast`), a cycle is detected. Break the loop to proceed with finding the cycle's start.
+3. If `fast` becomes null or `fast.next` is null, it means we've reached the end of the list without finding a cycle. Return `null` in this case.
+4. Reset `slow` to the head of the list. Keep `fast` at the meeting point.
+5. Move both `slow` and `fast` one step at a time (`slow = slow.next`, `fast = fast.next`) while `slow` isn't equal to `fast`.
+6. When `slow` equals `fast`, return the node they are on as it's the start node of the cycle.
+
+**If you don't know the proof of this approach, you can check out [this answer](https://leetcode.com/problems/linked-list-cycle-ii/solutions/1701128/c-java-python-slow-and-fast-image-explanation-beginner-friendly/).**
 
 ## Complexity
 
-- Time complexity: The algorithm has two major phases: detecting a cycle (O(n)) and finding the start node (also O(n)). In total, it remains O(n) as constants are disregarded in Big O notation.
+- Time complexity: O(n). In the worst case, each node is visited twice: once by the `fast` pointer and once by the `slow` pointer after the cycle detection.
 - Space complexity: O(1), the algorithm uses a constant amount of extra space regardless of the input size.
 
 ## Code
