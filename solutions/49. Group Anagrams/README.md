@@ -2,16 +2,16 @@
 
 ## Intuition
 
-The key idea is to explore consecutive numbers starting from those that are the beginning of a potential sequence by using a `Set`.
+Sorting the characters of each word allows us to use the sorted string as a key in a map, effectively grouping anagrams together.
 
 ## Approach
 
-1. Create a map (`anagramMap`) is created to store groups of anagrams. The keys are the sorted versions of the words, ensuring all anagrams have the same key.
-2. Iterate through the `strs`
-   - For each word in the input array `strs`, it's split into characters, sorted, and then joined back. This sorted word serves as the key in `anagramMap`.
-   - If the sorted word is not already a key in `anagramMap`, it's added with an empty array to store words that are anagrams of each other.
-   - The original word is added to the array corresponding to its sorted key in the map.
-3. The function returns an array of values from `anagramMap`, which are arrays of grouped anagrams.
+1. Create a map (`anagramMap`) to store groups of anagrams. The keys are sorted strings, and the values are arrays containing the original strings that match this sorted key.
+2. Loop through each word in the input array `strs`.
+   - Split each word into characters, sort them alphabetically, and then rejoin to form a key.
+   - Check if the sorted word key is already in the map. If not present, initialize a new group (array) for this key.
+   - Append the original word to the array associated with the sorted word key.
+3. Extract the arrays of grouped anagrams from the map and return them as an array of arrays.
 
 ## Complexity
 

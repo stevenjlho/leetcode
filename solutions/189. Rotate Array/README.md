@@ -6,13 +6,13 @@ The fundamental strategy here is to achieve the array rotation through a series 
 
 ## Approach
 
-1.  The rotation count `k` is adjusted to be within the array's length. This normalization ensures the rotation is within bounds and effective.
-2.  If `k` is negative, it is converted to an equivalent positive rotation. This standardization simplifies the logic for rotation direction.
-3.  A helper function `reverse` is defined to reverse a portion of the array between two indices, `start` and `end`.
-    - The function uses a two-pointer approach: elements at `start` and `end` are swapped, and both pointers move towards the center.
-4.  The array is reversed from the start to the `nums.length - k - 1` index, aligning the final `k` elements near their target positions but in reversed order.
-5.  The segment from `nums.length - k` to the end of the array is then reversed. This places these elements in the correct order for the final rotated state.
-6.  Reversing the entire array adjusts the positions of the initial elements, completing the rotation process.
+1. The rotation count `k` is adjusted to be within the array's length. This normalization ensures the rotation is within bounds and effective.
+2. If `k` is negative, it is converted to an equivalent positive rotation. This standardization simplifies the logic for rotation direction.
+3. A helper function `reverse` is defined to reverse a portion of the array between two indices, `start` and `end`.
+   - The function uses a two-pointer approach: elements at `start` and `end` are swapped, and both pointers move towards the center.
+4. The array is reversed from the start to the `nums.length - k - 1` index, aligning the final `k` elements near their target positions but in reversed order.
+5. The segment from `nums.length - k` to the end of the array is then reversed. This places these elements in the correct order for the final rotated state.
+6. Reversing the entire array adjusts the positions of the initial elements, completing the rotation process.
 
 ## Complexity
 
