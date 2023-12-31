@@ -2,14 +2,14 @@
 
 ## Intuition
 
-We first convert the array into a Set to eliminate duplicates and allow for constant-time lookups. Then, we iterate through each number in the set, identifying sequences by checking if the current number is the start of a consecutive sequence
+The key idea is to explore consecutive numbers starting from those that are the beginning of a potential sequence by using a `Set`.
 
 ## Approach
 
-1.  If `nums` is empty, immediately return 0 as there are no elements to form a sequence.
+1. If `nums` is empty, immediately return 0 as there are no elements to form a sequence.
 2. Convert `nums` into a `Set`. This removes duplicates and enables O(1) lookups.
 3. Start with a variable `longest` set to 1, which will hold the length of the longest consecutive sequence.
-4. Iterate through each unique number in `nums`. The `for...of` loop ensures that each unique element is considered.
+4. Iterate through each unique number in `nums`.  
    - Check if `num - 1` is not in the set. If it's not, `num` is potentially the start of a new sequence.
    - If a sequence start is found, initialize `curLongest` to 1 and `consecutiveNum` to `num`.
    - Use a `while` loop to increment `consecutiveNum` and `curLongest` as long as the next consecutive number is in the set.
