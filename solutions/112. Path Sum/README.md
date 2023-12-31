@@ -7,8 +7,8 @@ We can recursively subtract node values from the target sum and check if any lea
 ## Approach
 
 1. If `root` is `null`, return `false` because an empty tree cannot have the required path sum.
-2. Check if the value of a leaf node(both children are `null`) matches the remaining target sum. If so, we've found the required path.
-3. For non-leaf nodes, recursively check both left and right subtrees, updating the `targetSum` by subtracting `root.val`.
+2. Check if the value of a leaf node(both children are `null`) matches the remaining target sum, correctly identifying if the path sum is achieved at this leaf node.
+3. For non-leaf nodes, recursively check both left and right subtrees with the updated target sum.
 4. Return `true` if either the left or right subtree contains a valid path sum. Otherwise, return `false`.
 
 
@@ -46,10 +46,10 @@ var hasPathSum = function (root, targetSum) {
   }
 
   // Recursively check the left and right subtrees with updated targetSum
-  let leftSum = hasPathSum(root.left, targetSum - root.val);
-  let rightSum = hasPathSum(root.right, targetSum - root.val);
+  let leftPathExists = hasPathSum(root.left, targetSum - root.val);
+  let rightPathExists = hasPathSum(root.right, targetSum - root.val);
 
   // If either left or right subtree has a valid path, the result is true
-  return leftSum || rightSum;
+  return leftPathExists || rightPathExists;
 };
 ```
