@@ -16,6 +16,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 - [27. Remove Element](https://github.com/stevenjlho/leetcode/blob/main/solutions/27.%20Remove%20Element/README.md)
 - [28. Find the Index of the First Occurrence in a String](https://github.com/stevenjlho/leetcode/blob/main/solutions/28.%20Find%20the%20Index%20of%20the%20First%20Occurrence%20in%20a%20String/README.md)
 - [35. Search Insert Position](https://github.com/stevenjlho/leetcode/blob/main/solutions/35.%20Search%20Insert%20Position/README.md)
+- [49. Group Anagrams](https://github.com/stevenjlho/leetcode/blob/main/solutions/49.%20Group%20Anagrams/README.md)
 - [58. Length of Last Word](https://github.com/stevenjlho/leetcode/blob/main/solutions/58.%20Length%20of%20Last%20Word/README.md)
 - [88. Merge Sorted Array](https://github.com/stevenjlho/leetcode/blob/main/solutions/88.%20Merge%20Sorted%20Array/README.md)
 - [100. Same Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/100.%20Same%20Tree/README.md)
