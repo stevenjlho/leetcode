@@ -8,13 +8,13 @@ The idea is to find the number of paths that sum up to a given target by checkin
 
 1. If the root node is `null`, there are no paths, so return `0`.
 2. Create a `Map` named `cache` to store the cumulative sums and their frequencies. Initialize it with `0` set to `1` to handle cases where the path sum equals the target from the root.
-3. `findPathSum` is a recursive function to perform DFS. It takes the current node (`curr`), the current cumulative sum (`currSum`), the target sum (`target`), and the cache.
+3. `findPathSum` is a recursive function to perform DFS. It takes the current node (`cur`), the current cumulative sum (`curSum`), the target sum (`target`), and the cache.
    - If the current node is `null`, return `0` as there are no further paths.
-   - Add the current node's value to `currSum` to update current sum.
-   -  Calculate `numPathToCurr`, which is the number of paths ending at the current node that add up to `target`. This is done by checking if `currSum - target` is in the cache.
-   - Add the count of `currSum` in the cache or increment its count.
-   - Recursively call `findPathSum` for the left and right children, adding `numPathToCurr` to their results. This accumulates the total number of paths that sum to `target`.
-   - After exploring both children, decrement the count of `currSum` in the cache. It ensures the cache correctly represents the state of the current path being explored in the DFS.
+   - Add the current node's value to `curSum` to update current sum.
+   - Find the number of paths that end at `cur` and sum to `target` using `cache.get(curSum - target)`.
+   - Add the count of `curSum` in the cache or increment its count to identify whether a path ending at the current node contributes to a valid path sum.
+   - Recursively call `findPathSum` for the left and right children, adding `numPathToCur` to their results. This accumulates the total number of paths that sum to `target`.
+   - After exploring both children, decrement the count of `curSum` in the cache. This step is crucial for not carrying the count of a path sum from one branch of the tree to another.
    - Return the total number of paths found.
 4. Begin the DFS process with `root`, an initial sum of 0, the target sum, and the cache.
 
@@ -39,37 +39,34 @@ The idea is to find the number of paths that sum up to a given target by checkin
  * @param {number} targetSum
  * @return {number}
  */
-
-
 var pathSum = function (root, sum) {
   if (root === null) {
     return 0; // No paths in an empty tree
   }
-  let cache = new Map(); 
+  let cache = new Map();
   cache.set(0, 1); // Base case for sum equal to target from the root
 
   // Helper function for DFS traversal
-  var findPathSum = function (curr, currSum, target, cache) {
-    if (curr === null) {
+  var findPathSum = function (cur, curSum, target, cache) {
+    if (cur === null) {
       return 0; // No path from null node
     }
 
-    currSum += curr.val; // Update the cumulative sum up to the current node
-    let numPathToCurr = cache.get(currSum - target) || 0; // Paths ending at curr that sum to target
-    cache.set(currSum, (cache.get(currSum) || 0) + 1); // Update the cache with the current sum
+    curSum += cur.val; // Update the cumulative sum up to the current node
+    let numPathToCur = cache.get(curSum - target) || 0; // Paths ending at cur that sum to target
+    cache.set(curSum, (cache.get(curSum) || 0) + 1); // Update the cache with the current sum
 
-    // Recursively find paths in left and right subtree and add paths to curr
+    // Recursively find paths in left and right subtree and add paths to cur
     let result =
-      numPathToCurr +
-      findPathSum(curr.left, currSum, target, cache) +
-      findPathSum(curr.right, currSum, target, cache);
+      numPathToCur +
+      findPathSum(cur.left, curSum, target, cache) +
+      findPathSum(cur.right, curSum, target, cache);
 
-    cache.set(currSum, cache.get(currSum) - 1); // Decrement cache count for backtracking
+    cache.set(curSum, cache.get(curSum) - 1); // Decrement cache count for backtracking
 
-    return result; // Total paths that sum to target up to curr
+    return result; // Total paths that sum to target up to cur
   };
 
   return findPathSum(root, 0, sum, cache); // Start DFS from root
 };
-
 ```
