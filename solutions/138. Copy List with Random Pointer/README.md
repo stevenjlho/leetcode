@@ -7,16 +7,17 @@ The core strategy is to use a hash map to keep track of already copied nodes, en
 ## Approach
 
 1. Check if the head is null. If it is, return null, as there's nothing to copy.
-2. Create a `Map` (oldToNew) to maintain a correspondence between nodes in the original list (`head`) and the new list.
+2. Create a `Map` (oldToNew) to store mapping from original to copied nodes
 3. Initialize `curr` to `head` to iterate over the original list.
 4. Iterate over the original list starting from `head`
-   - For each node in the original list, create a new node with the same value and store it in the map. This ensures that each original node now has a corresponding new node.
+   - For each node, create a new node with the same value and store the mapping (original node -> new node) in `oldToNew`.
    - Advance `curr` to `curr.next` for next iteration.
-5. Reset `curr` to point to the head of the original list.
+5. Reset `curr` to point to the head of the original list to prepare for setting the next and random pointers of each node.
 6. Traverse the list again. For each node in the original list:
-   - Use the map to find the corresponding new nodes for the next and random pointers and set the `next` and `random` pointers for the corresponding new node.
+   - Set the `next` pointer of its copy to the copy of `curr.next` (or `null` if `curr.next` is `null`).
+   - Set the `random` pointer of its copy similarly, based on `curr.random`.
    - Advance `curr` to `curr.next` for next iteration.
-7. Finally, return the new node that corresponds to the original list's head. This is the head of the new list.
+7. Return the head of the new list, which is the copy of the original head, retrieved from `oldToNew`.
 
 ## Complexity
 
@@ -34,7 +35,6 @@ The core strategy is to use a hash map to keep track of already copied nodes, en
  *    this.random = random;
  * };
  */
-
 /**
  * @param {Node} head
  * @return {Node}
@@ -51,14 +51,17 @@ var copyRandomList = function (head) {
     curr = curr.next;
   }
 
-  // Second pass: set next and random pointers
+  // Second pass: set next and random pointers for copies
   curr = head;
   while (curr !== null) {
-    oldToNew.get(curr).next = oldToNew.get(curr.next) || null; // Set next pointer
-    oldToNew.get(curr).random = oldToNew.get(curr.random) || null; // Set random pointer
+    // Get the copied node and set its next and random pointers
+    let copiedNode = oldToNew.get(curr);
+    copiedNode.next = oldToNew.get(curr.next) || null; // Set next pointer
+    copiedNode.random = oldToNew.get(curr.random) || null; // Set random pointer
     curr = curr.next;
   }
 
-  return oldToNew.get(head); // Return the deep copied list starting from the new head node
+  // Return the head of the copied list
+  return oldToNew.get(head);
 };
 ```
