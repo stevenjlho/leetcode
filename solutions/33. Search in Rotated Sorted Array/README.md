@@ -2,7 +2,7 @@
 
 ## Intuition
 
-The approach uses a modified binary search algorithm that adapts to the characteristics of a rotated sorted array, considering the pivot point where the array rotation occurs.
+The key principle is to identify which half of the array is in sorted order and then determine if the target value lies within that sorted half. 
 
 ## Approach
 
@@ -11,17 +11,11 @@ The approach uses a modified binary search algorithm that adapts to the characte
 3. Continue as long as `low` is less than or equal to `high`, ensuring the entire search range is covered.
    - Calculating `mid` divides the array into two halves, a crucial step in binary search.
    - If `nums[mid]` equals `target`, return `mid` as the target's index.
+   - Determining the sorted Half and then checking if `target` is within it can effectively find the index of `target`
    - If `nums[low] <= nums[mid]`, the left half is sorted.
      -  Check if `target` is in the range `nums[low]` to `nums[mid]`. If yes, narrow the search to the left half by setting `high = mid - 1`. Else, search the right half (`low = mid + 1`).
    - Otherwise, the right half is sorted.
      -  Check if `target` is in the range `nums[mid]` to `nums[high]`. If yes, narrow the search to the right half (`low = mid + 1`). Else, search the left half (`high = mid - 1`).
-     <!-- - Identify Sorted Half: If the left half is sorted (`nums[low] <= nums[mid]`): -->
-     <!-- - If the target is within the left half's range, move `high` to `mid - 1`. -->
-     <!-- - Otherwise, shift `low` to `mid + 1` to search in the right half. -->
-
-   <!-- - If the right half is sorted: -->
-     <!-- - If the target is within the right half's range, move `low` to `mid + 1`. -->
-     <!-- - Otherwise, shift `high` to `mid - 1` to search in the left half. -->
 
 4. If the loop ends without finding the target, return -1, indicating that the target is not in the array.
 
@@ -51,18 +45,18 @@ var search = function (nums, target) {
 
     // Determine which side of the array is sorted
     if (nums[low] <= nums[mid]) {
-      // Left side is sorted
+      // Target in the sorted left halfd
       if (target >= nums[low] && target <= nums[mid]) {
-        high = mid - 1; // Target in the left half
+        high = mid - 1; 
       } else {
-        low = mid + 1; // Target in the right half
+        low = mid + 1; 
       }
     } else {
-      // Right side is sorted
+      // Target in the sorted right half
       if (target >= nums[mid] && target <= nums[high]) {
-        low = mid + 1; // Target in the right half
+        low = mid + 1;
       } else {
-        high = mid - 1; // Target in the left half
+        high = mid - 1; 
       }
     }
   }
