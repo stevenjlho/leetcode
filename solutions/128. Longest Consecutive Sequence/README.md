@@ -7,14 +7,15 @@ The key idea is to explore consecutive numbers starting from those that are the 
 ## Approach
 
 1. If `nums` is empty, immediately return 0 as there are no elements to form a sequence.
-2. Convert `nums` into a `Set`. This removes duplicates and enables O(1) lookups.
-3. Start with a variable `longest` set to 1, which will hold the length of the longest consecutive sequence.
-4. Iterate through each unique number in `nums`.  
+2. `longest` is set to `1` to track the longest sequence found.
+3. `numSet` is created from `nums` to facilitate quick lookups and eliminate duplicates.
+4. Start with a variable `longest` set to 1, which will hold the length of the longest consecutive sequence.
+5. Iterate through each unique number in `nums`.
    - Check if `num - 1` is not in the set. If it's not, `num` is potentially the start of a new sequence.
-   - If a sequence start is found, initialize `curLongest` to 1 and `consecutiveNum` to `num`.
-   - Use a `while` loop to increment `consecutiveNum` and `curLongest` as long as the next consecutive number is in the set.
-   - After the end of each sequence, update `longest` if `curLongest` is greater.
-5. After iterating through the set, return `longest` as the length of the longest consecutive sequence.
+   - Initialize `curLongest` to `1` for the current sequence.
+   -  Use a `while` loop to increment `curLongest` as long as `num + curLongest` exists in `numSet`.
+   - Update `longest` if `curLongest` is greater than the current `longest`.
+6. After iterating through the set, return `longest` as the length of the longest consecutive sequence.
 
 ## Complexity
 

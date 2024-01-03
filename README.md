@@ -54,6 +54,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 
 ### Medium 
 - [2. Add Two Numbers](https://github.com/stevenjlho/leetcode/blob/main/solutions/2.%20Add%20Two%20Numbers/README.md)
+- [11. Container With Most Water](https://github.com/stevenjlho/leetcode/blob/main/solutions/11.%20Container%20With%20Most%20Water/README.md)
 - [19. Remove Nth Node From End of List](https://github.com/stevenjlho/leetcode/blob/main/solutions/19.%20Remove%20Nth%20Node%20From%20End%20of%20List/README.md)
 - [24. Swap Nodes in Pairs](https://github.com/stevenjlho/leetcode/blob/main/solutions/24.%20Swap%20Nodes%20in%20Pairs/README.md)
 - [33. Search in Rotated Sorted Array](https://github.com/stevenjlho/leetcode/blob/main/solutions/33.%20Search%20in%20Rotated%20Sorted%20Array/README.md)

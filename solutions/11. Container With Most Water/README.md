@@ -6,13 +6,14 @@ Use a two-pointer approach starting from both ends of the array to maximize the 
 
 ## Approach
 
-1. `left` and `right` are initialized to point to the start and end of the array, respectively.
-2. Initialize `maxArea` to keep track of the maximum area found so far.
+1. Create `left` pointer at the start (0) and `right` pointer at the end (`height.length - 1`) of the array.
+2. Initialize `max` to keep track of the maximum area found so far.
 3. Iterate through `height` as long as `left` is less than `right`.
    - The width of the current container is calculated as the difference between the `left` and `right` pointers.
    - The height of the container is the minimum of the two heights at the `left` and `right` pointers, as the water level is limited by the shorter line.
    - The area of the current container is calculated by multiplying its width and height.
    - Update `maxArea` if `currentArea` is larger than the current `maxArea`.
+   - Calculate `current` area (`width * containerHeight`) and update `max` if this area is larger.
    - Move the pointer pointing to the shorter line inward (`left++` or `right--`) since moving the taller line won't increase the area.
 4. Once the loop is complete, return `maxArea` as the maximum area found.
 
@@ -29,29 +30,25 @@ Use a two-pointer approach starting from both ends of the array to maximize the 
  * @return {number}
  */
 var maxArea = function (height) {
-  let left = 0; // Initialize left pointer to start
-  let right = height.length - 1; // Initialize right pointer to end
-  let maxArea = 0; // Max area initialized to 0
+  let left = 0; // Start pointer from the beginning
+  let right = height.length - 1; // End pointer from the end
+  let max = 0; // To keep track of the maximum area found
 
   while (left < right) {
-    // Width of the container
-    let width = right - left;
+    let width = right - left; // Calculate width of the container
+    let containerHeight = Math.min(height[left], height[right]); // Determine container height by shorter line
 
-    // Height is determined by the shorter line
-    let containerHeight = Math.min(height[left], height[right]);
+    let current = width * containerHeight; // Calculate current area
+    max = Math.max(current, max); // Update max area if current is larger
 
-    // Calculate current area and update maxArea if larger
-    let currentArea = width * containerHeight;
-    maxArea = Math.max(maxArea, currentArea);
-
-    // Move the shorter line inward to potentially find a larger area
+    // Move the pointer of the shorter line inward
     if (height[left] < height[right]) {
-      left++;
+      left++; // Increment left pointer
     } else {
-      right--;
+      right--; // Decrement right pointer
     }
   }
 
-  return maxArea; // Final maximum area
+  return max; // Return the maximum area found
 };
 ```
