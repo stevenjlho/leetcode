@@ -10,37 +10,36 @@ The hash map provides O(1) access to cache items, while the double-linked list m
 
 ## Complexity
 
-1. **Node Class**: Represents an element in the cache with `key`, `value`, `prev`, and `next` pointers for doubly-linked list implementation.
-2. **LRUCache Constructor**:
+1. Node Class: 
+   - Each `Node` represents an item in the cache, containing the `key`, `value`, `prev`, and `next` pointers for doubly-linked list implementation.
+   - This forms the basic element of the doubly linked list.
 
-   - Initializes `capacity`, `cache` (a Map for O(1) access), and two dummy nodes, `head` and `tail`, which act as the boundaries of a doubly-linked list.
-   - The dummy head and tail simplify edge case handling (like an empty list).
+2. LRUCache Constructor:
+   - Initializes the cache with a given `capacity`.
+   - Creates a `Map` for storing key-node pairs, allowing for O(1) access.
+   - Establishes dummy head and tail nodes for the doubly linked list, simplifying edge case handling like adding or removing nodes.
 
-3. **get Method**:
-
+3. get Method:
    - Checks if the key exists in the cache.
    - If not found, returns -1.
    - If found, it moves the node to the end of the list, marking it as recently used.
    - Returns the value of the node.
 
-4. **put Method**:
-
-   - If the key exists, removes the old node.
+4. put Method:
+   - If the key already exists, it removes the corresponding node.
    - Creates a new node with the given key and value.
    - Adds the new node to the end of the list (recently used position).
    - Inserts the new node into the cache.
-   - If the cache size exceeds capacity, removes the least recently used item (node next to the head).
+   - If adding the new node causes the cache to exceed its capacity, it removes the least recently used item, which is at the beginning of the doubly linked list.
 
-5. **remove Method**:
-
+5. remove Method:
    - Removes a node from the doubly-linked list.
    - Adjusts the pointers of the neighboring nodes to exclude the given node.
 
-6. **add Method**:
-
-   - Adds a node to the end of the doubly-linked list (before the tail).
-   - Adjusts the pointers to maintain the list's integrity.
-
+6. add Method:
+   - Inserts a new node right before the dummy tail node in the doubly linked list.
+   - This signifies that the node is now the most recently used item.
+   
 ## Complexity
 
 - Time Complexity: Both `get` and `put` operations are O(1), as they involve map lookups and basic pointer updates in a doubly-linked list.
