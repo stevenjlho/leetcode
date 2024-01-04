@@ -2,15 +2,15 @@
 
 ## Intuition
 
-We can use two pointers: `slow` to track the position for the next non-zero element and `fast` to find and move non-zero elements to the `slow` pointer's position.
+We can use two pointers: a fast pointer (`fast`) that explores the array and a slow pointer (`slow`) that marks the position where the next non-zero element should be placed.
 
 ## Approach
 
-1.  Initialize `slow` to 0, marking the position where the next non-zero element should be placed.
-2.  Iterate through the array using the `fast` pointer:
-    - When `fast` encounters a non-zero element, swap it with the element at the `slow` index.
-    - Increment `slow` after a swap, to mark the new position for the next non-zero element.
-3.  Continue this process until `fast` has scanned the entire array, effectively pushing all zeros to the end.
+1. Initialize `slow` to 0, marking the position where the next non-zero element should be placed.
+2. A for loop is used to iterate through the array with the fast pointer. The fast pointer scans each element in the array.
+   - If a non-zero element is found, it is swapped with the element at the `slow` pointer's position. This is done using a temporary variable (`temp`) to hold one of the values during the swap.
+   - Increment `slow` after a swap, to mark the new position for the next non-zero element.
+3. Continue this process until `fast` has scanned the entire array, effectively pushing all zeros to the end.
 
 ## Complexity
 
@@ -25,12 +25,16 @@ We can use two pointers: `slow` to track the position for the next non-zero elem
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 var moveZeroes = function (nums) {
-  let slow = 0;
+  let slow = 0; // Initialize 'slow' pointer to track the position for non-zero elements
+
+  // Iterate over the array with 'fast' pointer
   for (let fast = 0; fast < nums.length; fast++) {
     if (nums[fast] !== 0) {
-      // Swap non-zero element at 'fast' with element at 'slow'
-      [nums[slow], nums[fast]] = [nums[fast], nums[slow]];
-      slow++; // Move 'slow' to the next position
+      // If the current element is non-zero, swap it with the element at 'slow'
+      let temp = nums[slow];
+      nums[slow] = nums[fast];
+      nums[fast] = temp;
+      slow++; // Increment 'slow' after the swap
     }
   }
 };
