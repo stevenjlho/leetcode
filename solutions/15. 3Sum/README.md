@@ -8,7 +8,8 @@ This problem can be solved by sorting the array and using a combination of fixed
 
 1. Begin by sorting the array. This helps in both identifying duplicates and making the two-pointer strategy effective.
 2. If the array has fewer than three elements or if the first element is positive, return an empty array.
-3. Iterate over the array with a loop.
+3. Initialize `result` to store valid triplets
+4. Iterate over the array with a loop.
    - If the current element is positive, break the loop. Beyond this point, it's impossible to find a triplet that sums to zero.
    - If the current element is the same as the previous one, skip it to avoid duplicate triplets.
    - Initialize two pointers: `low` (just right of the current element) and `high` (end of the array).
@@ -18,12 +19,12 @@ This problem can be solved by sorting the array and using a combination of fixed
      - If sum equals 0, a triplet is found:
        - Add the triplet to the result.
        - Move `low` and `high` to skip over duplicate values.
-4. After completing the iterations, return the list of triplets found.
+5. After completing the iterations, return the list of triplets found.
 
 ## Complexity
 
-- Time complexity: O(n^2), where `n` is the length of the input array. The array is iterated once, and for each element, a two-pointer scan is performed over the rest of the array.
-- Space complexity: 
+- Time complexity: OO(n^2). The sorting of the array takes O(n log n) time, and the nested loop for finding triplets takes O(n^2) time. Therefore, the overall time complexity is dominated by the nested loop, which is O(n^2).
+- Space complexity: O(log n) to O(n), depending on the sorting algorithm used. The space required for the output is not considered in space complexity analysis.
 
 ## Code
 
