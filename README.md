@@ -83,6 +83,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 - [654. Maximum Binary Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/654.%20Maximum%20Binary%20Tree/README.md)
 - [560. Subarray Sum Equals K](https://github.com/stevenjlho/leetcode/blob/main/solutions/560.%20Subarray%20Sum%20Equals%20K/README.md)
 - [695. Max Area of Island](https://github.com/stevenjlho/leetcode/blob/main/solutions/695.%20Max%20Area%20of%20Island/README.md)
+- [739. Daily Temperatures](https://github.com/stevenjlho/leetcode/blob/main/solutions/739.%20Daily%20Temperatures/README.md)
 - [797. All Paths From Source to Target](https://github.com/stevenjlho/leetcode/blob/main/solutions/797.%20All%20Paths%20From%20Source%20to%20Target/README.md)
 
 ### Todo
