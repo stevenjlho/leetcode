@@ -16,7 +16,7 @@ Sorting the characters of each word allows us to use the sorted string as a key 
 ## Complexity
 
 - Time complexity: O(NKlogK), where N is the number of strings in `strs`, and K is the maximum length of a string in `strs`. Each string is sorted in O(KlogK) time.
-- Space complexity: O(NK), as the map needs to store each string. In the worst case, all strings are different, requiring space proportional to the total number of characters across all strings.
+- Space complexity: O(NK), as in the worst case, the map needs to store all the words. Each word can be up to K characters long.
 
 ## Code
 
