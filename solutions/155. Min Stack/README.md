@@ -6,7 +6,7 @@ The key idea is to keep track of the minimum element at each level of the stack,
 
 ## Approach
 
-1. Constructor - `constructor()`
+1. MinStack Constructor - `constructor()`
    - Initializes an empty stack by setting the `head` to `null`.
    - The `head` will point to the top of the stack.
 
