@@ -2,16 +2,16 @@
 
 ## Intuition
 
-Efficiently track the indices of days yet to find a warmer temperature using a stack, allowing us to find the next warmer day and calculate the waiting period efficiently.
+Track the indices of days yet to find a warmer temperature using a stack, allowing us to find the next warmer day and calculate the waiting period efficiently.
 
 ## Approach
 
-1. Initialize `stack` that will be used as a stack to hold indices of days.
+1. Initialize `stack` as a stack to hold indices of days.
 2. `ans`: An array of the same length as `temperatures`, initialized with zeros. This array will store the number of days until each day's temperature is exceeded.
 3. Use a for loop to iterate through each day's temperature.
    - As long as the stack is not empty and the current day's temperature is greater than the temperature on the day at the top of the stack, pop the top index from the stack, representing a day with a lower temperature.
-   - Calculate the difference between the current day and the popped index. Store this value in `ans[cur]`.
-   - After processing the stack, push the current day's index onto the stack. This is done for each day.
+      - Calculate how many days it took to reach a higher temperature between the current day and the popped index. Store this value in `ans[cur]`.
+   - After processing the stack, push the current day's index onto the stack, marking a day as "pending" for finding a warmer future day.
 4. After all days have been processed, return the `ans` array, which now contains the number of days to wait for a warmer temperature for each day.
 
 ## Complexity
