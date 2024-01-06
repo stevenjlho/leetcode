@@ -2,7 +2,7 @@
 
 ## Intuition
 
-Use a two-pointer approach starting from both ends of the array to maximize the area between the two lines,
+Using a two-pointer approach allows us to efficiently explore potential containers and track the one with the maximum area.
 
 ## Approach
 
@@ -12,8 +12,7 @@ Use a two-pointer approach starting from both ends of the array to maximize the 
    - The width of the current container is calculated as the difference between the `left` and `right` pointers.
    - The height of the container is the minimum of the two heights at the `left` and `right` pointers, as the water level is limited by the shorter line.
    - The area of the current container is calculated by multiplying its width and height.
-   - Update `maxArea` if `currentArea` is larger than the current `maxArea`.
-   - Calculate `current` area (`width * containerHeight`) and update `max` if this area is larger.
+   - Update `max` if `current` area is larger.
    - Move the pointer pointing to the shorter line inward (`left++` or `right--`) since moving the taller line won't increase the area.
 4. Once the loop is complete, return `maxArea` as the maximum area found.
 

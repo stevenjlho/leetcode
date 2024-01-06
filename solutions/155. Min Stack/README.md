@@ -6,29 +6,29 @@ The key idea is to keep track of the minimum element at each level of the stack,
 
 ## Approach
 
-1. MinStack Constructor - `constructor()`
-   - Initializes an empty stack by setting the `head` to `null`.
-   - The `head` will point to the top of the stack.
+1. Node Class. Auxiliary class used to create nodes of the stack.
 
-2. Push - `push(x)`. This method adds an element to the top of the stack.
-   - If the stack is empty (`this.head === null`), create a new node where both the value and minimum are `x`.
-   - If the stack is not empty, create a new node where the minimum is the lesser of `x` and the current minimum at the head of the stack (`this.head.min`). This keeps track of the minimum value up to that point.
-   - The new node is then set as the new head of the stack.
-
-3. Pop - `pop()`. Removes the top element from the stack.   
-   - Sets `this.head` to the next node in the stack (`this.head.next`), effectively removing the top node.
-   - Does not handle the case where the stack is empty. Ideally, it should check if the stack is empty before performing the pop operation to prevent errors.
-
-4. Top - `top()`. Returns the value of the top element of the stack.
-   - Simply accesses `this.head.val`.
-   - Should handle the case of an empty stack to avoid runtime errors.
-
-5. GetMin - `getMin()`. Returns the minimum element in the stack.
-   - Since each node tracks the minimum up to that point, `this.head.min` gives the current minimum.
-   - As with `top()`, should include handling for an empty stack.
-
-6. Node Class. Auxiliary class used to create nodes of the stack.
    - Each node contains the value (`val`), the minimum value up to that point (`min`), and a reference to the next node (`next`).
+
+2. MinStack Constructor - `constructor()`
+
+   - Initializes an empty stack by setting the `head` to `null`. The `head` will point to the top of the stack.
+
+3. Push - `push(x)`
+
+   - If the stack is empty (`this.head === null`), create a new node where both the value and minimum are `x`.
+   - If the stack is not empty, create a new node where `val` is `x` and `min` is the minimum of `x` and the current `min` at the head of the stack. Update `head` to point to this new node.
+
+4. Pop - `pop()`
+
+   - Removes the top element from the stack by setting `this.head` to the next node (`this.head.next`). Ensure to check if the stack is not empty before performing this operation.
+
+5. Top - `top()`.
+
+   - Returns the value (`val`) of the top element of the stack. Ideally, include a check to ensure the stack is not empty.
+
+6. GetMin - `getMin()`
+   - Returns the minimum value (`min`) from the top of the stack. Again, an empty stack check is advisable.
 
 ## Complexity
 
@@ -38,6 +38,14 @@ The key idea is to keep track of the minimum element at each level of the stack,
 ## Code
 
 ```javascript
+class Node {
+  constructor(val, min, next) {
+    this.val = val; // Value of the node
+    this.min = min; // Minimum value up to this node
+    this.next = next; // Next node in the stack
+  }
+}
+
 class MinStack {
   constructor() {
     this.head = null; // Initialize an empty stack
@@ -45,35 +53,24 @@ class MinStack {
 
   push(x) {
     if (this.head === null) {
-      // If the stack is empty, create a new node where value and min are both x
-      this.head = new Node(x, x, null);
+      this.head = new Node(x, x, null); // Create new node as the first node in the stack
     } else {
-      // If not empty, create a new node where the min is the lesser of x and the current min
-      this.head = new Node(x, Math.min(x, this.head.min), this.head);
+      this.head = new Node(x, Math.min(x, this.head.min), this.head); // New node becomes the head with updated min
     }
   }
 
   pop() {
-    // Remove the top element from the stack (ideally check for an empty stack first)
-    this.head = this.head.next;
+    if (this.head !== null) {
+      this.head = this.head.next; // Remove the top element from the stack
+    }
   }
 
   top() {
-    // Return the value at the top of the stack (add empty stack check)
-    return this.head.val;
+    return this.head ? this.head.val : undefined; // Return the top value, with empty stack check
   }
 
   getMin() {
-    // Return the minimum value in the stack (add empty stack check)
-    return this.head.min;
-  }
-}
-
-class Node {
-  constructor(val, min, next) {
-    this.val = val; // Value of the node
-    this.min = min; // Minimum value up to this node
-    this.next = next; // Next node in the stack
+    return this.head ? this.head.min : undefined; // Return the minimum value, with empty stack check
   }
 }
 ```
