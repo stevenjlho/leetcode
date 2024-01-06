@@ -4,7 +4,7 @@
 
 ## Intuition
 
-The key strategy is to use pointers to rearrange the links between nodes without altering the data within them.
+We need to handle three main tasks: swapping nodes, maintaining the connection with the rest of the list, and progressing through the list.
 
 ## Approach
 
@@ -13,9 +13,10 @@ The key strategy is to use pointers to rearrange the links between nodes without
 3.  Initialize `prevNode` to point to `dummyNode`, as a tracker or anchor that always points to the node just before the current pair of nodes that are being processed for swapping.
 4.  Initialize `curNode` to point to `head`, as the first node of the pair that is being swapped.
 5.  As long as `curNode` and `curNode.next` are not null (ensuring there are two nodes to swap), proceed with the swapping logic.
-    - Set `prevNode.next` to `curNode.next`, linking `prevNode` to the second node of the current pair.
-    - Set `curNode.next` to the node following its pair (effectively skipping one node), which detaches the first node of the pair from its original next node.
-    - Link the second node of the pair back to `curNode`, completing the swap by setting `prevNode.next.next` to `curNode`.
+    - Link `prevNode.next` to the second node in the pair (`curNode.next`).
+    - Update `curNode.next` to point to the node after its pair, effectively skipping one node (the second node of the pair).
+    - Set the `next` of the second node in the pair to `curNode`, completing the swap.
+
     - Move `prevNode` to `curNode`, positioning it before the next pair to be swapped.
     - Advance `curNode` to its next node, moving to the next pair.
 6.  Return `dummyNode.next`, which points to the new head of the swapped list.
@@ -52,16 +53,14 @@ var swapPairs = function (head) {
 
   // Iterate through the list, swapping pairs of nodes
   while (curNode && curNode.next) {
-    // Step 1: Link prevNode to the second node of the current pair
-    prevNode.next = curNode.next;
-    // Step 2: Link curNode to the node after its pair (skip one node)
-    curNode.next = curNode.next.next;
-    // Step 3: Link the second node of the pair (now first) back to curNode
-    prevNode.next.next = curNode;
+    // Swap process
+    prevNode.next = curNode.next; // Link prevNode to second node of the pair
+    curNode.next = curNode.next.next; // Link curNode to node after its pair
+    prevNode.next.next = curNode; // Link second node of pair back to curNode
 
-    // Move to the next pair: set prevNode to curNode, and advance curNode
-    prevNode = curNode;
-    curNode = curNode.next;
+    // Move to the next pair
+    prevNode = curNode; // Update prevNode to current node
+    curNode = curNode.next; // Advance current node
   }
 
   // Return the new head of the list, which follows the dummy node
