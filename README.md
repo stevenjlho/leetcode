@@ -79,6 +79,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 - [230. Kth Smallest Element in a BST](https://github.com/stevenjlho/leetcode/blob/main/solutions/230.%20Kth%20Smallest%20Element%20in%20a%20BST/README.md)
 - [235. Lowest Common Ancestor of a Binary Search Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/235.%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Search%20Tree/README.md)
 - [236. Lowest Common Ancestor of a Binary Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/236.%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree/README.md)
+- [394. Decode String](https://github.com/stevenjlho/leetcode/blob/main/solutions/394.%20Decode%20String/README.md)
 - [437. Path Sum III](https://github.com/stevenjlho/leetcode/blob/main/solutions/437.%20Path%20Sum%20III/README.md)
 - [654. Maximum Binary Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/654.%20Maximum%20Binary%20Tree/README.md)
 - [560. Subarray Sum Equals K](https://github.com/stevenjlho/leetcode/blob/main/solutions/560.%20Subarray%20Sum%20Equals%20K/README.md)
