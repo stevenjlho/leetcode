@@ -59,6 +59,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 - [19. Remove Nth Node From End of List](https://github.com/stevenjlho/leetcode/blob/main/solutions/19.%20Remove%20Nth%20Node%20From%20End%20of%20List/README.md)
 - [24. Swap Nodes in Pairs](https://github.com/stevenjlho/leetcode/blob/main/solutions/24.%20Swap%20Nodes%20in%20Pairs/README.md)
 - [33. Search in Rotated Sorted Array](https://github.com/stevenjlho/leetcode/blob/main/solutions/33.%20Search%20in%20Rotated%20Sorted%20Array/README.md)
+- [34. Find First and Last Position of Element in Sorted Array](https://github.com/stevenjlho/leetcode/blob/main/solutions/34.%20Find%20First%20and%20Last%20Position%20of%20Element%20in%20Sorted%20Array/README.md)
 - [53. Maximum Subarray](https://github.com/stevenjlho/leetcode/blob/main/solutions/53.%20Maximum%20Subarray/README.md)
 - [80. Remove Duplicates from Sorted Array II](https://github.com/stevenjlho/leetcode/blob/main/solutions/80.%20Remove%20Duplicates%20from%20Sorted%20Array%20II/README.md)
 - [98. Validate Binary Search Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/98.%20Validate%20Binary%20Search%20Tree/README.md)
