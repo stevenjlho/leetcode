@@ -2,7 +2,7 @@
 
 ## Intuition
 
-This problem can be solved by sorting the array and using a combination of fixed-point and two-pointer strategies. By fixing one element and using two pointers to scan the remainder of the array, we can efficiently find triplets that sum to zero.
+By fixing one element and using two pointers to scan the remainder of the array, we can efficiently find triplets that sum to zero.
 
 ## Approach
 
