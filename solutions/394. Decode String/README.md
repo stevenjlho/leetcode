@@ -39,6 +39,8 @@ var decodeString = function (s) {
       // Start of a new encoded substring
       stack.push(curString);
       stack.push(curNum);
+      
+      // Reset them for the next substring
       curString = "";
       curNum = 0;
     } else if (c === "]") {

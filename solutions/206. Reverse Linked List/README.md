@@ -11,10 +11,10 @@ The key is to use two pointers to traverse the linked list, and forward to keep 
 1. Initialize `prev` to `null`. This will be used to mark the end of the reversed list.
    Initialize `current` to the `head` of the original list. This is the node we start with while traversing the list.
 2. Traverse the list using `current` until the node is `null`.
-3. The variable `next` stores the `current.next` pointer so that it can be assigned to `current` later.
-4. Reverse the `next` pointers to point backward.
-5. Update prev to current, and move current to the next node in the original linked list.
-6. Finally, return the node `prev`, which represents the reverse of linked list.
+3. Save the next node in `next`. This is necessary because reversing the `next` pointer of the `current` node will lose access to the rest of the list.
+4. Set `current.next` to `prev`, effectively reversing the link..
+5. Move `prev` to `current` (since `current` will now become the previous node in the next iteration), and move `current` to `next` (to proceed with the next node in the list).
+6. After the loop, `prev` will point to the new head of the reversed list, which is returned.
 
 ## Complexity
 
@@ -29,16 +29,17 @@ The key is to use two pointers to traverse the linked list, and forward to keep 
  * @return {ListNode}
  */
 var reverseList = function (head) {
-  let prev = null;
-  let current = head;
-  while (current) {
-    const next = current.next;
-    current.next = prev;
-    prev = current;
-    current = next;
+  let prev = null;       // No previous node at start
+  let current = head;    // Begin with the head of the list
+
+  while (current) {      
+    const next = current.next; // Save next node
+    current.next = prev; // Reverse the link
+    prev = current;      // Update previous to current
+    current = next;      // Move to next node
   }
 
-  return prev;
+  return prev;           // New head of the reversed list
 };
 ```
 
@@ -46,16 +47,15 @@ var reverseList = function (head) {
 
 ## Intuition
 
-Reversing a linked list can be approached recursively by first reaching the end of the list and then rewiring the next pointers from the end towards the start.
+The idea is to break down the list into smaller sublists, reverse each recursively, and then rewire the connections to achieve the overall reversal.
 
 ## Approach
 
-1. If the `head` is `null` or there is only one node (i.e., `head.next` is `null`), return `head` as the new head of the reversed list.
-2. Recursively call `reverseList` starting from the second node.
-3. Once we reach the end, `newHead` will represent the head of the reversed list.
-4. Each stack unwinds, rewiring the current `head.next` node's `next` pointer back to the `head`.
-5. Clear the `head` node's `next` pointer to avoid loops.
-6. Finally, we return `newHead`, which represents the new head of the reversed linked list.
+1. If the `head` is `null` or there is only one node (`head.next === null`), return the `head`. This is because a single node or an empty list is already reversed in itself.
+2. Recursively reverse the sublist starting from the second node (`head.next`). The call will continue until it reaches the end of the list, where the base case takes effect.
+3. After reversing the sublist, the next step is to set the next node of the original head (`head.next`) to point back to the head. This step is crucial as it reverses the direction of the link between the current node and its next node.
+4. Set the `next` pointer of the original head node to `null` to avoid cycles in the list (`head.next = null`).
+5. Since the head of the input list becomes the tail after reversal, the new head (returned by the recursive call) is returned as the result of the entire function.
 
 ## Complexity
 
@@ -70,21 +70,21 @@ Reversing a linked list can be approached recursively by first reaching the end 
  * @return {ListNode}
  */
 var reverseList = function (head) {
-  // Base case: if the list is empty or has only one node, return head.
+  // Base case for empty list or single node
   if (head === null || head.next === null) {
     return head;
   }
 
-  // Recursively reverse the rest of the list starting from the second node.
+  // Recursively reverse from the second node onward
   let newHead = reverseList(head.next);
 
-  // Rewire the current node's next node's next pointer back to the current node.
+  // Rewire the link to point back to the current node
   head.next.next = head;
 
-  // Clear the current node's next pointer.
+  // Clear the current node's next pointer to avoid a cycle
   head.next = null;
 
-  // Return the new head of the reversed list.
+  // Return the new head of the reversed list
   return newHead;
 };
 ```
