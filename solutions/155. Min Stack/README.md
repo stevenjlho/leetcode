@@ -7,24 +7,19 @@ The key idea is to keep track of the minimum element at each level of the stack,
 ## Approach
 
 1. Node Class. Auxiliary class used to create nodes of the stack.
-
    - Each node contains the value (`val`), the minimum value up to that point (`min`), and a reference to the next node (`next`).
 
 2. MinStack Constructor - `constructor()`
-
    - Initializes an empty stack by setting the `head` to `null`. The `head` will point to the top of the stack.
 
 3. Push - `push(x)`
-
    - If the stack is empty (`this.head === null`), create a new node where both the value and minimum are `x`.
    - If the stack is not empty, create a new node where `val` is `x` and `min` is the minimum of `x` and the current `min` at the head of the stack. Update `head` to point to this new node.
 
 4. Pop - `pop()`
-
    - Removes the top element from the stack by setting `this.head` to the next node (`this.head.next`). Ensure to check if the stack is not empty before performing this operation.
 
 5. Top - `top()`.
-
    - Returns the value (`val`) of the top element of the stack. Ideally, include a check to ensure the stack is not empty.
 
 6. GetMin - `getMin()`
