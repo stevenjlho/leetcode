@@ -2,12 +2,11 @@
 
 ## Intuition
 
-The idea is to build substrings as we encounter brackets and repeat them based on the preceding number, managing the nested structures via the stack.
 
 ## Approach
 
 1. Initialize `stack` to keep track of previous substrings and repeat counts.
-2. Initialize `curNum` to store the current number (repeat count).
+2. Initialize `curNum` to store the current repeat count.
 3. Initialize `curString` to build the current substring.
 4. Iterating through the string. We perform actions based on the type of `c` (digit, bracket, or letter).
     - If `c` is `'['`, push `curString` and `curNum` onto the stack and reset them for the next substring.

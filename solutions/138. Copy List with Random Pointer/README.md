@@ -39,9 +39,7 @@ The core strategy is to use a hash map to keep track of already copied nodes, en
  * @param {Node} head
  * @return {Node}
  */
-var copyRandomList = function (head) {
-  if (!head) return null; // Return null for an empty list
-
+var copyRandomList = function (head) { if (!head) return null; // Return null for an empty list
   const oldToNew = new Map(); // Map to link old nodes to their new copies
 
   // First pass: create new nodes

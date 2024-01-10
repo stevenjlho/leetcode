@@ -39,7 +39,7 @@ var search = function (nums, target) {
     high = nums.length - 1; // Set search boundaries
 
   while (low <= high) {
-    let mid = Math.floor((low + high) / 2); // Calculate middle index
+    let mid = Math.floor(low + (high - low) / 2); // Calculate middle index
 
     if (nums[mid] === target) return mid; // Target found
 

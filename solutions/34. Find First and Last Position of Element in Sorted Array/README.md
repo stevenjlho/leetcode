@@ -9,7 +9,7 @@ The key concept is to efficiently narrow down the search space to locate the tar
 1. Call `lowerBound` to find the start position of the target.
    - Initialize `low` and `high` pointers to define the search range as the start and end of the array, respectively.
    - Continue as long as `low` is less than or equal to `high`.
-     - Use `low + ((high - low) >> 1)` to the middle index of the current range. Using `low + ((high - low) >> 1)` instead of `(low + high) / 2` avoids potential integer overflow issues. The bitwise shift `>> 1` efficiently computes the division by 2.
+     - Use `Math.floor(low + (high - low) / 2)` to calculate the middle index of the current range. Using `low + (high - low) / 2` instead of `(low + high) / 2` avoids potential integer overflow issues. 
      - If `nums[mid] < target`, the target must be in the right half of the current range. Update `low` to `mid + 1`.
      - Otherwise, the target is in the left half, or `nums[mid]` is the target. Update `high` to `mid - 1`.
    - The loop exits when `low` is the smallest index greater than `target`, or the exact index where `target` matches. So, `return low` gives the correct insert position.
@@ -31,11 +31,6 @@ The key concept is to efficiently narrow down the search space to locate the tar
  * @return {number}
  */
 
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number[]}
- */
 var searchRange = function (nums, target) {
   // Find the first occurrence of the target
   const start = lowerBound(nums, target);
