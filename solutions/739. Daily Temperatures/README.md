@@ -2,17 +2,18 @@
 
 ## Intuition
 
-Track the indices of days yet to find a warmer temperature using a stack, allowing us to find the next warmer day and calculate the waiting period efficiently.
+ As the temperatures are traversed, the stack helps in quickly identifying and updating the number of days one would have to wait for a warmer temperature.
 
 ## Approach
 
-1. Initialize `stack` as a stack to hold indices of days.
-2. `ans`: An array of the same length as `temperatures`, initialized with zeros. This array will store the number of days until each day's temperature is exceeded.
-3. Use a for loop to iterate through each day's temperature.
-   - As long as the stack is not empty and the current day's temperature is greater than the temperature on the day at the top of the stack, pop the top index from the stack, representing a day with a lower temperature.
-      - Calculate how many days it took to reach a higher temperature between the current day and the popped index. Store this value in `ans[cur]`.
-   - After processing the stack, push the current day's index onto the stack, marking a day as "pending" for finding a warmer future day.
-4. After all days have been processed, return the `ans` array, which now contains the number of days to wait for a warmer temperature for each day.
+1. Initialize a `stack` to keep track of indices of days.
+2. Initialize an array `ans` of the same length as `temperatures`, filled with zeros. This array will store the number of days until a warmer temperature for each day.
+3. Iterate over the `temperatures` array using an index `i`.
+   - While the stack is not empty and the current temperature (`temperatures[i]`) is greater than the temperature at the top index of the stack:
+     - Pop the top index (`cur`) from the stack. This index represents a day with a lower temperature.
+     - Calculate the number of days until a warmer temperature (`i - cur`) and store it in `ans[cur]`.
+   - Push the current index `i` onto the stack. This index is now waiting for a day with a warmer temperature.
+4. After iterating through all temperatures, return the `ans` array.
 
 ## Complexity
 
@@ -28,21 +29,22 @@ Track the indices of days yet to find a warmer temperature using a stack, allowi
  */
 
 var dailyTemperatures = function (temperatures) {
-  let stack = []; // Stack to keep track of indices for which we need warmer temperature
+  let stack = []; // Stack to keep track of day indices
   let ans = new Array(temperatures.length).fill(0); // Array to store results
 
   for (let i = 0; i < temperatures.length; i++) {
-    // While current temperature is greater than temperature of top index in stack
+    // Process each day for warmer temperature
     while (
       stack.length !== 0 &&
       temperatures[i] > temperatures[stack[stack.length - 1]]
     ) {
-      let cur = stack.pop(); // Pop the index
-      ans[cur] = i - cur; // Calculate the number of days waited
+      // Current day's temperature is higher than the day at stack's top
+      let cur = stack.pop(); // Pop the index of the cooler day
+      ans[cur] = i - cur; // Calculate the number of days waited for warmer temperature
     }
-    stack.push(i); // Push current index onto the stack
+    stack.push(i); // Push current day's index onto the stack
   }
 
-  return ans; // Return the days to wait for a warmer temperature
+  return ans; // Resultant array with days to wait for a warmer temperature};
 };
 ```
