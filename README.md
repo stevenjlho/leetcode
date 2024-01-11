@@ -74,6 +74,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 - [142. Linked List Cycle II](https://github.com/stevenjlho/leetcode/blob/main/solutions/142.%20Linked%20List%20Cycle%20II/README.md)
 - [146. LRU Cache](https://github.com/stevenjlho/leetcode/blob/main/solutions/146.%20LRU%20Cache/README.md)
 - [148. Sort List](https://github.com/stevenjlho/leetcode/blob/main/solutions/148.%20Sort%20List/README.md)
+- [153. Find Minimum in Rotated Sorted Array](https://github.com/stevenjlho/leetcode/blob/main/solutions/153.%20Find%20Minimum%20in%20Rotated%20Sorted%20Array/README.md)
 - [155. Min Stack](https://github.com/stevenjlho/leetcode/blob/main/solutions/155.%20Min%20Stack/README.md)
 - [189. Rotate Array](https://github.com/stevenjlho/leetcode/blob/main/solutions/189.%20Rotate%20Array/README.md)
 - [199. Binary Tree Right Side View](https://github.com/stevenjlho/leetcode/blob/main/solutions/199.%20Binary%20Tree%20Right%20Side%20View/README.md)
