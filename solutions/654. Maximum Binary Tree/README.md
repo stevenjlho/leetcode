@@ -8,15 +8,17 @@ The problem requires constructing a maximum binary tree where each tree's root i
 
 1. Use the helper function `buildTree` to construct the tree from a sublist of `nums`:
    - The sublist to consider for the tree construction is defined by the indices `left` (inclusive) and `right` (exclusive).
-   - If the sublist is empty (i.e., `left` is equal to or greater than `right`), return `null`.
-   - Iterate through `nums` from `left` to `right` to find the maximum value and its index within the sublist. This maximum value becomes the root of the current subtree. The index of maximum value is used to partition the list into left and right sublists.
-   - Recursively construct the left subtree from elements before the maximum value and the right subtree from elements after the maximum value.
-2. Invoke `buildTree` with the entire `nums` list, starting from index 0 to `nums.length`.
+   - If the current sublist is empty (`left >= right`), return `null`.
+   - Iterate through `nums` from `left` to `right` to find the maximum value and its index in the current sublist.
+   - Create a new node with the maximum value.
+   - Recursively build the left subtree using elements before the max value and the right subtree using elements after the max value.
+   - Return the constructed tree node.
+2. The main function `constructMaximumBinaryTree` calls `buildTree` for the entire `nums` array, passing `0` and `nums.length` as the starting and ending indices.
 
 ## Complexity
 
-- Time complexity: Time complexity: O(n²). In the worst case, we traverse the entire list to find the maximum value for each element.
-- Space complexity: O(n). The recursion call stack depth could be as large as the number of list elements in the worst case.
+- Time complexity: O(n^2) in the worst case, where n is the length of nums. This occurs when the array is sorted in ascending or descending order, requiring a linear search for the maximum element at each level of recursion.
+- Space complexity: O(n) for the recursion stack. The depth of the recursive tree could be at most n (in the case of a skewed tree).
 
 ## Code
 
@@ -34,34 +36,32 @@ The problem requires constructing a maximum binary tree where each tree's root i
  * @return {TreeNode}
  */
 var constructMaximumBinaryTree = function (nums) {
-  // construct the tree from a sublist
+  // Recursive function to build the tree from a sublist of nums
   const buildTree = (nums, left, right) => {
-    // if the current sublist is empty
+    // Base case: return null if sublist is empty
     if (left >= right) {
       return null;
     }
 
+    // Find the maximum element and its index in the sublist
     let maxIndex = left;
-    let maxVal = nums[left];
-
     for (let i = left; i < right; i++) {
-      if (nums[i] > maxVal) {
+      if (nums[i] > nums[maxIndex]) {
         maxIndex = i;
-        maxVal = nums[i];
       }
     }
-    // Create a new node with the maximum value
-    let root = new TreeNode(maxVal);
 
-    // Construct left subtree from elements before max value
-    // and right subtree from elements after max value
+    // Create the root node with the maximum value
+    let root = new TreeNode(nums[maxIndex]);
+
+    // Recursively build the left and right subtrees
     root.left = buildTree(nums, left, maxIndex);
     root.right = buildTree(nums, maxIndex + 1, right);
 
-    return root;
+    return root; // Return the constructed node
   };
 
-  // Start constructing the tree from the given list
+  // Start building the tree from the whole array
   return buildTree(nums, 0, nums.length);
 };
 ```

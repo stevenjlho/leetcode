@@ -14,7 +14,7 @@ The key concept is to efficiently narrow down the search space to locate the tar
      - Otherwise, the target is in the left half, or `nums[mid]` is the target. Update `high` to `mid - 1`.
    - The loop exits when `low` is the smallest index greater than `target`, or the exact index where `target` matches. So, `return low` gives the correct insert position.
 2. If the start position is at the end of the array or the element at the start position is not the target, return `[-1, -1]` (target not found).
-3. Otherwise, call `lowerBound` with `target + 1` to find the start position of the `target - 1`, then just subtract 1(`-1`) to get the actual index of the last occurrence of target.
+3. Otherwise, call `lowerBound` with `target + 1` to find the start position of the `target + 1`, then just subtract 1(`-1`) to get the actual index of the last occurrence of target.
 4. Return the range [start, end] where the target is found
 
 ## Complexity
@@ -30,7 +30,6 @@ The key concept is to efficiently narrow down the search space to locate the tar
  * @param {number} target
  * @return {number}
  */
-
 var searchRange = function (nums, target) {
   // Find the first occurrence of the target
   const start = lowerBound(nums, target);
