@@ -2,14 +2,14 @@
 
 ## Intuition
 
-The Lowest Common Ancestor (LCA) of two nodes `p` and `q` in a binary tree is the deepest node that has both `p` and `q` as descendants (where we allow a node to be a descendant of itself). We use a recursive traversal to find the LCA, returning early when either node is found and converging when both nodes have been found in different branches.
+The LCA is defined as the lowest node in the tree that has both `p` and `q` as descendants. This problem can be solved by recursively traversing the tree and checking if either of the nodes `p` or `q` is present in a subtree.
 
 ## Approach
 
-1. Return the current node if it is `null`, indicating it reached end of a branch. Or if it is either `p` or `q`, indicating we've found one of the target nodes.
+1. If the `root` is `null` or matches either `p` or `q`, return `root`. This means we've either reached the end of a branch or found one of the nodes we're looking for.
 2. Recursively search for `p` and `q` starting from the left and right children of the current node.
-3. If both sides return a node, which means `p` and `q` are found in different branches, then the current node is the LCA.
-4. If only one recursive call returns a non-null node, that node is the LCA. If both calls return null, propagate the null upward, indicating the absence of both `p` and `q` in this part of the tree.
+3. If both `left` and `right` recursive calls return a non-null value, it means both `p` and `q` were found in different subtrees of `root`. Hence, `root` is the LCA.
+4. If only one of the recursive calls returns a non-null value, then this is the LCA. If both are null, `p` and `q` are not found in the current subtree. 
 
 ## Complexity
 
@@ -41,11 +41,10 @@ var lowestCommonAncestor = function (root, p, q) {
   let left = lowestCommonAncestor(root.left, p, q);
   let right = lowestCommonAncestor(root.right, p, q);
 
-  // If both left and right are non-null, we have found the LCA.
-  // It's the point where paths to p and q converge.
+  // If both left and right are not null, root is the LCA
   if (left !== null && right !== null) return root;
 
-  // If one subtree returns null, the LCA must be in the other subtree.
+  // Otherwise, return the non-null value (one of left or right)
   return left !== null ? left : right;
 };
 ```
