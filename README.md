@@ -54,6 +54,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 
 ### Medium 
 - [2. Add Two Numbers](https://github.com/stevenjlho/leetcode/blob/main/solutions/2.%20Add%20Two%20Numbers/README.md)
+- [3. Longest Substring Without Repeating Characters](https://github.com/stevenjlho/leetcode/blob/main/solutions/3.%20Longest%20Substring%20Without%20Repeating%20Characters/README.md)
 - [11. Container With Most Water](https://github.com/stevenjlho/leetcode/blob/main/solutions/11.%20Container%20With%20Most%20Water/README.md)
 - [15. 3Sum](https://github.com/stevenjlho/leetcode/blob/main/solutions/15.%203Sum/README.md)
 - [19. Remove Nth Node From End of List](https://github.com/stevenjlho/leetcode/blob/main/solutions/19.%20Remove%20Nth%20Node%20From%20End%20of%20List/README.md)
