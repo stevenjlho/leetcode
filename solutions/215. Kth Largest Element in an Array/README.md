@@ -1,5 +1,6 @@
 # [215. Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/description/)
 
+# Quick Select
 ## Intuition
 
 The idea is to randomly choose a pivot and partition the array into three parts: elements greater than the pivot, elements equal to the pivot, and elements less than the pivot.
@@ -57,3 +58,6 @@ var findKthLargest = function (nums, k) {
   }
 };
 ```
+
+# Heap
+// Todo
