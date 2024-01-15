@@ -86,6 +86,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 - [236. Lowest Common Ancestor of a Binary Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/236.%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree/README.md)
 - [394. Decode String](https://github.com/stevenjlho/leetcode/blob/main/solutions/394.%20Decode%20String/README.md)
 - [437. Path Sum III](https://github.com/stevenjlho/leetcode/blob/main/solutions/437.%20Path%20Sum%20III/README.md)
+- [438. Find All Anagrams in a String](https://github.com/stevenjlho/leetcode/blob/main/solutions/438.%20Find%20All%20Anagrams%20in%20a%20String/README.md)
 - [654. Maximum Binary Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/654.%20Maximum%20Binary%20Tree/README.md)
 - [560. Subarray Sum Equals K](https://github.com/stevenjlho/leetcode/blob/main/solutions/560.%20Subarray%20Sum%20Equals%20K/README.md)
 - [695. Max Area of Island](https://github.com/stevenjlho/leetcode/blob/main/solutions/695.%20Max%20Area%20of%20Island/README.md)
