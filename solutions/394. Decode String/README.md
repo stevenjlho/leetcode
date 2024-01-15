@@ -2,23 +2,23 @@
 
 ## Intuition
 
+The core concept is to use a stack to keep track of previously encountered substrings and their repeat counts, along with a current string and number accumulator.
 
 ## Approach
 
 1. Initialize `stack` to keep track of previous substrings and repeat counts.
 2. Initialize `curNum` to store the current repeat count.
 3. Initialize `curString` to build the current substring.
-4. Iterating through the string. We perform actions based on the type of `c` (digit, bracket, or letter).
-    - If `c` is `'['`, push `curString` and `curNum` onto the stack and reset them for the next substring.
-    - If `c` is `']'`, pop `num` (repeat count) and `prevString` from the stack. Repeat `curString` `num` times and concatenate with `prevString`.
-    - If `c` is a digit, update `curNum` by shifting the current value by one decimal place to the left and adding the new digit.
-    - If `c` is a letter, append it to `curString`.
-
-5. After the loop, curString contains the fully decoded string, which is returned.
+4. Iterating through each character in the string.
+   - When encountering '[', the current string and number are pushed onto the stack, and they are then reset for the next substring.
+   - When encountering ']', the function pops the previous string and repeat count from the stack. The current string is repeated according to the popped count and concatenated with the previous string.
+   - If the character is a digit, it is added to `curNum`, multiplying the existing `curNum` by 10 to shift it one decimal place left before adding the new digit.
+   - If the character is a letter, it is added to the `curString`.
+5. After the loop, the array `curString` is joined to form the final decoded string and returned.
 
 ## Complexity
 
-- Time complexity: O(n * k), where n is the length of the string and k is the average repeat count. Each character is processed once, and the repeated concatenation can be O(k) in the worst case.
+- Time complexity: O(n * k), where n is the length of the input string, and k is the average repeat count. The worst-case time complexity can occur due to string concatenation in `curString.join('').repeat(num)`.
 - Space complexity: O(n), where n is the number of characters stored in the stack. This occurs when the input string contains nested encoded patterns.
 
 ## Code
@@ -38,7 +38,7 @@ var decodeString = function (s) {
       // Start of a new encoded substring
       stack.push(curString);
       stack.push(curNum);
-      
+
       // Reset them for the next substring
       curString = "";
       curNum = 0;
