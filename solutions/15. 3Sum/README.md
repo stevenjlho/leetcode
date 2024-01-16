@@ -23,7 +23,7 @@ By fixing one element and using two pointers to scan the remainder of the array,
 
 ## Complexity
 
-- Time complexity: OO(n^2). The sorting of the array takes O(n log n) time, and the nested loop for finding triplets takes O(n^2) time. Therefore, the overall time complexity is dominated by the nested loop, which is O(n^2).
+- Time complexity: O(n^2). The sorting of the array takes O(n log n) time, and the nested loop for finding triplets takes O(n^2) time. Therefore, the overall time complexity is dominated by the nested loop, which is O(n^2).
 - Space complexity: O(log n) to O(n), depending on the sorting algorithm used. The space required for the output is not considered in space complexity analysis.
 
 ## Code
