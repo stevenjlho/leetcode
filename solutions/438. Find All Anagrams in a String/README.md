@@ -2,23 +2,22 @@
 
 ## Intuition
 
-The solution involves comparing character frequencies within a sliding currentWindowFreq of `s` against the frequencies in `p`. If they match, it signifies an anagram of `p` is found in `s`.
+By comparing the frequency of characters in the current window of `s` with the frequency in `p`, we can identify if an anagram of `p` exists in that window.
 
 ## Approach
 
-1. If `s` is shorter than `p`, immediately return an empty array as an anagram is impossible.
-2. Create two arrays, `patternFreq` and `currentWindowFreq`, each of size 26 (for each letter in the alphabet), initialized to 0. `patternFreq` stores the frequency of each character in `p`, and `currentWindowFreq` stores the frequency in the current currentWindowFreq of `s`.
-3. Fill the `patternFreq` and `currentWindowFreq` arrays for the first currentWindowFreq of `s` (the first `pLength` characters).
-4. If `patternFreq` matches `currentWindowFreq`, add 0 to the result array `ans`, indicating the start of an anagram at index 0.
-5. Iterate through `s`, starting from `pLength`.
-   - Update the `currentWindowFreq` frequency array: decrement the frequency of the outgoing character (the one moving out of the currentWindowFreq) and increment the incoming character.
-   - Use `arraysEqual` to compare `patternFreq` and `currentWindowFreq`. If they match, add the start index of this currentWindowFreq (current index - length of `p` + 1) to `ans`.
-6. Return the list of starting indices.
- 
+1. If the length of `s` is less than `p`, return an empty array as no anagrams are possible.
+2. Create two frequency arrays, `patternFreq` and `currentWindowFreq`, of length 26 (for each lowercase English letter), initialized to 0.
+3. Populate these arrays with the frequency of characters in `p` and the first window in `s` (first `pLength` characters).
+4. Use the `arraysEqual` function to compare `patternFreq` with `currentWindowFreq`. If they match, add the index `0` to `ans`.
+5. Slide the window through `s`, starting from index `pLength`.
+   - Update `currentWindowFreq` by decrementing the frequency of the character going out of the window and incrementing the frequency of the incoming character.
+   - Compare `patternFreq` with `currentWindowFreq`. If they match, add the start index of the current window (`i - pLength + 1`) to `ans`.
+6. Return the `ans` array containing the starting indices of all anagrams of `p` in `s`.
 
 ## Complexity
 
-- Time complexity: O(n). The main loop iterates through the string `s`, where `n` is the length of `s`. 
+- Time complexity: O(n). The main loop iterates through the string `s`, where `n` is the length of `s`.
 - Space complexity: O(1). The space used by the algorithm is constant, as it only requires two fixed-size arrays (for the 26 lowercase English letters), regardless of the input size.
 
 ## Code
@@ -31,38 +30,37 @@ The solution involves comparing character frequencies within a sliding currentWi
  */
 var findAnagrams = function (s, p) {
   let sLength = s.length,
-    pLength = p.length;
-  if (sLength < pLength) return []; // Anagrams not possible if 's' is shorter than 'p'
+      pLength = p.length;
+  if (sLength < pLength) return []; // No anagrams if 's' is shorter than 'p'
 
-  // Frequency arrays for characters in 'p' and the current currentWindowFreq in 's'
-  let patternFreq = new Array(26).fill(0);
-  let currentWindowFreq = new Array(26).fill(0);
+  let patternFreq = new Array(26).fill(0); // Frequency of characters in 'p'
+  let currentWindowFreq = new Array(26).fill(0); // Frequency in current window of 's'
 
-  // Initialize the frequency arrays for the first currentWindowFreq of size 'pLength'
+  // Fill the frequency arrays for the first window
   for (let i = 0; i < pLength; i++) {
     patternFreq[p.charCodeAt(i) - "a".charCodeAt(0)]++;
     currentWindowFreq[s.charCodeAt(i) - "a".charCodeAt(0)]++;
   }
 
-  let ans = []; // Array to store the starting indices of anagrams
+  let ans = []; // Store starting indices of anagrams
 
-  // Compare the frequency arrays for the first currentWindowFreq
+  // Check for anagram in the first window
   if (arraysEqual(patternFreq, currentWindowFreq)) ans.push(0);
 
-  // Sliding the currentWindowFreq through 's'
+  // Slide the window through 's'
   for (let i = pLength; i < sLength; i++) {
-    // Update the currentWindowFreq frequencies
+    // Update frequencies for the new window
     currentWindowFreq[s.charCodeAt(i - pLength) - "a".charCodeAt(0)]--;
     currentWindowFreq[s.charCodeAt(i) - "a".charCodeAt(0)]++;
 
-    // Check if the current currentWindowFreq is an anagram of 'p'
+    // Check for anagram in the current window
     if (arraysEqual(patternFreq, currentWindowFreq)) ans.push(i - pLength + 1);
   }
 
   return ans; // Return the list of starting indices
 };
 
-// Helper function to compare two frequency arrays
+// Compare two frequency arrays
 function arraysEqual(arr1, arr2) {
   for (let i = 0; i < arr1.length; i++) {
     if (arr1[i] !== arr2[i]) return false;
