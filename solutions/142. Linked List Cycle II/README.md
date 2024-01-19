@@ -10,11 +10,12 @@ Use two pointers (`slow` and `fast`) to move through the linked list at differen
 2. Start a loop as long as `fast` is not null and `fast.next` is not null
    - Move `slow` one step forward (`slow = slow.next`).
    - Move `fast` two steps forward (`fast = fast.next.next`).
-   - If `slow` and `fast` meet (`slow === fast`), a cycle is detected. Break the loop to proceed with finding the cycle's start.
+   - If `slow` and `fast` meet (`slow === fast`), a cycle is detected and we break out of the loop.
 3. If `fast` becomes null or `fast.next` is null, it means we've reached the end of the list without finding a cycle. Return `null` in this case.
 4. Reset `slow` to the head of the list. Keep `fast` at the meeting point.
-5. Move both `slow` and `fast` one step at a time (`slow = slow.next`, `fast = fast.next`) while `slow` isn't equal to `fast`.
-6. When `slow` equals `fast`, return the node they are on as it's the start node of the cycle.
+5. Move both `slow` and `fast` one step at a time while `slow` isn't equal to `fast`.
+6. When `slow` and `fast` meet again, the point where they meet is the start of the cycle.
+7. Return `slow` as the start node of the cycle.
 
 **If you don't know the proof of this approach, you can check out [this answer](https://leetcode.com/problems/linked-list-cycle-ii/solutions/1701128/c-java-python-slow-and-fast-image-explanation-beginner-friendly/).**
 
@@ -33,7 +34,6 @@ Use two pointers (`slow` and `fast`) to move through the linked list at differen
  *     this.next = null;
  * }
  */
-
 /**
  * @param {ListNode} head
  * @return {ListNode}
