@@ -10,10 +10,9 @@ The sliding window dynamically adjusts its size as the iteration progresses, ens
 2. Initialize `map` to store characters and their latest index in the string.
 3. Initialize `left` to `0` as the start index of the current substring and `max` to `0` to keep track of maximum length of substring found.
 4. Loop through each character in `s` using `right` as the index.
-   - Check If the current character (`s[right]`) is in `map` (indicating a repeat).
-     - Update `left` to be the maximum of its current value or the index after the last occurrence of `s[right]`. This ensures the start of the substring is moved right after the repeating character.
-   - Update or add the current character `s[right]` and its index to `map`.
-   - Calculate the length of the current substring (`right-left+1`) and update `max` if this length is greater.
+   - If the current character is found in map (indicating a repeating character in the current substring), update `left` to the maximum of its current value or one more than the last index of the repeating character. This effectively moves the start of the substring to exclude the repeated character.
+   - Store or update the current character `s[right]` and its index to `map`.
+   - Update `max` with the larger of its current value or the length of the current substring (calculated as `right - left + 1`).
 5. After the loop, `max` contains the length of the longest substring without repeating characters.
 
 ## Complexity
