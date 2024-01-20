@@ -2,7 +2,7 @@
 
 ## Intuition
 
-The key idea is to keep track of the minimum element at each level of the stack, so when elements are popped off, the next minimum can be easily identified without the need to traverse the entire stack.
+This approach employs a linked list to implement a stack. The minimum value is maintained by the head node of the linked list.
 
 ## Approach
 
@@ -20,10 +20,10 @@ The key idea is to keep track of the minimum element at each level of the stack,
    - Removes the top element from the stack by setting `this.head` to the next node (`this.head.next`). Ensure to check if the stack is not empty before performing this operation.
 
 5. Top - `top()`.
-   - Returns the value (`val`) of the top element of the stack. Ideally, include a check to ensure the stack is not empty.
+   - Returns the value (`val`) of the top element of the stack.
 
 6. GetMin - `getMin()`
-   - Returns the minimum value (`min`) from the top of the stack. Again, an empty stack check is advisable.
+   - Returns the minimum value (`min`) from the top of the stack. 
 
 ## Complexity
 
@@ -61,11 +61,11 @@ class MinStack {
   }
 
   top() {
-    return this.head ? this.head.val : undefined; // Return the top value, with empty stack check
+    return this.head.val; // Return the top value, with empty stack check
   }
 
   getMin() {
-    return this.head ? this.head.min : undefined; // Return the minimum value, with empty stack check
+    return this.head.min; // Return the minimum value, with empty stack check
   }
 }
 ```
