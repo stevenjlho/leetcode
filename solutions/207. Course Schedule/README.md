@@ -7,19 +7,19 @@ The approach uses the concept of **Topological Sorting**, ensuring that for each
 ## Approach
 
 1. Create an array `inDegree` to track the number of prerequisites (incoming edges) for each course.
-2. Use a `Map` to represent the graph. Each entry in the map has a course as the key and a list of courses that depend on it as the value.
+2. Use a `Map` for the adjacency list, where each key is a course and its value is a list of courses that depend on it.
 3. For each prerequisite pair, increment the in-degree of the course and update the adjacency list.
-4. Initialize an empty queue. Add all courses with no prerequisites (in-degree of 0) to this queue.
-5. Initialize `count` to track the courses that can be completed.
-6. The loop continues as long as there are courses in the queue.
-   - Remove a course from the queue. This course is now considered "taken" or "completed".
-   - Increment the count of courses that have been successfully processed.
-   - Retrieve the list of courses that directly depend on the current course. These are the courses for which the current course is a prerequisite.
+4. Iterate over the `prerequisites` array.
+   - For each pair `[course, prereq]`, increment the in-degree of `course` and update the adjacency list (map) by adding `course` to the list of courses that `prereq` unlocks.
+5. Initialize an empty queue to keep track of courses with no prerequisites (in-degree 0). These are the courses we can start with.
+6. Use a variable `count` to track the number of courses that can be completed.
+7. Process until there are no more courses to take.
+   - Increment `count`, indicating another course has been completed.
+   - Retrieve all courses dependent on the current course that is dequeued from the `queue`.
    - If there are dependent courses (`if (dependentCourses)`), iterate over each of them:
-     - Decrease the in-degree of the dependent course. This action simulates removing the prerequisite (the current course) from the dependent course.
-     - After reducing the in-degree, check if the dependent course now has no remaining prerequisites.
-       - If so (`inDegree[dependentCourse] === 0`), it means this course can now be taken. Therefore, it's added to the queue.
-7. If the count of processed courses equals numCourses, return true; otherwise, false.
+      - Decrement their in-degree by 1, indicating that one of its prerequisite courses has been completed.
+      - If a dependent course's in-degree drops to 0, enqueue it, signifying it's ready to be taken. 
+8. If the count of processed courses equals numCourses, return true; otherwise, false.
 
 ## Complexity
 
@@ -42,7 +42,7 @@ var canFinish = function (numCourses, prerequisites) {
   prerequisites.forEach(([course, prereq]) => {
     inDegree[course]++;
     if (map.has(prereq)) {
-      map.get(prereq).push(course); // Add course to the list of courses dependent on prereq
+      map.get(prereq).push(course); // Add course as dependent on prereq
     } else {
       map.set(prereq, [course]); // Initialize the adjacency list for prereq
     }
@@ -55,12 +55,12 @@ var canFinish = function (numCourses, prerequisites) {
 
   let count = 0; // Count of courses that can be completed
   while (queue.length) {
-    const course = queue.shift(); // Current course taken
     count++;
+    const course = queue.shift(); // Current course taken
     const dependentCourses = map.get(course); // Courses dependent on the current course
     if (dependentCourses) {
       dependentCourses.forEach((dependentCourse) => {
-        inDegree[dependentCourse]--;
+        inDegree[dependentCourse]--; // Decrement in-degree of dependent course
         if (inDegree[dependentCourse] === 0) {
           queue.push(dependentCourse); // If no more prerequisites, add to queue
         }
