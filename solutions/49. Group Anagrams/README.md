@@ -9,7 +9,7 @@ Sorting the characters of each word allows us to use the sorted string as a key 
 1. Create a map (`anagramMap`) to store groups of anagrams. The keys are sorted strings, and the values are arrays containing the original strings that match this sorted key.
 2. Loop through each word in the input array `strs`.
    - Split each word into characters, sort them alphabetically, and then rejoin to form a key.
-   - Check if the sorted word key is already in the map. If not present, initialize a new group (array) for this key.
+   - If the sorted word key is not in the map, initialize a new group (array) for this key.
    - Append the original word to the array associated with the sorted word key.
 3. Extract the arrays of grouped anagrams from the map and return them as an array of arrays.
 
