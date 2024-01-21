@@ -2,23 +2,25 @@
 
 ## Intuition
 
-The key strategy is indeed to first identify and mark 'O's that are connected to the boundaries (as these cannot be flipped) and then handle the flipping of the remaining 'O's. This ensures that only the surrounded regions are flipped.
+The core idea is to identify 'O's connected to the boundary of the board since they cannot be surrounded. We use Depth-First Search (DFS) to handle the flipping of the remaining 'O's.
 
 ## Approach
 
 1. Immediately return if the board is empty, as there are no regions to process.
-2. Implement a Depth-First Search (DFS) function that marks 'O's connected to the boundary as '#'. This function:
-   - Returns immediately if it encounters a boundary or a non-'O' cell.
-   - Marks the current 'O' cell as '#' and recursively explores its adjacent cells (up, down, left, right).
-3. Perform DFS from 'O's on the boundaries (first and last rows, first and last columns) to protect the regions connected to edges.
-4. After DFS, iterate through the board:
-   - Flip isolated 'O's (which are not marked as '#') to 'X's.
-   - Restore '#' back to 'O' for those connected to the boundary.
+2. Store the dimensions of the board in `row` and `col`.
+3. Define a recursive DFS function that:
+   - Checks if the current cell is within bounds and is an 'O'.
+   - Marks the current cell as visited by changing 'O' to '#'.
+   - Recursively explores adjacent cells (up, down, left, right).
+4. Iterate over the boundary cells (first and last rows, first and last columns) and apply DFS to each 'O' found. This step marks all 'O's that are connected to the boundary with '#'.
+5. Iterate over the boundary cells
+   - Flip unconnected 'O's (not marked by DFS) to 'X's.
+   - Restore the marked '#' cells back to 'O's.
 
 ## Complexity
 
-- Time Complexity: O(MxN), where M is the number of rows and N is the number of columns in the board. In the worst case, DFS is applied to all cells.
-- Space complexity: O(MxN) in the worst case, due to the recursive call stack of DFS. However, it's typically less since not all cells will be part of the recursive calls.
+- Time Complexity: O(M*N), where M is the number of rows and N is the number of columns. Each cell is potentially visited during the DFS.
+- Space complexity: O(M*N) in the worst case, due to the recursion stack in DFS. This happens when the board is filled with 'O's, and the DFS explores all cells.
 
 ## Code
 
@@ -28,37 +30,37 @@ The key strategy is indeed to first identify and mark 'O's that are connected to
  * @return {void} Do not return anything, modify board in-place instead.
  */
 var solve = function (board) {
-  if (board.length === 0) return;
+  if (board.length === 0) return; // Handle empty board
 
-  const m = board.length;
-  const n = board[0].length;
+  const row = board.length;    // Number of rows
+  const col = board[0].length; // Number of columns
 
-  // DFS to mark 'O's connected to boundaries
+  // DFS function to mark 'O's connected to boundaries
   const DFS = (i, j) => {
-    if (i < 0 || j < 0 || i >= m || j >= n || board[i][j] !== "O") return;
+    if (i < 0 || j < 0 || i >= row || j >= col || board[i][j] !== "O") return;
     board[i][j] = "#"; // Mark as visited
-    DFS(i - 1, j); // Up
-    DFS(i + 1, j); // Down
-    DFS(i, j - 1); // Left
-    DFS(i, j + 1); // Right
+    DFS(i - 1, j); // Explore up
+    DFS(i + 1, j); // Explore down
+    DFS(i, j - 1); // Explore left
+    DFS(i, j + 1); // Explore right
   };
 
   // Apply DFS to 'O's on the boundaries
-  for (let i = 0; i < m; i++) {
-    if (board[i][0] === "O") DFS(i, 0);
-    if (board[i][n - 1] === "O") DFS(i, n - 1);
+  for (let i = 0; i < row; i++) {
+    if (board[i][0] === "O") DFS(i, 0); // Left boundary
+    if (board[i][col - 1] === "O") DFS(i, col - 1); // Right boundary
   }
-  for (let j = 0; j < n; j++) {
-    if (board[0][j] === "O") DFS(0, j);
-    if (board[m - 1][j] === "O") DFS(m - 1, j);
+  for (let j = 0; j < col; j++) {
+    if (board[0][j] === "O") DFS(0, j); // Top boundary
+    if (board[row - 1][j] === "O") DFS(row - 1, j); // Bottom boundary
   }
 
-  // Flip unconnected 'O's to 'X's and restore '#' to 'O'
-  for (let i = 0; i < m; i++) {
-    for (let j = 0; j < n; j++) {
-      if (board[i][j] === "O") board[i][j] = "X";
-      if (board[i][j] === "#") board[i][j] = "O";
+  // Final pass to flip unconnected 'O's and restore '#' to 'O'
+  for (let i = 0; i < row; i++) {
+    for (let j = 0; j < col; j++) {
+      if (board[i][j] === "O") board[i][j] = "X"; // Flip to 'X'
+      if (board[i][j] === "#") board[i][j] = "O"; // Restore to 'O'
     }
   }
-};
+}
 ```
