@@ -7,10 +7,10 @@ By comparing the frequency of characters in the current window of `s` with the f
 ## Approach
 
 1. If the length of `s` is less than `p`, return an empty array as no anagrams are possible.
-2. Create two frequency arrays, `patternFreq` and `currentWindowFreq`, of length 26 (for each lowercase English letter), initialized to 0.
+2. Create two frequency arrays, `patternFreq` and `currentWindowFreq`, each with a length of 26 (for each lowercase English letter), initialized to 0.
 3. Populate these arrays with the frequency of characters in `p` and the first window in `s` (first `pLength` characters).
 4. Use the `arraysEqual` function to compare `patternFreq` with `currentWindowFreq`. If they match, add the index `0` to `ans`.
-5. Slide the window through `s`, starting from index `pLength`.
+5. Slide the window through `s`, starting from index `pLength` because the first window (from index 0 to pLength - 1) has already been analyzed.
    - Update `currentWindowFreq` by decrementing the frequency of the character going out of the window and incrementing the frequency of the incoming character.
    - Compare `patternFreq` with `currentWindowFreq`. If they match, add the start index of the current window (`i - pLength + 1`) to `ans`.
 6. Return the `ans` array containing the starting indices of all anagrams of `p` in `s`.

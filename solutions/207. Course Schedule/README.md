@@ -8,10 +8,10 @@ The approach uses the concept of **Topological Sorting**, ensuring that for each
 
 1. Create an array `inDegree` to track the number of prerequisites (incoming edges) for each course.
 2. Use a `Map` for the adjacency list, where each key is a course and its value is a list of courses that depend on it.
-3. For each prerequisite pair, increment the in-degree of the course and update the adjacency list.
-4. Iterate over the `prerequisites` array.
+3. Iterate over the `prerequisites` array.
    - For each pair `[course, prereq]`, increment the in-degree of `course` and update the adjacency list (map) by adding `course` to the list of courses that `prereq` unlocks.
-5. Initialize an empty queue to keep track of courses with no prerequisites (in-degree 0). These are the courses we can start with.
+4. Initialize an empty queue to keep track of courses with no prerequisites (in-degree 0). These are the courses we can start with.
+5. Iterate over `inDegree`. If `degree` is zero, it means the course at this index has no prerequisites and can be taken immediately.
 6. Use a variable `count` to track the number of courses that can be completed.
 7. Process until there are no more courses to take.
    - Increment `count`, indicating another course has been completed.
