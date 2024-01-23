@@ -59,6 +59,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 - [15. 3Sum](https://github.com/stevenjlho/leetcode/blob/main/solutions/15.%203Sum/README.md)
 - [17. Letter Combinations of a Phone Number](https://github.com/stevenjlho/leetcode/blob/main/solutions/17.%20Letter%20Combinations%20of%20a%20Phone%20Number/README.md)
 - [19. Remove Nth Node From End of List](https://github.com/stevenjlho/leetcode/blob/main/solutions/19.%20Remove%20Nth%20Node%20From%20End%20of%20List/README.md)
+- [22. Generate Parentheses](https://github.com/stevenjlho/leetcode/blob/main/solutions/22.%20Generate%20Parentheses/README.md)
 - [24. Swap Nodes in Pairs](https://github.com/stevenjlho/leetcode/blob/main/solutions/24.%20Swap%20Nodes%20in%20Pairs/README.md)
 - [33. Search in Rotated Sorted Array](https://github.com/stevenjlho/leetcode/blob/main/solutions/33.%20Search%20in%20Rotated%20Sorted%20Array/README.md)
 - [34. Find First and Last Position of Element in Sorted Array](https://github.com/stevenjlho/leetcode/blob/main/solutions/34.%20Find%20First%20and%20Last%20Position%20of%20Element%20in%20Sorted%20Array/README.md)
