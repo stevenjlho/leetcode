@@ -2,24 +2,23 @@
 
 ## Intuition
 
-Using a prefix sum approach combined with a hash map tracks the cumulative sum of the elements in the array and uses the map to count how many times each sum minus `k` has occurred, which indicates a subarray that sums to `k`.
+The solution leverages the concept of cumulative sums to identify subarrays whose elements add up to `k`. By maintaining a running total of sums and using a hashmap to track the frequency of each sum, we can efficiently find the number of subarrays that meet the target sum.
 
 ## Approach
 
-1. `ans` variable is initialized to store the total count of subarrays that sum to `k`.
-2. `preSum`, an array to store prefix sums, is initialized with the first element of `nums`.
-3. `map` is used to store the frequency of occurrence of each prefix sum. It's initialized with a key-value pair `(0, 1)` to account for cases where a subarray starts from the beginning.
-4. Iterate over the `nums` array starting from the second element to build the `preSum` array.
-   - For each element, calculate the cumulative sum and add it to `preSum`.
-5. Iterate Over the Prefix Sum Array
-   - Check if `sum - k` exists in the map. If it does, it indicates a subarray that sums to `k`. Increment `ans` by the count of `sum - k` in the map.
-   - Update the map with the current prefix sum. If the prefix sum already exists, increment its count, otherwise, add it with a count of 1.
-6. Return the total count of subarrays (`ans`) that sum to `k`.
+1. Initialize `ans` to store the count of subarrays whose sum is equal to `k`.
+2. Create a hashmap `map` to keep track of the frequency of cumulative sums. Initialize it with the key `0` having a value of `1`, to handle cases where a subarray starts from the beginning of the array.
+3. Initialize a variable `cumulativeSum` to 0 to store the running total of the sums.
+4. Iterate through the `nums` array to calculate the cumulative sum.
+   - Update `cumulativeSum` by adding the current element.
+   - Check if `(cumulativeSum - k)` is present in the hashmap. If it is, add its value to `ans`. This step finds the number of times a subarray with sum `k` has been encountered up to the current index.
+   - Update the hashmap with the new `cumulativeSum`. If it already exists, increment its count, otherwise add it with a count of 1.
+5. After iterating through the array, return `ans`.
 
 ## Complexity
 
-- Time complexity: O(n), where n is the length of the input array. This is because the algorithm iterates over the array twice - once to build the prefix sum array and once to find the subarrays that sum to `k`.
-- Space complexity: O(n), where n is the length of the input array. The additional space is used for the `preSum` array and the hash map.
+- Time complexity: O(n). The algorithm iterates through the array once, making it linear in the size of the input array `nums`.
+- Space complexity: O(n). The hashmap `map` can potentially store each unique cumulative sum, which in the worst case, could be as many as there are elements in `nums`.
 
 ## Code
 
@@ -30,24 +29,18 @@ Using a prefix sum approach combined with a hash map tracks the cumulative sum o
  * @return {number}
  */
 var subarraySum = function (nums, k) {
-  let ans = 0; // Store the total count of subarrays summing to k
-  let preSum = [nums[0]]; // Array to store prefix sums, initialized with first element
-  let map = new Map(); // Map to store frequency of each prefix sum
-  map.set(0, 1); // Initialize map with sum 0 occurring once
+  let ans = 0; // Count of subarrays summing to k
+  let map = new Map([[0, 1]]); // Hashmap for frequency of cumulative sums
+  let cumulativeSum = 0; // Running total of sums
 
-  // Building the prefix sum array
-  for (let i = 1; i < nums.length; i++) {
-    preSum.push(nums[i] + preSum[preSum.length - 1]); // Add current element to last prefix sum
-  }
-
-  // Checking each prefix sum for possible subarrays
-  for (let sum of preSum) {
-    if (map.has(sum - k)) {
-      ans += map.get(sum - k); // If sum-k is in map, it indicates a valid subarray
+  for (const num of nums) {
+    cumulativeSum += num; // Update cumulative sum
+    if (map.has(cumulativeSum - k)) {
+      ans += map.get(cumulativeSum - k); // Add count of subarrays ending here that sum to k
     }
-    map.set(sum, (map.get(sum) || 0) + 1); // Update map with the current sum
+    map.set(cumulativeSum, (map.get(cumulativeSum) || 0) + 1); // Update map with the current sum
   }
 
-  return ans; // Return the count of subarrays
+  return ans; // Return count of valid subarrays
 };
 ```
