@@ -11,34 +11,34 @@ The hash map provides O(1) access to cache items, while the double-linked list m
 ## Complexity
 
 1. Node Class: 
-   - Each `Node` represents an item in the cache, containing the `key`, `value`, `prev`, and `next` pointers for doubly-linked list implementation.
+   - Represents each item in the cache. It contains the `key`, `value`, `prev`, and `next` pointers for doubly-linked list implementation.
    - This forms the basic element of the doubly linked list.
 
-2. LRUCache Constructor:
-   - Initializes the cache with a given `capacity`.
-   - Creates a `Map` for storing key-node pairs, allowing for O(1) access.
-   - Establishes dummy head and tail nodes for the doubly linked list, simplifying edge case handling like adding or removing nodes.
+2. LRUCache Class: Manages the LRU cache operations.
+   - Constructor:
+      - Initializes the cache with a given `capacity`.
+      - Creates a `Map` for storing key-node pairs, allowing for O(1) access.
+      - Initializes dummy head and tail nodes linked to each other, simplifying edge case handling like adding or removing nodes.
 
-3. get Method:
-   - Checks if the key exists in the cache.
-   - If not found, returns -1.
-   - If found, it moves the node to the end of the list, marking it as recently used.
-   - Returns the value of the node.
+   - Get Method::
+      - Checks if the key exists in the cache.
+      - If not found, returns -1.
+      - If found, it moves the node to the end of the list, marking it as recently used.
+      - Returns the value of the node.
 
-4. put Method:
-   - If the key already exists, it removes the corresponding node.
-   - Creates a new node with the given key and value.
-   - Adds the new node to the end of the list (recently used position).
-   - Inserts the new node into the cache.
-   - If adding the new node causes the cache to exceed its capacity, it removes the least recently used item, which is at the beginning of the doubly linked list.
+   - Put Method :
+      - If the `key` already exists, it removes the corresponding node.
+      - Create and add a new node with the `key` and `value` at the end of the list.
+      - Inserts the new node into the cache.
+      - If adding the new node causes the cache to exceed its capacity, it removes the least recently used item, which is at the beginning of the doubly linked list.
+      - If the cache exceeds `capacity`, remove the least recently used item (next to `head`) from both the list and the map.
 
-5. remove Method:
-   - Removes a node from the doubly-linked list.
-   - Adjusts the pointers of the neighboring nodes to exclude the given node.
+   - Remove Method:
+      - Remove a node from the doubly-linked list by adjusting the `prev` and `next` pointers of its neighbors.
 
-6. add Method:
-   - Inserts a new node right before the dummy tail node in the doubly linked list.
-   - This signifies that the node is now the most recently used item.
+   - Add Method:
+      - Inserts a new node right before the dummy tail node in the doubly linked list.
+      - This signifies that the node is now the most recently used item.
    
 ## Complexity
 
