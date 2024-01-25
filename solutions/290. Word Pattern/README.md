@@ -2,17 +2,17 @@
 
 ## Intuition
 
-We need to use two hashmaps to ensure a one-to-one correspondence between characters in `pattern` and words in `s`.
+The core idea is to map each character in the pattern to a word in `s` and vice versa, ensuring a one-to-one correspondence.
 
 ## Approach
 
-1. Create two mapping structures to store the correspondence from characters to words and from words to characters.
+1. Two maps `wordToChar` and `charToWord` are created to maintain a bi-directional mapping between characters in the pattern and words in `s`.
 2. Split the string `s` into an array of words.
 3. Before iterating, check if the length of the `pattern` string matches the number of words in `s`. If not, they don't follow the same pattern.
-4. Iterate through words and characters, for each word in `s` and corresponding character in `pattern`:
-   - If the word is already mapped to a character and it doesn't matches the current character of `pattern`, return `false`.
-   - If the character is already mapped to a word and it doesn't matches the current word return `false`.
-   - Update the mappings for the current word and character.
+4. Iterate through pattern and words, for each word in `s` and corresponding character in `pattern`:
+   - If `wordToChar` has the current word but maps it to a different character, return `false`.
+   - If `charToWord` has the current character but maps it to a different word, return `false`.
+   - Update `wordToChar` and `charToWord` with the current word-character pair.
 5. If the iteration completes without returning false, the two strings follow the same pattern, then return `true`.
 
 ## Complexity
