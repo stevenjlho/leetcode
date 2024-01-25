@@ -13,7 +13,9 @@ The solution uses Depth-First Search (DFS) to explore all possible placements of
    - If `leftCount` is greater than zero, call `dfs` recursively with an added opening bracket and decrement `leftCount`.
    - If `rightCount` is greater than zero, call `dfs` recursively with an added closing bracket and decrement `rightCount`.
 3. Call `dfs` with `currentString`, `n`, and `n` to start the process.
-4. After all recursive calls complete, return the `result` array containing all valid combinations.## Complexity
+4. After all recursive calls complete, return the `result` array containing all valid combinations.
+
+## Complexity
 
 - Time Complexity: O(4^n / sqrt(n)) - The number of valid sequences for n pairs of parentheses is the n-th Catalan number, which is bounded asymptotically by 4^n / sqrt(n).
 - Space Complexity: O(4^n / sqrt(n)) - The space required to store the valid sequences, plus additional space for the recursion stack.
