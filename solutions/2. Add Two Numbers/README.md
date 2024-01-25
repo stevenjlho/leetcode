@@ -6,19 +6,20 @@ The key idea is to iterate through both linked lists simultaneously, adding corr
 
 # Approach
 
-1.  Initialize a Dummy Head to simplify edge cases, allowing for the easy addition of new nodes.
-2.  Initialize `tail` to keep track of the end of resulting list and `carry` for addition.
-3.  Iterate Through Lists: Loop through `l1` and `l2` as long as at least one of them has not reached the end, or there is a carry-over.
-    - Extract the current digit from each list (`digit1` and `digit2`). If a list has ended, use 0 as its digit.
-    - Add the two digits along with the carry from the previous addition. The new digit for the resulting list is `sum % 10`, and the new carry is `Math.floor(sum / 10)`.
-    - Create a new node for the digits and append it to `tail.next`. Move tail to the next node to keep track of the next new node.
-    - Moving `l1` and `l2` pointers ensures that each digit of the lists is considered.
-4.  Since the first node is a dummy, return `dummyHead.next`.
+1. Initialize a `dummy` node to simplify handling the head of the result list.
+2. Initialize `tail` to keep track of the end of the resulting list.
+3. Initialize `carry` to store carry-over values during addition.
+4. Iterating through Lists until all digits in both lists are processed and no carry remains.
+   - Extract digits from `l1` and `l2`, defaulting to 0 if the list ends.
+   - Compute the sum of the two digits and the carry. The new digit for the resulting list is `sum % 10`, and the new carry is `Math.floor(sum / 10)`.
+   - Create a new node for the digits and append it to `tail.next`. Move tail to the next node to keep track of the next new node.
+   - Move to the next nodes in `l1` and `l2` if available; otherwise, set to `null`.
+5. Return the next node of `dummy`, which is the head of the result list.
 
 # Complexity
 
-- Time Complexity: O(max(n, m)), where `n` and `m` are the lengths of the two input lists. The algorithm iterates through both lists in parallel once.
-- Space Complexity: O(max(n, m)), as a new list is created to store the result. The length of the resulting list is at most max(n, m) + 1 (due to a possible carry).
+- Time Complexity: O(max(N, M)), where N and M are the lengths of `l1` and `l2`, respectively. 
+- Space Complexity: O(max(N, M)), as a new list is created to store the result. The length of the new list is at most max(N, M) + 1.
 
 # Code
 
@@ -36,8 +37,8 @@ The key idea is to iterate through both linked lists simultaneously, adding corr
  * @return {ListNode}
  */
 var addTwoNumbers = function (l1, l2) {
-  let dummyHead = new ListNode(0); // Dummy head to simplify edge cases
-  let tail = dummyHead; // Tail to track the end of the resulting list
+  let dummy = new ListNode(0); // Dummy head to simplify edge cases
+  let tail = dummy; // Tail to track the end of the resulting list
   let carry = 0; // Carry for addition
 
   // Iterate as long as there is a digit in l1 or l2, or a carry
@@ -58,6 +59,6 @@ var addTwoNumbers = function (l1, l2) {
     l2 = l2 !== null ? l2.next : null;
   }
 
-  return dummyHead.next; // Return the result list, excluding the dummy head
+  return dummy.next; // Return the result list, excluding the dummy head
 };
 ```
