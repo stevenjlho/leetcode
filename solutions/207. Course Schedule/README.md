@@ -2,7 +2,7 @@
 
 ## Intuition
 
-The approach uses the concept of **Topological Sorting**, ensuring that for each course (node), all its prerequisites (incoming edges) are met before it can be "taken."
+The approach uses the concept of **Topological Sorting**, ensuring that for each course (node), all its prerequisites (incoming edges) are met before it can be "taken".
 
 ## Approach
 

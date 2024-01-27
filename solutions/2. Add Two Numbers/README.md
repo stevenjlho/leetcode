@@ -41,7 +41,7 @@ var addTwoNumbers = function (l1, l2) {
   let tail = dummy; // Tail to track the end of the resulting list
   let carry = 0; // Carry for addition
 
-  // Iterate as long as there is a digit in l1 or l2, or a carry
+  // Iterate until both lists are exhausted and no carry left
   while (l1 !== null || l2 !== null || carry !== 0) {
     let digit1 = l1 !== null ? l1.val : 0; // Get digit from l1, or 0 if l1 is null
     let digit2 = l2 !== null ? l2.val : 0; // Get digit from l2, or 0 if l2 is null
