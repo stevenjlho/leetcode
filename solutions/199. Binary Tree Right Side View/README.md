@@ -2,17 +2,16 @@
 
 ## Intuition
 
-Using a depth-first search (DFS) approach that prioritizes the right subtree, It ensures that the rightmost node at each depth level is visited first.
+This solution leverages depth-first search (DFS) to traverse the tree, prioritizing the right subtree to ensure that the rightmost node at each level is visited first.
 
 ## Approach
 
 1. Create an array `result` to store the rightmost node at each depth level.
-2. Implement a recursive helper function `rightView` that traverses the tree. 
-   - If the current node is null, return, as there's nothing to process.
-   - Check if the current depth is equal to the length of the result array. If true, it indicates this depth level hasn't been processed yet, so add the current node's value to `result`.
-   - Recursively traverses first the right subtree and then the left subtree, ensuring that rightmost nodes are processed first.
-
-3. Call collect starting from the root node (`root`) with an initial depth of 0.
+2. Implement a recursive helper function `rightView` that takes a node and its depth in the tree as arguments.  
+   - If the node is null, return immediately. This handles the case of empty trees or leaf nodes.
+   - If the current depth equals the length of the `result` list, it means this node is the first node being visited at this depth(hence, the rightmost), so its value is added to result.
+   - The function first recurses on the right child, then on the left child. This order ensures rightmost nodes are processed first.
+3. Call `rightView` with the root node and an initial depth of 0.
 4. After the traversal, return the `result` array, which now contains the rightmost view of the binary tree.
 
 ## Complexity

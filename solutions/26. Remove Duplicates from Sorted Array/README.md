@@ -25,6 +25,8 @@ A sorted array allows us to find duplicates by simply comparing each element wit
  * @return {number}
  */
 var removeDuplicates = function (nums) {
+  if (nums.length === 0) return 0; // Handle edge case for empty array
+
   // The first element is always unique
   let index = 1;
 
