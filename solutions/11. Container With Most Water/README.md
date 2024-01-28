@@ -2,7 +2,7 @@
 
 ## Intuition
 
-Using a two-pointer approach allows us to efficiently explore potential containers and track the one with the maximum area.
+Using a two-pointer approach to find the area of water the container can hold is determined by the shorter of the two walls and the distance between them. 
 
 ## Approach
 

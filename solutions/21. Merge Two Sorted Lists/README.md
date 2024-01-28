@@ -6,8 +6,8 @@ Merging two sorted lists can be efficiently done by iteratively comparing the he
 
 ## Approach
 
-1.  Create a `dummy` node to act as the start of the merged list.
-2.  Use a `tail` pointer to keep track of the end of the merged list.
+1.  Create a `dummy` node to act as the start of the merged list. The dummy node simplifies edge cases.
+2.  Use a `tail` pointer to keeps track of the last node in the merged list.
 3.  While both `list1` and `list2` have nodes remaining:
     - Determine which node (from `list1` or `list2`) has the smaller value. Attach this node to the `tail` of the merged list.
     - Move the pointer forward in the list from which you took the smaller node. If `list1` had the smaller node, move to the next node in `list1`, and likewise for `list2`.
