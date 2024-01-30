@@ -68,6 +68,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 - [48. Rotate Image](https://github.com/stevenjlho/leetcode/blob/main/solutions/48.%20Rotate%20Image/README.md)
 - [53. Maximum Subarray](https://github.com/stevenjlho/leetcode/blob/main/solutions/53.%20Maximum%20Subarray/README.md)
 - [74. Search a 2D Matrix](https://github.com/stevenjlho/leetcode/blob/main/solutions/74.%20Search%20a%202D%20Matrix/README.md)
+- [78. Subsets](https://github.com/stevenjlho/leetcode/blob/main/solutions/78.%20Subsets/README.md)
 - [80. Remove Duplicates from Sorted Array II](https://github.com/stevenjlho/leetcode/blob/main/solutions/80.%20Remove%20Duplicates%20from%20Sorted%20Array%20II/README.md)
 - [98. Validate Binary Search Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/98.%20Validate%20Binary%20Search%20Tree/README.md)
 - [102. Binary Tree Level Order Traversal](https://github.com/stevenjlho/leetcode/blob/main/solutions/102.%20Binary%20Tree%20Level%20Order%20Traversal/README.md)
