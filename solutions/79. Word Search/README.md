@@ -9,26 +9,27 @@ The core idea is to traverse the board, character by character, and backtrack wh
 1. Check if the board is valid. If not, return false immediately.
 2. Define a DFS function that will be used to explore the board. This function takes the current position (i, j) on the board and the remaining part of the word to be matched.
    - If the remaining word is empty, it means the entire word has been found, so return true.
-   - Validate the current position (i, j) to ensure it's within the board's bounds and matches the current character needed for the word. If not, backtrack by returning false.
-   - Temporarily mark the current position on the board as visited (e.g., by setting the cell to "#") to avoid revisiting it in the immediate recursive calls.
-   - Recursively call the DFS function for all four directions (up, down, left, right) from the current position, each time with the next character in the word.
+   - Check boundary conditions and whether the current cell matches the first character of the remaining word. If not, return false.
+   - Store the original character to restore it after exploring all possible paths from this cell.
+   - Temporarily mark the current cell as visited by changing its value to avoid revisiting it in the immediate recursive calls.
+   - Recursively call DFS for all four directions from the current cell with the next character of the word.
    - Restore the original character at the board position to allow for future searches.
    - If any of the recursive calls return true, propagate this result upwards, indicating the word exists on the board.
 3. Iterate over each cell in the board as a potential starting point for the DFS search.
    - If the DFS search starting from a particular cell returns true, it means the word can be formed starting from that cell, so return true for the entire function.
 4. If none of the starting points lead to a successful search, return false, indicating the word does not exist on the board.## Complexity
 
-- Time Complexity: O(M_N_4^L), where M and N are the dimensions of the board, and L is the length of the word to be matched. For each cell, the algorithm performs a DFS search and, in the worst case, explores all 4 directions repeatedly for each character of the word.
+- Time Complexity: O(M\*N\*4^L), where M and N are the dimensions of the board, and L is the length of the word to be matched. For each cell, the algorithm performs a DFS search and, in the worst case, explores all 4 directions repeatedly for each character of the word.
 - Space Complexity: O(L) due to the recursive call stack, where L is the length of the word. In the worst case, the depth of recursion could be as deep as the length of the word.
 
 ## Code
 
 ```javascript
 /**
- * @param {number[]} nums
- * @return {number[][]}
+ * @param {character[][]} board
+ * @param {string} word
+ * @return {boolean}
  */
-
 var exist = function (board, word) {
   if (!board || !board.length) return false;
 
