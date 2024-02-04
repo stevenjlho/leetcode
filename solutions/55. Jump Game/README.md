@@ -6,9 +6,10 @@ The intuition is to work backward from the last index, checking if each precedin
 
 ## Approach
 
-1. Start with `lastPosition` set to the last index of the array. This represents the current goal - the minimum index from which the last index is reachable.
-2. Loop through the array from the second-to-last element to the start. For each index `i`, check if the last position is reachable from `i` (i.e., `i + nums[i] >= lastPosition`). If it is, update `lastPosition` to `i`.
-3. After the loop, if `lastPosition` is `0` or less, the last index is reachable from the start.
+1. Start with `lastPosition` by assuming the last index of the array as the initially last reachable position.
+2. Loop through the array from right to left, starting from the second-to-last element. For each element, check if the sum of its index and its value (the maximum distance it can jump) is greater than or equal to the last reachable position.
+   - If true, it means this position can reach the last reachable position, so update the last reachable position to the current index.
+3. After the loop, if the last reachable position is at the start of the array (or before), it indicates that the end is reachable from the start.
 
 ## Complexity
 
