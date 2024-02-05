@@ -6,10 +6,10 @@ The intuition is to work backward from the last index, checking if each precedin
 
 ## Approach
 
-1. Start with `lastPosition` by assuming the last index of the array as the initially last reachable position.
-2. Loop through the array from right to left, starting from the second-to-last element. For each element, check if the sum of its index and its value (the maximum distance it can jump) is greater than or equal to the last reachable position.
-   - If true, it means this position can reach the last reachable position, so update the last reachable position to the current index.
-3. After the loop, if the last reachable position is at the start of the array (or before), it indicates that the end is reachable from the start.
+1. Start by setting the `lastPosition` variable to the index of the final element in the array (`nums.length - 1`), signifying the initial target to reach.
+2. Loop through the array in reverse, beginning from the penultimate element (i = nums.length - 2) and progressing towards the first element.
+   - For each position `i`, determine if the end (or the current `lastPosition`) is reachable by adding `i` to `nums[i]` (the jump length from position `i`). If reachable, update `lastPosition` to `i`.
+3. After the loop concludes, verify if `lastPosition` has been updated to `0`. If so, it indicates that the start of the array can reach the end, making the return value `true`.
 
 ## Complexity
 
@@ -24,19 +24,19 @@ The intuition is to work backward from the last index, checking if each precedin
  * @return {boolean}
  */
 var canJump = function (nums) {
-  // Initialize the last position to the last index of the array.
+  // Initialize lastPosition with the last index of the array
   let lastPosition = nums.length - 1;
 
-  // Iterate backward from the second-to-last element to the start.
+  // Iterate backwards from the second last element to the start of the array
   for (let i = nums.length - 2; i >= 0; i--) {
-    // Check if the current index can reach or surpass the last reachable position.
+    // Check if the current position can jump to or beyond the last reachable position
     if (i + nums[i] >= lastPosition) {
-      // If so, update the last reachable position to the current index.
+      // Update lastPosition to the current index if it's reachable
       lastPosition = i;
     }
   }
 
-  // If the last reachable position is 0 or less, the end is reachable from the start.
-  return lastPosition <= 0;
+  // If lastPosition has reached the start of the array, the end is reachable
+  return lastPosition === 0;
 };
 ```
