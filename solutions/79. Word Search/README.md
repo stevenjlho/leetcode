@@ -6,21 +6,22 @@ The core idea is to traverse the board, character by character, and backtrack wh
 
 ## Approach
 
-1. Check if the board is valid. If not, return false immediately.
-2. Define a DFS function that will be used to explore the board. This function takes the current position (i, j) on the board and the remaining part of the word to be matched.
-   - If the remaining word is empty, it means the entire word has been found, so return true.
-   - Check boundary conditions and whether the current cell matches the first character of the remaining word. If not, return false.
-   - Store the original character to restore it after exploring all possible paths from this cell.
+1. Check if the `board` is empty or null, return false immediately as the word cannot be found.
+2. Define a DFS function that takes the current position (`row`, `col`) on the board and the current index in the word we are matching.
+   - If the current index equals the length of the word, we have found the word, return true.
+   - Validate the current position (row, col) to ensure it's within the board and the character matches the current character of the word.
+   - Store the current character before marking the cell as visited, which ensures that the DFS algorithm can revert the board to its original state after exploring each path, allowing for accurate and independent path explorations.
    - Temporarily mark the current cell as visited by changing its value to avoid revisiting it in the immediate recursive calls.
-   - Recursively call DFS for all four directions from the current cell with the next character of the word.
+   - Recursively call DFS for the next character in all four directions.
    - Restore the original character at the board position to allow for future searches.
    - If any of the recursive calls return true, propagate this result upwards, indicating the word exists on the board.
-3. Iterate over each cell in the board as a potential starting point for the DFS search.
-   - If the DFS search starting from a particular cell returns true, it means the word can be formed starting from that cell, so return true for the entire function.
-4. If none of the starting points lead to a successful search, return false, indicating the word does not exist on the board.## Complexity
+3. Iterate over each cell of the board, using it as the starting point for DFS.
+   - If DFS returns true from any starting point, the word exists on the board, so return true.
+4. If none of the starting points lead to a successful search, return false, indicating the word does not exist on the board.
 
-- Time Complexity: O(M\*N\*4^L), where M and N are the dimensions of the board, and L is the length of the word to be matched. For each cell, the algorithm performs a DFS search and, in the worst case, explores all 4 directions repeatedly for each character of the word.
-- Space Complexity: O(L) due to the recursive call stack, where L is the length of the word. In the worst case, the depth of recursion could be as deep as the length of the word.
+## Complexity
+- Time Complexity: O(M\*N\*4^L), where M and N are the dimensions of the board, and L is the length of the word to be matched.  In the worst case, the algorithm might explore all 4 directions for each character of the word.
+- Space Complexity: O(L), due to the maximum depth of the recursion call stack being the length of the word. In the worst case, the recursion goes as deep as the number of characters in the word.
 
 ## Code
 
@@ -30,44 +31,42 @@ The core idea is to traverse the board, character by character, and backtrack wh
  * @param {string} word
  * @return {boolean}
  */
+
 var exist = function (board, word) {
-  if (!board || !board.length) return false;
+  if (!board || !board.length) return false; // Early exit if board is empty
 
-  var dfs = function (i, j, remainingWord) {
-    // Base case: if no characters left, word is found
-    if (remainingWord.length === 0) return true;
-
-    // Check boundaries and character match
+  const dfs = function (row, col, index) {
+    if (index === word.length) return true; // Word found
     if (
-      i < 0 ||
-      i >= board.length ||
-      j < 0 ||
-      j >= board[0].length ||
-      remainingWord[0] !== board[i][j]
+      row < 0 ||
+      row >= board.length ||
+      col < 0 ||
+      col >= board[0].length ||
+      board[row][col] !== word[index]
     )
-      return false;
+      return false; // Out of bounds or character mismatch
 
-    const originalChar = board[i][j]; // Store original character
-    board[i][j] = "#"; // Mark current cell as visited
+    let temp = board[row][col]; // Store current character
+    board[row][col] = "#"; // Mark as visited
 
-    // Explore all possible directions
-    const res =
-      dfs(i + 1, j, remainingWord.slice(1)) ||
-      dfs(i - 1, j, remainingWord.slice(1)) ||
-      dfs(i, j + 1, remainingWord.slice(1)) ||
-      dfs(i, j - 1, remainingWord.slice(1));
+    // Explore all four directions
+    let found =
+      dfs(row + 1, col, index + 1) ||
+      dfs(row - 1, col, index + 1) ||
+      dfs(row, col + 1, index + 1) ||
+      dfs(row, col - 1, index + 1);
 
-    board[i][j] = originalChar; // Restore original character
-    return res; // Return result of DFS exploration
+    board[row][col] = temp; // Restore character (backtrack)
+    return found; // Return result
   };
 
   // Try to find the word starting from each cell
   for (let i = 0; i < board.length; i++) {
     for (let j = 0; j < board[0].length; j++) {
-      if (dfs(i, j, word)) return true; // If word is found, return true
+      if (dfs(i, j, 0)) return true; // Word found
     }
   }
 
-  return false; // Word not found
+  return false; // Word not found on the board
 };
 ```
