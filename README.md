@@ -66,6 +66,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 - [39. Combination Sum](https://github.com/stevenjlho/leetcode/blob/main/solutions/39.%20Combination%20Sum/README.md)
 - [46. Permutations](https://github.com/stevenjlho/leetcode/blob/main/solutions/46.%20Permutations/README.md)
 - [48. Rotate Image](https://github.com/stevenjlho/leetcode/blob/main/solutions/48.%20Rotate%20Image/README.md)
+- [45. Jump Game II](https://github.com/stevenjlho/leetcode/blob/main/solutions/45.%20Jump%20Game%20II/README.md)
 - [53. Maximum Subarray](https://github.com/stevenjlho/leetcode/blob/main/solutions/53.%20Maximum%20Subarray/README.md)
 - [55. Jump Game](https://github.com/stevenjlho/leetcode/blob/main/solutions/55.%20Jump%20Game/README.md)
 - [74. Search a 2D Matrix](https://github.com/stevenjlho/leetcode/blob/main/solutions/74.%20Search%20a%202D%20Matrix/README.md)
