@@ -7,15 +7,15 @@ We explore each possibility and backtrack when we either find a solution or hit 
 ## Approach
 
 1. Create a list `result` to store all valid combinations.
-2. Define a recursive function that takes three parameters - `currComb`: The current combination being formed, `currSum`: The sum of the numbers in `currComb`, `currIndex`: The index in `candidates` to start adding numbers to `currComb`.
-   - If `currSum` exceeds `target`, stop exploring this path (return).
-   - If `currSum` equals `target`, add a copy of `currComb` to `result` and return.
-   - Iterate through `candidates` starting from `currIndex`.
-     - Add `candidates[i]` to `currComb` and update `currSum`.
+2. Define a recursive function that takes three parameters - `currentCombination`: The current combination being formed, `currentSum`: The sum of the numbers in `currentCombination`, `currentIndex`: The index in `candidates` to start adding numbers to `currentCombination`.
+   - If `currentSum` exceeds `target`, the function returns immediately as this path cannot lead to a solution.
+   - If `currentSum` equals `target`, the current combination is added to result, and the function returns.
+   - Iterate through `candidates` starting from `currentIndex`, adding each candidate to the current combination, and calling itself recursively to explore further.
+     - Add `candidates[i]` to `currentCombination` and update `currentSum`.
      - Call `backtrack` recursively to continue exploring further with this candidate included.
-     - Remove the last added candidate from `currComb` and update `currSum` to backtrack.
+     - Remove the last added candidate from `currentCombination` and update `currentSum` to backtrack.
 3. Call `backtrack([], 0, 0)` to start the process.
-4. After backtracking is complete, return the `result`.
+4. Once all possibilities are explored, the `result` list is returned.
 
 ## Complexity
 
@@ -34,23 +34,23 @@ var combinationSum = function (candidates, target) {
   const result = [];
 
   // Backtracking function to explore combinations
-  var backtrack = function (currComb, currSum, currIndex) {
+  var backtrack = function (currentCombination, currentSum, currentIndex) {
     // If current sum exceeds target, backtrack
-    if (currSum > target) return;
+    if (currentSum > target) return;
     // If current sum equals target, add the combination to result
-    if (currSum === target) {
-      result.push([...currComb]);
+    if (currentSum === target) {
+      result.push([...currentCombination]);
       return;
     }
 
     // Explore further with each candidate
-    for (let i = currIndex; i < candidates.length; i++) {
-      currComb.push(candidates[i]); // Add candidate to current combination
-      currSum += candidates[i]; // Update current sum
-      backtrack(currComb, currSum, i); // Recursively explore with this candidate
+    for (let i = currentIndex; i < candidates.length; i++) {
+      currentCombination.push(candidates[i]); // Add candidate to current combination
+      currentSum += candidates[i]; // Update current sum
+      backtrack(currentCombination, currentSum, i); // Recursively explore with this candidate
       // Backtrack: remove the candidate and try the next
-      currComb.pop();
-      currSum -= candidates[i];
+      currentCombination.pop();
+      currentSum -= candidates[i];
     }
   };
 

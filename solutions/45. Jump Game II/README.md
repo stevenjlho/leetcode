@@ -2,14 +2,14 @@
 
 ## Intuition
 
-We keep track of the current maximum reach and update our jump count only when we've reached the end of our current jump range.
+The algorithm is based on the "greedy" approach, where at each step, it jumps to the farthest reachable point.
 
 ## Approach
 
-1. Start by defining variables to keep track of the array's length (`n`), the current farthest position reachable within the current number of steps (`currentEnd`), the maximum position that can be reached from the current position (`maxReach`), and the count of jumps made so far (`jumps`).
+1. Set `currentEnd` to `0` to track the farthest position reachable with the current number of steps, `maxReach` to `0` for the maximum position that can be reached, and `jumps` to `0` for the count of jumps made.
 2. Loop through each element of the array up to the second last element. This is because reaching the last element means you've already arrived at the destination.
-   - Update `maxReach` to be the maximum of `maxReach` and the sum of the current index `i` and the jump length from that index (`nums[i]`). This represents the farthest you can reach from the current position.
-   - If the current index `i` reaches the `currentEnd`, it means you've reached the farthest position with the current number of jumps. Increment `jumps` to signify making a jump, and update `currentEnd` to `maxReach` to represent the new farthest position you can reach with the next jump.
+   - For each element, update `maxReach` with the maximum between the current `maxReach` and the sum of the current index `i` and the jump length `nums[i]`. This can keep track of the farthest index that can be reached (`maxReach`) by any of the indices within the current jump range (`currentEnd`). 
+   - If the current index `i` reaches the `currentEnd`, it means it's time to make a jump to continue. Increment `jumps` by `1` to signify making a jump. Update `currentEnd` to `maxReach` to represent the new farthest position you can reach with the next jump. This ensures that the number of jumps is minimized because you're making the most of each jump.
 3. After the loop, return the total number of jumps required to reach the end of the array.
 
 ## Complexity
@@ -22,26 +22,25 @@ We keep track of the current maximum reach and update our jump count only when w
 ```javascript
 /**
  * @param {number[]} nums
- * @return {boolean}
+ * @return {number}
  */
 var jump = function (nums) {
-  let n = nums.length; // Total number of elements in the array
-  let currentEnd = 0; // The farthest position reachable within the current number of steps
-  let maxReach = 0; // The maximum position that can be reached from the current position
-  let jumps = 0; // Count of jumps made so far
+  let currentEnd = 0; // Track the farthest position reachable within the current number of steps.
+  let maxReach = 0; // Track the maximum position that can be reached.
+  let jumps = 0; // Count the jumps made so far.
 
-  // Loop until the second last element
-  for (let i = 0; i < n - 1; i++) {
-    // Update the maxReach
+  // Loop through the array up to the second-to-last element.
+  for (let i = 0; i < nums.length - 1; i++) {
+    // Update maxReach to be the farthest we can reach from the current position.
     maxReach = Math.max(maxReach, i + nums[i]);
 
-    // If we've reached the end of the current jump
+    // If we've reached the end of the current jump range...
     if (i == currentEnd) {
-      jumps++; // Increment the jump count
-      currentEnd = maxReach; // Update the end to the maxReach
+      jumps++; // Make a jump.
+      currentEnd = maxReach; // Update the currentEnd to the new farthest reachable position.
     }
   }
 
-  return jumps; // Return the total number of jumps required
+  return jumps; // Return the minimum number of jumps required to reach the end of the array.
 };
 ```
