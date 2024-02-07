@@ -6,9 +6,9 @@ The algorithm is based on the "greedy" approach, where at each step, it jumps to
 
 ## Approach
 
-1. Set `currentEnd` to `0` to track the farthest position reachable with the current number of steps, `maxReach` to `0` for the maximum position that can be reached, and `jumps` to `0` for the count of jumps made.
+1. Set `currentEnd` tracks the farthest position reachable with the current number of jumps, `maxReach` tracks the maximum position that can be reached from the current position, and `jumps` counts the jumps made.
 2. Loop through each element of the array up to the second last element. This is because reaching the last element means you've already arrived at the destination.
-   - For each element, update `maxReach` with the maximum between the current `maxReach` and the sum of the current index `i` and the jump length `nums[i]`. This can keep track of the farthest index that can be reached (`maxReach`) by any of the indices within the current jump range (`currentEnd`). 
+   - For each element, update `maxReach` with the maximum between the current `maxReach` and the sum of the current index `i` and the jump length `nums[i]`. This can keep track of the farthest index that can be reached (`maxReach`) by any of the indices within the current jump range (`currentEnd`).
    - If the current index `i` reaches the `currentEnd`, it means it's time to make a jump to continue. Increment `jumps` by `1` to signify making a jump. Update `currentEnd` to `maxReach` to represent the new farthest position you can reach with the next jump. This ensures that the number of jumps is minimized because you're making the most of each jump.
 3. After the loop, return the total number of jumps required to reach the end of the array.
 
@@ -25,6 +25,7 @@ The algorithm is based on the "greedy" approach, where at each step, it jumps to
  * @return {number}
  */
 var jump = function (nums) {
+  if (nums.length <= 1) return 0; // No jumps needed for empty or single-element arrays
   let currentEnd = 0; // Track the farthest position reachable within the current number of steps.
   let maxReach = 0; // Track the maximum position that can be reached.
   let jumps = 0; // Count the jumps made so far.

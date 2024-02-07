@@ -14,11 +14,11 @@ The approach uses the concept of **Topological Sorting**, ensuring that for each
 5. Iterate over `inDegree`. If `degree` is zero, it means the course at this index has no prerequisites and can be taken immediately.
 6. Use a variable `count` to track the number of courses that can be completed.
 7. Process until there are no more courses to take.
-   - Increment `count`, indicating another course has been completed.
-   - Retrieve all courses dependent on the current course that is dequeued from the `queue`.
-   - If there are dependent courses (`if (dependentCourses)`), iterate over each of them:
-      - Decrement their in-degree by 1, indicating that one of its prerequisite courses has been completed.
-      - If a dependent course's in-degree drops to 0, enqueue it, signifying it's ready to be taken. 
+   - `queue.shift()` removes the first course from the queue and assigns it to `course`. This course has no prerequisites and can be considered completed.
+   - `count++` increments the count of completed courses. If this count equals the total number of courses by the end of the process, it means all courses can be completed.
+   - Retrieve all courses dependent on the current course that is dequeued from the `queue` and iterate over each of them. If there are no dependent courses, an empty array (`[]`) is used to avoid null references.
+      - For each dependent course (`nextCourse`), the algorithm reduces its `inDegree` by 1. This is because completing `course` satisfies one of `nextCourse`'s prerequisites.
+      - If reducing the `inDegree` results in `nextCourse` having no more prerequisites, it means `nextCourse` can now be taken. Therefore, `nextCourse` is added to the `queue`.
 8. If the count of processed courses equals numCourses, return true; otherwise, false.
 
 ## Complexity
@@ -54,18 +54,16 @@ var canFinish = function (numCourses, prerequisites) {
   });
 
   let count = 0; // Count of courses that can be completed
+  // Process courses
   while (queue.length) {
-    count++;
-    const course = queue.shift(); // Current course taken
-    const dependentCourses = map.get(course); // Courses dependent on the current course
-    if (dependentCourses) {
-      dependentCourses.forEach((dependentCourse) => {
-        inDegree[dependentCourse]--; // Decrement in-degree of dependent course
-        if (inDegree[dependentCourse] === 0) {
-          queue.push(dependentCourse); // If no more prerequisites, add to queue
-        }
-      });
-    }
+    const course = queue.shift(); // Take course with no prerequisites
+    count++; // Increment completed courses
+
+    // Process dependent courses
+    (map.get(course) || []).forEach((nextCourse) => {
+      inDegree[nextCourse]--; // Remove prerequisite
+      if (inDegree[nextCourse] === 0) queue.push(nextCourse); // If no more prerequisites, enqueue
+    });
   }
 
   return count === numCourses; // Check if all courses have been processed};
