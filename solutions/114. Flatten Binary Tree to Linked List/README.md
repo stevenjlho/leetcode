@@ -6,16 +6,15 @@ We can use a depth-first approach by setting each node's right child to the prev
 
 ## Approach
 
-1. Declare a variable `prev` to keep track of the last processed node. This variable will help in connecting each node's right child to its predecessor in the flattened structure.
-
+1. Start with a `prev` variable set to `null` to keep track of the previously processed node in the flattened tree.
 2. Define a recursive function `flattenTree` that accepts a `node` as a parameter.
-
-   - If the current node (`node`) is `null`, return, as there's nothing to process.
-   - The function first recursively calls itself for `node.right` and then for `node.left`. This reverse postorder traversal ensures that each node's right subtree is already flattened when the node is processed.
-   - The current `node`'s right child is set to `prev`, which is the last processed node in the flattened tree.
-   - The left child of `node` is set to null, as per the requirements of a linked list.
-   - Update `prev` to the current node for the next recursive.
-
+   - If the current node is `null`, return immediately as there's nothing to process.
+   - Recursively flatten the right subtree first. This ensures that we process the rightmost nodes first and link them in reverse order.
+   - Recursively flatten the left subtree. After the right subtree is processed and linked, we then process the left subtree.
+   - After both subtrees are processed, rewire the current node:
+     - Set the current node's right pointer to `prev`, which is the previously processed node in the flattened tree.
+     - Set the current node's left pointer to `null` to adhere to the flattened tree's structure, where each node only has a right child.
+     - Update `prev` to the current node, as it now becomes the last processed node in the flattened structure.
 3. Invoke `flattenTree` with `root` as the initial argument to begin the flattening process.
 
 ## Complexity
@@ -42,7 +41,7 @@ var flatten = function (root) {
   // Initialize prev to track the last processed node
   let prev = null;
 
-  function flattenTree(node) {
+  const flattenTree = function(node) {
     if (node === null) return;
 
     // Recursively flatten the right and left subtrees
