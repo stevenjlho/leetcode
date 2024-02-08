@@ -7,19 +7,18 @@ The key idea is to explore consecutive numbers starting from those that are the 
 ## Approach
 
 1. If `nums` is empty, immediately return 0 as there are no elements to form a sequence.
-2. Start with a variable `longest` set to 1, which will hold the length of the longest consecutive sequence.
-3. `numSet` is created from `nums` to facilitate quick lookups and eliminate duplicates.
-4. Iterate through each unique number in `nums`.
+2. Start with a variable `longest` set to 0, which will hold the length of the longest consecutive sequence.
+3. Convert the array to a Set to remove duplicates and allow for O(1) lookups.
+4. Iterate through each unique number in `numSet`.
    - Check if `num - 1` is not in the set. If it's not, `num` is potentially the start of a new sequence.
-   - Initialize `curLongest` to `1` for the current sequence.
-   - Use a `while` loop to increment `curLongest` as long as `num + curLongest` exists in `numSet`.
-   - Update `longest` if `curLongest` is greater than the current `longest`.
+   - If it's the start, initialize `length` to `1` for the current sequence. Incrementally check for the presence of each subsequent number in the sequence (`num + length`) and increase the `length` counter for each found.
+   - After counting the sequence length for a starting number, compare it with `longest` and update `longest` if the current sequence is longer.
 5. After iterating through the set, return `longest` as the length of the longest consecutive sequence.
 
 ## Complexity
 
 - Time complexity: O(N), where N is the number of elements in `nums`. Each element is visited once, and the set operations (creation and lookups) are O(1).
-- Space complexity: O(N) for the set. In the worst case, if all elements are unique, the set contains N elements.
+- Space complexity: O(N) for the Set that stores all unique elements of the array.
 
 ## Code
 
@@ -31,23 +30,23 @@ The key idea is to explore consecutive numbers starting from those that are the 
 var longestConsecutive = function (nums) {
   if (nums.length === 0) return 0; // No sequence in empty array
 
-  nums = new Set(nums); // Remove duplicates and allow efficient lookups
-  let longest = 1; // Initialize the length of the longest sequence
+  const numSet = new Set(nums); // Use a Set for efficient lookups
+  let longest = 0; // Initialize the longest sequence length
 
-  for (num of nums) {
-    // Only start counting if 'num' is the start of a sequence
-    if (!nums.has(num - 1)) {
-      let curLongest = 1; // Start a new sequence
+  numSet.forEach((num) => {
+    // Only start a new sequence if 'num' is the beginning
+    if (!numSet.has(num - 1)) {
+      let length = 1;
 
-      // Count consecutive numbers in the sequence
-      while (nums.has(num + curLongest)) {
-        curLongest++; // Increase the length of the current sequence
+      // Increment the sequence length if consecutive numbers are found
+      while (numSet.has(num + length)) {
+        length++;
       }
 
-      // Update the longest sequence if necessary
-      longest = Math.max(longest, curLongest);
+      // Update the longest sequence length if necessary
+      longest = Math.max(longest, length);
     }
-  }
+  });
 
   return longest; // Return the longest consecutive sequence
 };
