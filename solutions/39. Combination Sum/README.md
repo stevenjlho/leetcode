@@ -2,25 +2,26 @@
 
 ## Intuition
 
-We explore each possibility and backtrack when we either find a solution or hit a dead end.
+Backtracking systematically explores all possible combinations of the given candidates that sum up to the target value. It constructs candidates for the solution, abandons a candidate ("backtracks") as soon as it determines that the candidate cannot possibly lead to a final solution.
 
 ## Approach
 
-1. Create a list `result` to store all valid combinations.
-2. Define a recursive function that takes three parameters - `currentCombination`: The current combination being formed, `currentSum`: The sum of the numbers in `currentCombination`, `currentIndex`: The index in `candidates` to start adding numbers to `currentCombination`.
-   - If `currentSum` exceeds `target`, the function returns immediately as this path cannot lead to a solution.
-   - If `currentSum` equals `target`, the current combination is added to result, and the function returns.
-   - Iterate through `candidates` starting from `currentIndex`, adding each candidate to the current combination, and calling itself recursively to explore further.
-     - Add `candidates[i]` to `currentCombination` and update `currentSum`.
+1. Initialize a list `result` to store the combinations that sum up to the target.
+2. If the input candidates array is empty, the function returns immediately as this path cannot lead to a solution.
+3. A recursive function `backtrack` is defined to explore all combinations starting from a given index.
+   - If the remaining target becomes negative, the function returns immediately as this path cannot lead to a solution.
+   - If the remaining target equals `0`, the current combination is added to result as a valid combination is found.
+   - Iterate through `candidates` starting from `start` to ensure that we do not consider candidates before the current starting point, thus avoiding duplicate combinations.
+     - Add current candidate (`candidates[i]`) to `path`. This action tentatively includes the current candidate in the potential combination being explored.
      - Call `backtrack` recursively to continue exploring further with this candidate included.
-     - Remove the last added candidate from `currentCombination` and update `currentSum` to backtrack.
-3. Call `backtrack([], 0, 0)` to start the process.
-4. Once all possibilities are explored, the `result` list is returned.
+     - Remove the last added candidate from `path`. This step is crucial as it resets the `path` to its state before the current candidate was included, allowing the next iteration to explore combinations with the next candidate.
+4. The backtracking process starts with the first candidate and an empty path.
+5. Once all combinations are explored, the result list containing all valid combinations is returned.
 
 ## Complexity
 
-- Time Complexity: O(N^(T/M + 1)), where N is the number of candidates, T is the target value, and M is the minimal value among the candidates. This complexity comes from the fact that in the worst case, we explore each candidate up to `T/M` times.
-- Space Complexity: O(T/M), for the recursion stack. The depth of recursion can go up to `T/M` in the worst case, where we pick the smallest number repeatedly to reach the target.
+- Time Complexity: O(N^(T/M + 1)), where N is the number of candidates, T is the target value, and M is the minimal value among the candidates. This is because the algorithm explores each candidate to varying depths (up to T/M times for the smallest candidate).
+- Space Complexity: O(T/M) for the recursion stack, where T/M represents the maximum depth of the recursion tree. In the worst case, the algorithm might explore all candidates down to the maximum depth.
 
 ## Code
 
@@ -30,31 +31,33 @@ We explore each possibility and backtrack when we either find a solution or hit 
  * @param {number} target
  * @return {number[][]}
  */
-var combinationSum = function (candidates, target) {
-  const result = [];
 
-  // Backtracking function to explore combinations
-  var backtrack = function (currentCombination, currentSum, currentIndex) {
-    // If current sum exceeds target, backtrack
-    if (currentSum > target) return;
-    // If current sum equals target, add the combination to result
-    if (currentSum === target) {
-      result.push([...currentCombination]);
+var combinationSum = function (candidates, target) {
+  const result = []; // Store all valid combinations
+
+  // Check for empty input
+  if (candidates.length === 0) return result;
+
+  // Backtracking function to explore all combinations
+  const backtrack = function (start, remaining, path) {
+    // Invalid path, remaining target became negative
+    if (remaining < 0) return;
+
+    // Valid combination found, add it to the result
+    if (remaining === 0) {
+      result.push([...path]);
       return;
     }
 
-    // Explore further with each candidate
-    for (let i = currentIndex; i < candidates.length; i++) {
-      currentCombination.push(candidates[i]); // Add candidate to current combination
-      currentSum += candidates[i]; // Update current sum
-      backtrack(currentCombination, currentSum, i); // Recursively explore with this candidate
-      // Backtrack: remove the candidate and try the next
-      currentCombination.pop();
-      currentSum -= candidates[i];
+    // Try each candidate starting from 'start' index
+    for (let i = start; i < candidates.length; i++) {
+      path.push(candidates[i]); // Include current candidate
+      backtrack(i, remaining - candidates[i], path); // Explore further with reduced target
+      path.pop(); // Remove current candidate and try next
     }
   };
 
-  backtrack([], 0, 0); // Start backtracking
-  return result; // Return all valid combinations
+  backtrack(0, target, []); // Start backtracking with an empty path
+  return result; // Return all found combinations
 };
 ```
