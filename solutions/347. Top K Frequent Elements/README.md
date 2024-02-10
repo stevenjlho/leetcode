@@ -6,10 +6,11 @@ The intuition behind this solution is to utilize a "bucket sort" mechanism, wher
 
 ## Approach
 
-1. Create a `frequencyMap` to store the frequency of each number in `nums` and a `bucket` array where each index represents a frequency count, and the elements at each index are the numbers that occur with that frequency.
-2. Iterate through `nums`, updating `frequencyMap` with the count of each number.
-3. Iterate through `frequencyMap`, placing each number into the bucket corresponding to its frequency.
-4. Starting from the highest possible frequency (the last bucket), collect numbers until you have gathered `k` elements. Use early termination to break out of the loop once `k` elements have been collected.
+1. If `nums` is empty, immediately return an empty array as there can't be any frequent elements.
+2. Iterate through `nums`, populating a map (`frequencyMap`) where each key is a number from `nums` and its value is the frequency of that number.
+3. Create an array of empty arrays (`buckets`), with an array for each possible frequency (from 0 to the length of `nums`).
+4. Iterate through `frequencyMap`, placing each number into its corresponding frequency bucket in `buckets`.
+5. Starting from the highest possible frequency (the last bucket), collect elements from each bucket until you have `k` elements.
 
 ## Complexity
 
@@ -25,30 +26,29 @@ The intuition behind this solution is to utilize a "bucket sort" mechanism, wher
  * @return {number[]}
  */
 var topKFrequent = function (nums, k) {
-  // Array to hold 'buckets' of numbers, indexed by frequency
-  const bucket = new Array(nums.length + 1);
-  // Map to track the frequency of each number
+  if (!nums.length) return []; // Return empty array for empty input
+
   const frequencyMap = new Map();
-
-  // Fill the frequency map with counts of each number
-  nums.forEach((n) => frequencyMap.set(n, (frequencyMap.get(n) || 0) + 1));
-
-  // Place each number in the appropriate 'frequency bucket'
-  frequencyMap.forEach((frequency, number) => {
-    bucket[frequency] = (bucket[frequency] || []).concat(number);
+  // Count the frequency of each number in nums
+  nums.forEach((num) => {
+    frequencyMap.set(num, (frequencyMap.get(num) || 0) + 1);
   });
 
-  // Result array to hold the top k frequent numbers
+  // Initialize buckets for each frequency level
+  const buckets = Array.from({ length: nums.length + 1 }, () => []);
+
+  // Place each number in its corresponding frequency bucket
+  frequencyMap.forEach((freq, num) => buckets[freq].push(num));
+
   const result = [];
-  // Start from the highest possible frequency and collect top k frequent numbers
-  for (let i = bucket.length - 1; i > 0 && result.length < k; i--) {
-    if (bucket[i]) {
-      result.push(...bucket[i]);
-      // Break early if k elements have been collected
-      if (result.length >= k) break;
+  // Iterate over buckets from highest to lowest frequency
+  for (let i = buckets.length - 1; i >= 0 && result.length < k; i--) {
+    if (buckets[i]) {
+      // Add all elements in the current bucket to the result
+      result.push(...buckets[i]);
     }
   }
 
-  return result; // Return the top k frequent numbers
+  return result; // Return the top k frequent elements
 };
 ```
