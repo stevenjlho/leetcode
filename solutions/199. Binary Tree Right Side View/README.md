@@ -6,13 +6,13 @@ This solution leverages depth-first search (DFS) to traverse the tree, prioritiz
 
 ## Approach
 
-1. Create an array `result` to store the rightmost node at each depth level.
+1. Create an array `res` to store the rightmost node at each depth level.
 2. Implement a recursive helper function `rightView` that takes a node and its depth in the tree as arguments.  
    - If the node is null, return immediately. This handles the case of empty trees or leaf nodes.
-   - If the current depth equals the length of the `result` list, it means this node is the first node being visited at this depth(hence, the rightmost), so its value is added to result.
+   - If the current depth equals the length of the `res` list, it means this node is the first node being visited at this depth(hence, the rightmost), so its value is added to res.
    - The function first recurses on the right child, then on the left child. This order ensures rightmost nodes are processed first.
 3. Call `rightView` with the root node and an initial depth of 0.
-4. After the traversal, return the `result` array, which now contains the rightmost view of the binary tree.
+4. After the traversal, return the `res` array, which now contains the rightmost view of the binary tree.
 
 ## Complexity
 
@@ -36,16 +36,16 @@ This solution leverages depth-first search (DFS) to traverse the tree, prioritiz
  * @return {number[]}
  */
 var rightSideView = function (root) {
-  let result = [];
+  let res = [];
 
   function rightView(node, depth) {
     if (node === null) {
       return;
     }
 
-    if (depth === result.length) {
+    if (depth === res.length) {
       // If this depth hasn't been encountered, add the node's value
-      result.push(node.val);
+      res.push(node.val);
     }
     // Prioritize right subtree to ensure rightmost nodes are seen first
     rightView(node.right, depth + 1);
@@ -55,6 +55,6 @@ var rightSideView = function (root) {
 
   // Start collecting from root
   rightView(root, 0);
-  return result;
+  return res;
 };
 ```

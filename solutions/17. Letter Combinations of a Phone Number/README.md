@@ -9,14 +9,14 @@ Explore all potential combinations and backtrack when a complete combination is 
 ## Approach
 
 1. Create a `map` to map the digits to its corresponding letters, facilitating the lookup for each digit's possible characters.
-2. Initialize `result` as an empty array to store the generated combinations.
+2. Initialize `res` as an empty array to store the generated combinations.
 3. Define a recursive function that takes two parameters: `index` to track the current position in the `digits` string and `path` to keep the current combination of letters being formed.
-   - If the current index equals the length of `digits`, the current path forms a complete combination and is added to `result`.
+   - If the current index equals the length of `digits`, the current path forms a complete combination and is added to `res`.
    - Define a recursive function that takes two parameters: `index` to track the current position in the `digits` string and `path` to keep the current combination of letters being formed.
    - Iterate through each of its mapped letters, appending one letter at a time to the current path, and recursively call `exploreCombinations` with the next index.
-4. If `digits` is empty, return the empty `result` array to signify no combinations can be formed.
+4. If `digits` is empty, return the empty `res` array to signify no combinations can be formed.
 5. The recursive process starts with the first digit (index 0) and an empty path.
-6. After exploring all combinations, return the `result` array.
+6. After exploring all combinations, return the `res` array.
 
 ## Complexity
 
@@ -42,11 +42,11 @@ var exploreCombinations = function (digits) {
     ["9", "wxyz"],
   ]); // Mapping from digits to letters
 
-  const result = []; // Array to store the combinations
+  const res = []; // Array to store the combinations
 
   var exploreCombinations = function (index, path) {
     if (index === digits.length) {
-      result.push(path); // Add the complete combination to the results
+      res.push(path); // Add the complete combination to the results
       return;
     }
     const currentDigit = digits[index]; // Get the current digit
@@ -56,10 +56,10 @@ var exploreCombinations = function (digits) {
     }
   };
 
-  if (digits.length === 0) return result; // Handle empty input
+  if (digits.length === 0) return res; // Handle empty input
 
   exploreCombinations(0, ""); // Start the recursive process
 
-  return result; // Return the generated combinations
+  return res; // Return the generated combinations
 };
 ```

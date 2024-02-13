@@ -6,15 +6,15 @@ We need to ensure that the inorder traversal of the tree results is a strictly i
 
 ## Approach
 
-1. Initialize an empty array `result` to store the inorder traversal sequence.
+1. Initialize an empty array `res` to store the inorder traversal sequence.
 2. Define a helper function `traversal` to perform inorder traversal:
    - Return immediately if the current node (`root`) is null.
    - Recursively traverse the left subtree of the current node.
-   - Append the value of the current node to `result`.
+   - Append the value of the current node to `res`.
    - Recursively traverse the right subtree of the current node.
 3. Call the `traversal` function starting from the root of the tree.
-4. Verify that `result` forms a strictly increasing sequence:
-   - Iterate through `result` and check if each element is greater than its predecessor. If any element is not, the tree is not a valid BST. Return `false` in this case.
+4. Verify that `res` forms a strictly increasing sequence:
+   - Iterate through `res` and check if each element is greater than its predecessor. If any element is not, the tree is not a valid BST. Return `false` in this case.
 5. Return `true` if the entire sequence is strictly increasing, confirming the tree is a valid BST.
 
 ## Complexity
@@ -38,7 +38,7 @@ We need to ensure that the inorder traversal of the tree results is a strictly i
  * @return {boolean}
  */
 var isValidBST = function (root) {
-  var result = []; // This will hold the inorder traversal result
+  var res = []; // This will hold the inorder traversal result
 
   // Helper function to perform inorder traversal
   const traversal = (root) => {
@@ -48,16 +48,16 @@ var isValidBST = function (root) {
     }
 
     traversal(root.left); // Recursively traverse the left subtree
-    result.push(root.val); // Record the node's value in the result
+    res.push(root.val); // Record the node's value in the result
     traversal(root.right); // Recursively traverse the right subtree
   };
 
   // Start the inorder traversal from the root
   traversal(root);
 
-  // Check if the recorded values in result are in strictly increasing order
-  for (let i = 1; i < result.length; i++) {
-    if (result[i] <= result[i - 1]) {
+  // Check if the recorded values in res are in strictly increasing order
+  for (let i = 1; i < res.length; i++) {
+    if (res[i] <= res[i - 1]) {
       // If not, it's not a BST
       return false;
     }

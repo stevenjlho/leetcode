@@ -6,18 +6,18 @@ The goal is to perform a preorder traversal of a binary tree, which involves vis
 
 # Approach
 
-1. Initialize an empty array `result` to store the nodes in the preorder traversal order.
+1. Initialize an empty array `res` to store the nodes in the preorder traversal order.
 2. Define a recursive function `traversal` that takes a `root` node as its parameter.
    - Check if the current node `root` is null. If it is, don't return anything as there's nothing to process.
-   - Push the value of the current node `root.val` into the `result` array to record the visitation order.
+   - Push the value of the current node `root.val` into the `res` array to record the visitation order.
    - Recursively call `traversal` for the left subtree(`root.left`) and right subtree (`root.right`) of the current node.
 3. Call the `traversal` function, starting with the root of the binary tree.
-4. After the recursive traversal, return the `result` array containing the nodes in the preorder traversal order.
+4. After the recursive traversal, return the `res` array containing the nodes in the preorder traversal order.
 
 # Complexity
 
 - Time complexity: O(n), where n is the number of nodes in the binary tree. We visit each node once.
-- Space complexity: O(n), as the `result` array stores the values of all nodes in the traversal.
+- Space complexity: O(n), as the `res` array stores the values of all nodes in the traversal.
 
 # Code
 
@@ -35,7 +35,7 @@ The goal is to perform a preorder traversal of a binary tree, which involves vis
  * @return {number[]}
  */
 var preorderTraversal = function (root) {
-  let result = [];
+  let res = [];
 
   var traversal = (root) => {
     // If the current node is null, there's nothing to process
@@ -43,8 +43,8 @@ var preorderTraversal = function (root) {
       return;
     }
 
-    // Push the value of the current node into the result array.
-    result.push(root.val);
+    // Push the value of the current node into the res array.
+    res.push(root.val);
 
     traversal(root.left);
     traversal(root.right);
@@ -53,6 +53,6 @@ var preorderTraversal = function (root) {
   // Start the traversal with the root node.
   traversal(root);
 
-  return result;
+  return res;
 };
 ```

@@ -6,13 +6,13 @@ The solution uses Depth-First Search (DFS) to explore all possible placements of
 
 ## Approach
 
-1. Create an empty array `result` to store the valid combinations.
+1. Create an empty array `res` to store the valid combinations.
 2. Define a helper function `dfs`.
-   - When the constructed string `s` reaches the length of `n * 2`, it means we've added `n` pairs of parentheses. We add `s` to the result set and return.
+   - When the constructed string `s` reaches the length of `n * 2`, it means we've added `n` pairs of parentheses. We add `s` to the res set and return.
    - As long as the count of left parentheses `'('` added so far is less than `n`, we can add another `'('` to the string. We do this by calling the `dfs` function recursively, increasing the count of left parentheses by 1.
    - We can add a right parenthesis `')'` only if its count is less than the count of left parentheses to ensure the string remains valid. We call the `dfs` function recursively, increasing the count of right parentheses by 1.
 3. Call `dfs` with `0`, `0`, and empty string to start the process.
-4. After all recursive calls complete, return the `result` array containing all valid combinations.
+4. After all recursive calls complete, return the `res` array containing all valid combinations.
 
 ## Complexity
 
@@ -27,12 +27,12 @@ The solution uses Depth-First Search (DFS) to explore all possible placements of
  * @return {string[]}
  */
 var generateParenthesis = function (n) {
-  const result = []; // Array to store valid combinations
+  const res = []; // Array to store valid combinations
   // Helper function to recursively build combinations
   var dfs = function (left, right, s) {
-    // If the current string reaches the maximum length, add to the result
+    // If the current string reaches the maximum length, add to the res
     if (s.length === n * 2) {
-      result.push(s);
+      res.push(s);
       return;
     }
 
@@ -49,6 +49,6 @@ var generateParenthesis = function (n) {
 
   // Initialize the recursion with no parentheses added yet
   dfs(0, 0, "");
-  return result; // Return all found combinations};
+  return res; // Return all found combinations};
 };
 ```

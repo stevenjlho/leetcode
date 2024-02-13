@@ -7,7 +7,7 @@ Traverse the binary tree level by level and collect the nodes at each level in s
 ## Approach
 
 1. Check if the root node is null. If it is, return an empty array as there are no levels to traverse.
-2. Initialize an empty array `result` to store the level order traversal results, and `queue` to keep track of the nodes waiting to be dequeued.
+2. Initialize an empty array `res` to store the level order traversal results, and `queue` to keep track of the nodes waiting to be dequeued.
 3. Push the root node into the queue.
 4. Perform a while loop while the queue is not empty:
    - Get the number of nodes of `queue` in the current level, don't directly use queue.length, because its length is not fixed.
@@ -16,8 +16,8 @@ Traverse the binary tree level by level and collect the nodes at each level in s
      - Dequeue a node from the queue.
      - Push the value of the dequeued node into the `curLevel` array.
      - Enqueue the left and right children of the dequeued node into the `queue`, if they exist.
-   - Push the `curLevel` array into the `result` array to record the nodes at the current level.
-5. Return the `result` array containing the level order traversal of the binary tree.
+   - Push the `curLevel` array into the `res` array to record the nodes at the current level.
+5. Return the `res` array containing the level order traversal of the binary tree.
 
 ## Complexity
 
@@ -45,7 +45,7 @@ var levelOrder = function (root) {
   }
 
   // Array to store the final level order traversal result.
-  let result = [];
+  let res = [];
   // Queue to facilitate the traversal.
   let queue = [];
 
@@ -68,9 +68,9 @@ var levelOrder = function (root) {
     }
 
     // Record nodes at the current level.
-    result.push(curLevel);
+    res.push(curLevel);
   }
 
-  return result;
+  return res;
 };
 ```

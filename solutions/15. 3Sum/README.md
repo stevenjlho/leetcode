@@ -8,7 +8,7 @@ By fixing one element and using two pointers to scan the remainder of the array,
 
 1. Begin by sorting the array. This helps in both identifying duplicates and making the two-pointer strategy effective.
 2. If the array has fewer than three elements or if the first element is positive, return an empty array.
-3. Initialize `result` to store valid triplets
+3. Initialize `res` to store valid triplets
 4. Iterate over the array with a loop.
    - If the current element is positive, break the loop. Beyond this point, it's impossible to find a triplet that sums to zero.
    - If the current element is the same as the previous one, skip it to avoid duplicate triplets.
@@ -17,7 +17,7 @@ By fixing one element and using two pointers to scan the remainder of the array,
      - If sum is greater than 0, decrement `high` to reduce the sum to make it `0`.
      - If sum is less than 0, increment `low` to increase the sum to make it `0`.
      - If sum equals 0, a triplet is found:
-       - Add the triplet to the result.
+       - Add the triplet to the res.
        - Move `low` and `high` to skip over duplicate values.
 5. After completing the iterations, return the list of triplets found.
 
@@ -41,7 +41,7 @@ var threeSum = function (nums) {
     return []; // Return an empty array if no valid triplets can exist
   }
 
-  let result = []; // Initialize result array to store valid triplets
+  let res = []; // Initialize res array to store valid triplets
 
   for (let i = 0; i < nums.length; ++i) {
     // If current number is positive, no further triplets can sum to zero
@@ -66,7 +66,7 @@ var threeSum = function (nums) {
         low++;
       } else {
         // Found a triplet that sums to zero
-        result.push([nums[i], nums[low], nums[high]]);
+        res.push([nums[i], nums[low], nums[high]]);
 
         // Record the current elements at low and high pointers
         let lastLow = nums[low],
@@ -79,6 +79,6 @@ var threeSum = function (nums) {
     }
   }
 
-  return result; // Return all found triplets
+  return res; // Return all found triplets
 };
 ```

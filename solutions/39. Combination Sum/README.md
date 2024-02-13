@@ -6,17 +6,17 @@ Backtracking systematically explores all possible combinations of the given cand
 
 ## Approach
 
-1. Initialize a list `result` to store the combinations that sum up to the target.
+1. Initialize a list `res` to store the combinations that sum up to the target.
 2. If the input candidates array is empty, the function returns immediately as this path cannot lead to a solution.
 3. A recursive function `backtrack` is defined to explore all combinations starting from a given index.
    - If the remaining target becomes negative, the function returns immediately as this path cannot lead to a solution.
-   - If the remaining target equals `0`, the current combination is added to result as a valid combination is found.
+   - If the remaining target equals `0`, the current combination is added to `res` as a valid combination is found.
    - Iterate through `candidates` starting from `start` to ensure that we do not consider candidates before the current starting point, thus avoiding duplicate combinations.
      - Add current candidate (`candidates[i]`) to `path`. This action tentatively includes the current candidate in the potential combination being explored.
      - Call `backtrack` recursively to continue exploring further with this candidate included.
      - Remove the last added candidate from `path`. This step is crucial as it resets the `path` to its state before the current candidate was included, allowing the next iteration to explore combinations with the next candidate.
 4. The backtracking process starts with the first candidate and an empty path.
-5. Once all combinations are explored, the result list containing all valid combinations is returned.
+5. Once all combinations are explored, the `res` list containing all valid combinations is returned.
 
 ## Complexity
 
@@ -33,19 +33,19 @@ Backtracking systematically explores all possible combinations of the given cand
  */
 
 var combinationSum = function (candidates, target) {
-  const result = []; // Store all valid combinations
+  const res = []; // Store all valid combinations
 
   // Check for empty input
-  if (candidates.length === 0) return result;
+  if (candidates.length === 0) return res;
 
   // Backtracking function to explore all combinations
   const backtrack = function (start, remaining, path) {
     // Invalid path, remaining target became negative
     if (remaining < 0) return;
 
-    // Valid combination found, add it to the result
+    // Valid combination found, add it to the res
     if (remaining === 0) {
-      result.push([...path]);
+      res.push([...path]);
       return;
     }
 
@@ -58,6 +58,6 @@ var combinationSum = function (candidates, target) {
   };
 
   backtrack(0, target, []); // Start backtracking with an empty path
-  return result; // Return all found combinations
+  return res; // Return all found combinations
 };
 ```

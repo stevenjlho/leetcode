@@ -6,9 +6,9 @@ The solution leverages backtracking to explore every possible combination of the
 
 ## Approach
 
-1. Initialize an empty list `result` to store all the unique permutations generated from `nums`.
+1. Initialize an empty list `res` to store all the unique permutations generated from `nums`.
 2. Define the `backtrack` function that builds permutations by adding one number at a time to the current path.
-   - If the length of the current path equals the length of `nums`, it means a complete permutation has been formed, so it's added to `result`.
+   - If the length of the current path equals the length of `nums`, it means a complete permutation has been formed, so it's added to `res`.
    - Loop through each number in `nums`.
      - If the current number is already in the path, skip it to avoid duplicates.
      - Add the current number to the path.
@@ -28,13 +28,13 @@ The solution leverages backtracking to explore every possible combination of the
  * @return {number[][]}
  */
 var permute = function (nums) {
-  const result = []; // Stores all permutations
+  const res = []; // Stores all permutations
 
   // Recursive function to generate permutations
   var backtrack = function (path) {
     // Check if the current path is a complete permutation
     if (path.length === nums.length) {
-      result.push([...path]); // Add a deep copy of path to result
+      res.push([...path]); // Add a deep copy of path to res
       return; // Backtrack
     }
 
@@ -49,6 +49,6 @@ var permute = function (nums) {
   };
 
   backtrack([]); // Start backtracking with an empty path
-  return result; // Return all generated permutations
+  return res; // Return all generated permutations
 };
 ```

@@ -40,15 +40,15 @@ var topKFrequent = function (nums, k) {
   // Place each number in its corresponding frequency bucket
   frequencyMap.forEach((freq, num) => buckets[freq].push(num));
 
-  const result = [];
+  const res = [];
   // Iterate over buckets from highest to lowest frequency
-  for (let i = buckets.length - 1; i >= 0 && result.length < k; i--) {
+  for (let i = buckets.length - 1; i >= 0 && res.length < k; i--) {
     if (buckets[i]) {
-      // Add all elements in the current bucket to the result
-      result.push(...buckets[i]);
+      // Add all elements in the current bucket to the res
+      res.push(...buckets[i]);
     }
   }
 
-  return result; // Return the top k frequent elements
+  return res; // Return the top k frequent elements
 };
 ```
