@@ -15,10 +15,12 @@ The solution leverages backtracking to explore every possible combination of the
      - Call `backtrack` with the updated path to continue building the permutation.
      - Remove the last added number from the path to explore a new branch of the decision tree.
 3. Call `backtrack` with an empty path to start the permutation process.
-4. After exploring all possible combinations, return the list of permutations.## Complexity
+4. After exploring all possible combinations, return the list of permutations.
 
-* Time Complexity: O(N!), factorial of N, where N is the number of elements in `nums`. This is because there are N! permutations for N elements.
-* Space Complexity: O(N), primarily due to the recursion call stack and the storage for the current path. In the worst case, the call stack depth and path length can go up to N.
+## Complexity
+
+- Time Complexity: O(N!), factorial of N, where N is the number of elements in `nums`. This is because there are N! permutations for N elements.
+- Space Complexity: O(N), primarily due to the recursion call stack and the storage for the current path. In the worst case, the call stack depth and path length can go up to N.
 
 ## Code
 
