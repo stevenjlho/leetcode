@@ -1,4 +1,4 @@
-# [45. Jump Game II](tps://leetcode.com/problems/jump-game-ii/description/)
+# [45.Jump Game II](https://leetcode.com/problems/jump-game-ii/description/)
 
 ## Intuition
 

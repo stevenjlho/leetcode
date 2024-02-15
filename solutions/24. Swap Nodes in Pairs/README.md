@@ -4,21 +4,18 @@
 
 ## Intuition
 
-We need to handle three main tasks: swapping nodes, maintaining the connection with the rest of the list, and progressing through the list.
+The intuition is to iterate through the list in pairs and reverse their order by adjusting the next pointers, effectively swapping each pair of adjacent nodes.
 
 ## Approach
 
-1. If the list has fewer than two nodes (`head` is null or `head.next` is null), return the head as no swapping is needed.
-2. Create a dummy node to simplify the handling of edge cases.
-3. Initialize `prevNode` to point to `dummyNode`. It always marks the node before the current pair that are being processed for swapping.
-4. Initialize `curNode` to point to `head`, as the first node of the pair that is being swapped.
-5. As long as `curNode` and `curNode.next` are not null (ensuring there are two nodes to swap), proceed with the swapping logic.
-   - Link `prevNode.next` to the second node in the pair (`curNode.next`).
-   - Update `curNode.next` to point to the node after its pair, effectively skipping one node (the second node of the pair).
-   - Set the `next` of the second node in the pair to `curNode`, completing the swap.
-   - Move `prevNode` to `curNode`, positioning it before the next pair to be swapped.
-   - Advance `curNode` to its next node, moving to the next pair.
-6. Return `dummyNode.next`, which points to the new head of the swapped list.
+1. Check if the list is empty or contains only one node. If so, no swap is needed; return the head as is.
+2. Create a dummy node and point its next to the head of the list. This dummy node acts as a placeholder to simplify the swapping logic at the head of the list.
+3. Use a variable `prev` to keep track of the node immediately before the current pair being swapped. Initialize `prev` with the dummy node.
+4. Iterate through the list while the next two nodes in the pair exist.
+   - Identify the first and second nodes in the current pair.
+   - Perform the swap by adjusting the next pointers: point the first node's next to the second node's next, then link second node back to the first node, and finally point the `prev` node's next to the second node(now first after swap).
+   - Update `prev` to the first node of the swapped pair, moving it two positions forward for the next iteration.
+5. After the loop, the list's head is effectively the dummy node's next. Return this as the new head of the list.
 
 ## Complexity
 
@@ -40,30 +37,27 @@ We need to handle three main tasks: swapping nodes, maintaining the connection w
  * @return {ListNode}
  */
 var swapPairs = function (head) {
-  // Handle cases where the list is empty or has only one node
-  if (!head || !head.next) return head;
+  if (!head || !head.next) return head; // Base case: no need to swap for empty or single-node list
 
-  // Initialize a dummy node to act as a placeholder before the head
-  let dummyNode = new ListNode(0);
-  // Set prevNode to dummyNode; it will always point to the node before the current pair
-  let prevNode = dummyNode;
-  // Start curNode at the head; it represents the first node of the current pair
-  let curNode = head;
+  let dummy = new ListNode(0); // Dummy node to handle edge case at head
+  dummy.next = head;
+  let prev = dummy; // `prev` points to the node before the pair being swapped
 
-  // Iterate through the list, swapping pairs of nodes
-  while (curNode && curNode.next) {
-    // Swap process
-    prevNode.next = curNode.next; // Link prevNode to second node of the pair
-    curNode.next = curNode.next.next; // Link curNode to node after its pair
-    prevNode.next.next = curNode; // Link second node of pair back to curNode
+  // Iterate while there's at least a pair to swap
+  while (prev.next && prev.next.next) {
+    let first = prev.next; // First node of the pair
+    let second = prev.next.next; // Second node of the pair
 
-    // Move to the next pair
-    prevNode = curNode; // Update prevNode to current node
-    curNode = curNode.next; // Advance current node
+    // Perform the swap by re-linking the `next` pointers
+    first.next = second.next; // Step 1: Link first node to the node after the second
+    second.next = first; // Step 2: Link second node back to the first
+    prev.next = second; // Step 3: Link `prev` node to the second (now first after swap)
+
+    // Move `prev` two nodes ahead for the next swap
+    prev = first;
   }
 
-  // Return the new head of the list, which follows the dummy node
-  return dummyNode.next;
+  return dummy.next; // The head of the modified list is dummy's next
 };
 ```
 
