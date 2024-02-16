@@ -2,19 +2,16 @@
 
 ## Intuition
 
-To determine if a tree is height-balanced, we need to ensure that the difference in heights of the left and right subtrees of any node in the tree is not greater than 1.
+This solution is based on the principle of post-order traversal in a binary tree. We need to check the height of the left and right subtrees of every node, ensuring that the difference in heights is not more than one, which aligns with the definition of a balanced tree according to the problem statement.
 
 ## Approach
 
-1. Define a helper function getHeight that computes the height of a given node.
-
-   - Use a recursive method to obtain the heights for both left and right children.
-   - If a subtree (either left or right) is found to be unbalanced, indicate this using a height value of `-1`.
-   - If the absolute difference between the heights of the left and right subtrees is greater than `1`, return `-1` to signal imbalance.
-   - If the subtree is balanced, determine its height by counting the current node (adding one) to the maximum height between its left and right subtrees.
-
-2. valuate the tree's balance by computing the height of the root node using `getHeight`.
-3. If the height is `-1`, it indicates the tree is unbalanced; otherwise, it's balanced.
+1. Define a helper function `checkHeight` that computes the height of a given node.
+   - If the current node (`node`) is `null`, return `0`, indicating the height of an empty subtree is `0`.
+   - Recursively calculate the height of the left subtree (`leftHeight`) and the height of the right subtree (`rightHeight`).
+   - If either the left or right subtree is unbalanced (indicated by `-1`), or the absolute difference between `leftHeight` and `rightHeight` is greater than `1`, the current tree is unbalanced. Return `-1` to propagate the unbalanced state up the recursive calls.
+   - If the current subtree is balanced, calculate its height as `1` plus the maximum of `leftHeight` and `rightHeight`.
+2. If checkHeight returns -1, the tree is unbalanced, otherwise it's balanced
 
 ## Complexity
 
@@ -32,37 +29,32 @@ To determine if a tree is height-balanced, we need to ensure that the difference
  *     this.right = (right===undefined ? null : right)
  * }
  */
-
 /**
  * @param {TreeNode} root
  * @return {boolean}
  */
 var isBalanced = function (root) {
-  // If the computed height is -1, it means the tree is not balanced
-  if (getHeight(root) === -1) {
-    return false;
-  }
-  return true;
-};
+  // Helper function to check the height and balance of the tree
+  const checkHeight = (node) => {
+    if (node === null) return 0; // Base case: empty subtree has height 0
 
-/**
- * Helper function to get the height of a node
- * @param {TreeNode} root
- * @return {number}
- */
-const getHeight = (root) => {
-  if (root == null) return 0; // Base case: If node is null, its height is 0
+    const leftHeight = checkHeight(node.left); // Height of left subtree
+    const rightHeight = checkHeight(node.right); // Height of right subtree
 
-  let left = getHeight(root.left); // Compute height of left subtree
-  let right = getHeight(root.right); // Compute height of right subtree
+    // Check for unbalanced subtree or height difference more than 1
+    if (
+      leftHeight === -1 ||
+      rightHeight === -1 ||
+      Math.abs(leftHeight - rightHeight) > 1
+    ) {
+      return -1; // Indicate unbalanced tree
+    }
 
-  // If any subtree (left or right) is unbalanced, return -1
-  if (left === -1 || right === -1) return -1;
+    // Current node's height is max of left/right subtree heights plus 1
+    return Math.max(leftHeight, rightHeight) + 1;
+  };
 
-  // If the height difference between left and right subtree is more than 1, return -1 to indicate imbalance
-  if (Math.abs(left - right) > 1) return -1;
-
-  // Return height of current subtree rooted at the node
-  return 1 + Math.max(left, right);
+  // If checkHeight returns -1, the tree is unbalanced, otherwise it's balanced
+  return checkHeight(root) !== -1;
 };
 ```
