@@ -4,7 +4,7 @@
 
 ## Intuition
 
-To find the first occurrence of `needle` in `haystack`, we can slide a window over `haystack` and compare each substring with `needle`.
+The approach is straightforward and brute force, checking each potential starting point in `haystack` to see if `needle` matches there.
 
 ## Approach
 
