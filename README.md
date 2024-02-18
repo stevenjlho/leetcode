@@ -96,6 +96,7 @@ This project serves as my personal LeetCode coding journal. It helps me keep tra
 - [230. Kth Smallest Element in a BST](https://github.com/stevenjlho/leetcode/blob/main/solutions/230.%20Kth%20Smallest%20Element%20in%20a%20BST/README.md)
 - [235. Lowest Common Ancestor of a Binary Search Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/235.%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Search%20Tree/README.md)
 - [236. Lowest Common Ancestor of a Binary Tree](https://github.com/stevenjlho/leetcode/blob/main/solutions/236.%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree/README.md)
+- [240. Search a 2D Matrix II](https://github.com/stevenjlho/leetcode/blob/main/solutions/240.%20Search%20a%202D%20Matrix%20II/README.md)
 - [347. Top K Frequent Elements](https://github.com/stevenjlho/leetcode/blob/main/solutions/347.%20Top%20K%20Frequent%20Elements/README.md)
 - [394. Decode String](https://github.com/stevenjlho/leetcode/blob/main/solutions/394.%20Decode%20String/README.md)
 - [437. Path Sum III](https://github.com/stevenjlho/leetcode/blob/main/solutions/437.%20Path%20Sum%20III/README.md)
