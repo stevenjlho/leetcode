@@ -8,10 +8,10 @@ The core idea is to traverse the board, character by character, and backtrack wh
 
 1. Check if the `board` is empty or null, return false immediately as the word cannot be found.
 2. Define a DFS function that takes the current position (`row`, `col`) on the board and the current index in the word we are matching.
-   - If the current index equals the length of the word, we have found the word, return true.
-   - Validate the current position (row, col) to ensure it's within the board and the character matches the current character of the word.
-   - Store the current character before marking the cell as visited, which ensures that the DFS algorithm can revert the board to its original state after exploring each path, allowing for accurate and independent path explorations.
-   - Temporarily mark the current cell as visited by changing its value to avoid revisiting it in the immediate recursive calls.
+   - Return true If the current index equals the length of the word, indicating the entire word is matched.
+   - Return false if out-of-bounds or if the current board cell's character doesn't match the current character in `word`.
+   - Store the current character before marking the cell as visited, which ensures that the DFS algorithm can revert the board to its original state after exploring each path 
+   - Temporarily mark the current cell as visited by setting its value to a non-alphabetic character 
    - Recursively call DFS for the next character in all four directions.
    - Restore the original character at the board position to allow for future searches.
    - If any of the recursive calls return true, propagate this result upwards, indicating the word exists on the board.
@@ -20,7 +20,8 @@ The core idea is to traverse the board, character by character, and backtrack wh
 4. If none of the starting points lead to a successful search, return false, indicating the word does not exist on the board.
 
 ## Complexity
-- Time Complexity: O(M\*N\*4^L), where M and N are the dimensions of the board, and L is the length of the word to be matched.  In the worst case, the algorithm might explore all 4 directions for each character of the word.
+
+- Time Complexity: O(M\*N\*4^L), where M and N are the dimensions of the board, and L is the length of the word to be matched. In the worst case, the algorithm might explore all 4 directions for each character of the word.
 - Space Complexity: O(L), due to the maximum depth of the recursion call stack being the length of the word. In the worst case, the recursion goes as deep as the number of characters in the word.
 
 ## Code
@@ -31,7 +32,6 @@ The core idea is to traverse the board, character by character, and backtrack wh
  * @param {string} word
  * @return {boolean}
  */
-
 var exist = function (board, word) {
   if (!board || !board.length) return false; // Early exit if board is empty
 
@@ -39,14 +39,14 @@ var exist = function (board, word) {
     if (index === word.length) return true; // Word found
     if (
       row < 0 ||
-      row >= board.length ||
+      row >= board.length || // Check for out-of-bounds rows
       col < 0 ||
-      col >= board[0].length ||
-      board[row][col] !== word[index]
+      col >= board[0].length || // Check for out-of-bounds columns
+      board[row][col] !== word[index] // Check for character mismatch
     )
-      return false; // Out of bounds or character mismatch
+      return false;
 
-    let temp = board[row][col]; // Store current character
+    let currentChar = board[row][col]; // Store current character
     board[row][col] = "#"; // Mark as visited
 
     // Explore all four directions
@@ -56,7 +56,7 @@ var exist = function (board, word) {
       dfs(row, col + 1, index + 1) ||
       dfs(row, col - 1, index + 1);
 
-    board[row][col] = temp; // Restore character (backtrack)
+    board[row][col] = currentChar; // Restore character (backtrack)
     return found; // Return result
   };
 
@@ -67,6 +67,6 @@ var exist = function (board, word) {
     }
   }
 
-  return false; // Word not found on the board
+  return false; // Word not found 
 };
 ```
