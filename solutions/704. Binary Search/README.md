@@ -2,17 +2,17 @@
 
 ## Intuition
 
-Binary search efficiently locates an element in a sorted array by repeatedly halving the search interval, drastically reducing the number of comparisons needed compared to a linear search.
+The core concept behind this solution is the Binary Search algorithm, which efficiently locates an item in a sorted array by repeatedly dividing the search interval in half. 
 
 ## Approach
 
-1.  Start with two pointers representing the bounds (`low` and `high`) of the current search interval within the array.
-2.  Enter a while loop which continues as long as `low` is less than or equal to `high`.
-    - Calculate the middle index between `low` and `high`.
-    - If equal, return `middle` as the found index.
-    - If the middle element is less than `target`, move the `low` pointer to `middle + 1` to search the right half.
-    - If the middle element is greater than `target`, move the `high` pointer to `middle - 1` to search the left half.
-3.  If the loop ends without finding the target, return `-1`.
+1. Start with two pointers representing the bounds (`low` and `high`) of the current search interval within the array.
+2. Enter a while loop which continues as long as `low` is less than or equal to `high`.
+   - Calculate the middle index using `low` and `high`. This is where we check for the target value.
+   - If equal, return `middle` as the found index.
+   - If the middle element is less than `target`, move the `low` pointer to `middle + 1` to search the right half.
+   - If the middle element is greater than `target`, move the `high` pointer to `middle - 1` to search the left half.
+3. If the loop ends without finding the target, return `-1`.
 
 ## Complexity
 
@@ -32,9 +32,9 @@ var search = function (nums, target) {
   let low = 0; // Starting index of the search range
   let high = nums.length - 1; // Ending index of the search range
 
-  // While the search range is valid
+  // Continue searching while the range is valid
   while (low <= high) {
-    const middle = Math.floor((low + high) / 2); // Calculate the mid-point
+    const middle = Math.floor(low + ((high - low) / 2)); // Calculate mid-poin
     // Check if the mid-point is the target
     if (nums[middle] == target) return middle; // Target found, return index
     // Adjust the search range based on comparison
