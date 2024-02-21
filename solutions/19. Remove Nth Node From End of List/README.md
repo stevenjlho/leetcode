@@ -6,12 +6,12 @@ The idea is to use two pointers, `fast` and `slow`, where `fast` advances `n` st
 
 # Approach
 
-1.  Starting with `fast` and `slow` at the head is the correct setup for the two-pointer method.
-2.  Advance `fast` by `n` Steps. This creates a gap of `n` nodes between `fast` and `slow`, which is crucial for identifying the Nth node from the end.
-3.  If `fast` is null after advancing `n` steps, the head is the Nth node from the end. Returning `head.next` effectively removes the head.
-4.  Move `fast` and `slow` Until `fast` reaches the end. This ensures that when `fast` reaches the end of the list, `slow` will be just before the Nth node from the end.
-5.  Skipping the next node in `slow` correctly removes the targeted node by pointing `slow.next` to `slow.next.next`
-6.  Returning `head` provides the updated list.
+1. Starting with `fast` and `slow` at the head is the correct setup for the two-pointer method.
+2. Advance `fast` by `n` Steps. This creates a gap of `n` nodes between `fast` and `slow`, which is crucial for identifying the Nth node from the end.
+3. If `fast` is null after advancing `n` steps, the head is the Nth node from the end. Returning `head.next` effectively removes the head.
+4. Move `fast` and `slow` until `fast` reaches the last node. Now, `slow` is just before the node to be removed.
+5. Skipping the next node in `slow` correctly removes the targeted node by pointing `slow.next` to `slow.next.next`
+6. Return the head of the modified list.
 
 # Complexity
 
@@ -34,27 +34,28 @@ The idea is to use two pointers, `fast` and `slow`, where `fast` advances `n` st
  * @return {ListNode}
  */
 var removeNthFromEnd = function (head, n) {
+  // Initialize two pointers to the head of the list
   let fast = head,
     slow = head;
 
-  // Advance 'fast' by 'n' nodes
+  // Move 'fast' n steps ahead to create the required gap
   for (let i = 0; i < n; i++) {
     fast = fast.next;
   }
 
-  // If removing the first node
+  // If 'fast' reached the end, the head needs to be removed
   if (fast === null) {
-    return head.next;
+    return head.next; // Skip the head
   }
 
-  // Move both 'fast' and 'slow' until 'fast' reaches the end
+  // Move both pointers until 'fast' reaches the last node
   while (fast.next !== null) {
-    fast = fast.next;
-    slow = slow.next;
+    fast = fast.next; // Advance 'fast'
+    slow = slow.next; // Advance 'slow'
   }
 
-  // Skip the node after 'slow' - effectively removing it
-  slow.next = slow.next.next;
+  // 'slow' is now just before the node to be removed
+  slow.next = slow.next.next; // Skip the target node
 
   return head; // Return the modified list
 };
