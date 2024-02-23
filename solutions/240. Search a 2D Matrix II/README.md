@@ -2,58 +2,56 @@
 
 ## Intuition
 
-Starting from the top-right corner provides a unique position where moving left decreases the value and moving down increases it. This strategic starting point allows for an efficient search by eliminating one row or one column in each step.
+The algorithm is based on leveraging the sorted nature of the 2D matrix's rows and columns. By starting from the top-right corner, the algorithm can eliminate either a row or a column in each step, significantly reducing the search space.
 
 ## Approach
 
-1. Confirm the matrix isn't empty or malformed, which could lead to invalid access.
-2. Set the initial position at the top-right corner of the matrix, which acts as a reference point for comparison with the `target`.
-3. Continue moving within the matrix based on the comparison:
-   - If the `target` matches the current element, return `true`.
-   - If the `target` is less than the current element, move one column to the left (decrease the value).
-   - If the `target` is greater than the current element, move one row down (increase the value).
-4. If the loop ends without finding the `target`, conclude that the `target` isn't present and return `false`.
+1. If the matrix is empty or the first row is empty, return `false`.
+2. Start from the top-right corner of the matrix with `col` pointing to the last column and `row` pointing to the first row.
+3. Continue a loop until `col` or `row` goes out of the matrix boundaries.
+   - If the current element equals the target, return `true` indicating the target is found.
+   - If the current element is greater than the target, move left by decrementing `col` since all elements to the right are greater and cannot be the target.
+   - If the current element is less than the target, move down by incrementing `row` since all elements above are smaller and cannot be the target.
+4. If the loop exits without finding the target, return `false`.
 
 ## Complexity
 
-- Time complexity: If the loop ends without finding the `target`, conclude that the `target` isn't present and return `false`.
+- Time complexity: O(m + n), where m is the number of rows and n is the number of columns in the matrix. In the worst case, the algorithm might traverse an entire row and an entire column.
 - Space complexity: O(1), as the algorithm uses a constant amount of space.
 
 ## Code
 
 ```javascript
 /**
- * Definition for singly-linked list.
- * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
+ * @param {number[][]} matrix
+ * @param {number} target
+ * @return {boolean}
  */
-/**
- * @param {ListNode} head
- * @return {ListNode}
- */
-var swapPairs = function (head) {
-  if (!head || !head.next) return head; // Base case: no need to swap for empty or single-node list
-
-  let dummy = new ListNode(0); // Dummy node to handle edge case at head
-  dummy.next = head;
-  let prev = dummy; // `prev` points to the node before the pair being swapped
-
-  // Iterate while there's at least a pair to swap
-  while (prev.next && prev.next.next) {
-    let first = prev.next; // First node of the pair
-    let second = prev.next.next; // Second node of the pair
-
-    // Perform the swap by re-linking the `next` pointers
-    first.next = second.next; // Step 1: Link first node to the node after the second
-    second.next = first; // Step 2: Link second node back to the first
-    prev.next = second; // Step 3: Link `prev` node to the second (now first after swap)
-
-    // Move `prev` two nodes ahead for the next swap
-    prev = first;
+var searchMatrix = function (matrix, target) {
+  // Early return for an empty matrix
+  if (!matrix.length || !matrix[0].length) {
+    return false;
   }
 
-  return dummy.next; // The head of the modified list is dummy's next
+  // Initialize pointers for the top-right element
+  let col = matrix[0].length - 1;
+  let row = 0;
+
+  // Iterate over the matrix
+  while (col >= 0 && row < matrix.length) {
+    if (matrix[row][col] === target) {
+      // Target found
+      return true;
+    } else if (matrix[row][col] > target) {
+      // If current element is larger, target can't be in this column
+      col--;
+    } else {
+      // If current element is smaller, target can't be in this row
+      row++;
+    }
+  }
+
+  // Target not found in the matrix
+  return false;
 };
 ```
