@@ -2,17 +2,15 @@
 
 ## Intuition
 
-The minimum depth of a binary tree is measured by the shortest path from the root node down to the nearest leaf node.
+This solution employs a recursive approach to traverse the tree, where at each node, we consider the depth of its left and right subtrees to determine the minimum depth incrementally.
 
 ## Approach
 
-1. If the current `root` node is null, return a depth of 0. This indicates that we have surpassed a leaf node.
+1. If the current node (`root`) is `null`, return 0. This accounts for the edge case of an empty tree or reaching the end of a branch.
 2. Calculate the minimum depth of the left and right subtrees recursively.
-3. If the left subtree is absent (i.e., `root.left` is null) but the right subtree exists, return the depth of the right subtree plus one.
-4. Conversely, if the right subtree is absent (i.e., `root.right` is null) but the left subtree exists, return the depth of the left subtree plus one.
-5. If both left and right subtrees are present, the minimum depth is the lesser of the two depths plus one (to account for the current node).
-
-
+3. If the current node has no left child, the minimum depth must be calculated from the right subtree. Therefore, return `1 + rightDepth`, including the current node's depth.
+4. Conversely, if the right child doesn't exist, return `1 + leftDepth` to include the current node's depth alongside the left subtree's depth.
+5. If both left and right children exist, the minimum depth of the current node is 1 (for the current node itself) plus the lesser of the two subtree depths.
 
 ## Complexity
 
@@ -35,17 +33,19 @@ The minimum depth of a binary tree is measured by the shortest path from the roo
  * @return {number}
  */
 var minDepth = function (root) {
+  // Base case: if the tree is empty, the minimum depth is 0.
   if (root === null) return 0;
 
-  // Recursively find the depth of the left and right subtrees.
+  // Recursively calculate the depth of left and right subtrees.
   const leftDepth = minDepth(root.left);
   const rightDepth = minDepth(root.right);
 
-  // If one subtree is missing, ignore its depth.
+  // If one of the subtrees is missing, the minimum depth is in the other subtree.
+  // Add 1 to account for the depth of the current node.
   if (root.left === null) return 1 + rightDepth;
   if (root.right === null) return 1 + leftDepth;
 
-  // Choose the lesser depth of the two subtrees and add one for the current node.
+  // If both subtrees exist, the minimum depth is 1 (for the current node) plus the minimum of the depths of the two subtrees.
   return 1 + Math.min(leftDepth, rightDepth);
 };
 ```
