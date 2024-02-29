@@ -6,11 +6,11 @@ We should ensure every node and its value in one tree perfectly matches the corr
 
 ## Approach
 
-1.  If both nodes are `null`, they are identical at this point. Return `true`.
-2.  If either of the nodes (but not both) is `null`, they differ at this point. Return `false`.
-3.  Compare the values of the current nodes. If they're different, return `false`.
-4.  Recursively compare the left subtrees and the right subtrees of the current nodes.
-5.  If both the left and right subtree comparisons return `true`, then the trees rooted at the current nodes are identical. Otherwise, they're not.
+1. If both nodes are `null`, they are identical at this point. Return `true`.
+2. If either of the nodes (but not both) is `null`, they differ at this point. Return `false`.
+3. Compare the values of the current nodes. If they're different, return `false`.
+4. Recursively compare the left subtrees and the right subtrees of the current nodes.
+5. If both the left and right subtree comparisons return `true`, it indicates that both subtrees are identical, and hence, the entire trees are identical. Otherwise, they're not.
 
 ## Complexity
 
@@ -34,25 +34,26 @@ We should ensure every node and its value in one tree perfectly matches the corr
  * @return {boolean}
  */
 var isSameTree = function (p, q) {
-  // If both nodes are null, they're identical at this point.
+  // Check if both nodes are null (base case for structural identity)
   if (p === null && q === null) {
     return true;
   }
 
-  // If either node is null (but not both), they differ.
+  // Check for structural mismatch if one node is null but not the other
   if (p === null || q === null) {
     return false;
   }
 
-  // If the values differ, the trees aren't identical.
+  // Check for value mismatch at the current nodes
   if (p.val !== q.val) {
     return false;
   }
 
-  // Recursively check left and right subtrees.
+  // Recursively compare the left subtrees and the right subtrees
   let left = isSameTree(p.left, q.left);
   let right = isSameTree(p.right, q.right);
-  // Both subtrees must be the same for the trees to be identical.
+
+  // Return true only if both subtrees are identical
   return left && right;
 };
 ```

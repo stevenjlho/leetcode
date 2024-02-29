@@ -13,7 +13,7 @@ Backtracking systematically explores all possible combinations of the given cand
    - If the remaining target equals `0`, the current combination is added to `res` as a valid combination is found.
    - Iterate through `candidates` starting from `start` to ensure that we do not consider candidates before the current starting point, thus avoiding duplicate combinations.
      - Add current candidate (`candidates[i]`) to `path`. This action tentatively includes the current candidate in the potential combination being explored.
-     - Call `backtrack` recursively to continue exploring further with this candidate included.
+     - Call `backtrack` recursively with updated remaining and start to allow the same candidate to be used again.
      - Remove the last added candidate from `path`. This step is crucial as it resets the `path` to its state before the current candidate was included, allowing the next iteration to explore combinations with the next candidate.
 4. The backtracking process starts with the first candidate and an empty path.
 5. Once all combinations are explored, the `res` list containing all valid combinations is returned.
@@ -31,7 +31,6 @@ Backtracking systematically explores all possible combinations of the given cand
  * @param {number} target
  * @return {number[][]}
  */
-
 var combinationSum = function (candidates, target) {
   const res = []; // Store all valid combinations
 

@@ -6,12 +6,12 @@ To determine if `s` is a subsequence of `t`, we iterate through `t` and verify i
 
 ## Approach
 
-1.  Return `false` if `s` is longer than `t` (as it cannot be a subsequence), and `true` if `s` is empty (as an empty string is a subsequence of any string).
-2.  Use a pointer `subsequence` to keep track of the current position in `s`.
-3.  Iterate through `t`. For each character:
-    - Compare it with the character in `s` at the position indicated by `subsequence`.
-    - If they match, increment `subsequence` to check the next character in `s`.
-4.  After the loop, check if `subsequence` equals the length of `s`. If yes, it means all characters of `s` were found in `t` in order, so `s` is a subsequence of `t`.
+1. Return `false` if `s` is longer than `t` (as it cannot be a subsequence), and `true` if `s` is empty (as an empty string is a subsequence of any string).
+2. Use a pointer `subsequence` to keep track of the current position in `s`.
+3. Iterate through `t`. For each character:
+   - Compare it with the character in `s` at the position indicated by `subsequence`.
+   - If they match, increment `subsequence` to check the next character in `s`.
+4. After the loop, check if `subsequence` equals the length of `s`. If yes, it means all characters of `s` were found in `t` in order, so `s` is a subsequence of `t`.
 
 ## Complexity
 

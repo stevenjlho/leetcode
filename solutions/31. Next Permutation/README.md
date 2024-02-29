@@ -2,7 +2,7 @@
 
 ## Intuition
 
-The core concept is based on the observation that for any given sequence that is not in its last permutation, there must be an element that can be increased to get the next permutation. The algorithm identifies this "pivot" point, swaps it with a just larger element to its right, and then reverses the suffix to ensure the next smallest permutation.
+For any given sequence that is not in its last permutation, we can increase it to the next permutation by following a specific process: find the first pair of two successive numbers `a[i]` and `a[i+1]`, from the right, which satisfy `a[i] < a[i+1]`. Then, find the smallest number on the right side of `a[i]` that is greater than `a[i]`, swap them, and finally reverse the sequence after the original index `i` to get the next permutation.
 
 ## Approach
 
