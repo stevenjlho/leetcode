@@ -2,16 +2,16 @@
 
 ## Intuition
 
-Maintain a slow-moving pointer (`i`) that tracks the position where the next non-duplicate or allowed duplicate element should be placed. 
+Maintain a slow-moving pointer (`insertPos`) that tracks the position where the next non-duplicate or allowed duplicate element should be placed.
 
 ## Approach
 
-1. Set a pointer `i` to 0, which will track the position in the array where the next unique or allowed second duplicate should be placed.
-2. Use a `for` loop to iterate through each element `n` of the array `nums`.
-   - If `i` is less than 2, it means we are filling the first two positions, so we can place any element.
-   - If `n` (current element) is not equal to `nums[i - 2]`, it means either `n` is a new element or it is the second occurrence of a duplicate (but not a third or more occurrence).
-   - If either condition is met, place the current element `n` at `nums[i]` and increment `i` by 1.
-3. After the loop, `i` represents the new length of the array with duplicates removed as per the given condition.
+1. Check if the input array is empty. If it is, return `0` immediately as there are no elements to process.
+2. Start with a pointer (`insertPos`) at `0`, which will track the position in the array where the next non-duplicate element should be placed.
+3. Loop through each element in the array with an index `i`.
+   - If the current element is not a duplicate (i.e., it is either the first or second occurrence), copy it to the position indicated by `insertPos`.
+   - Increment `insertPos` to prepare for the next unique or second duplicate element.
+4. Once the loop completes, `insertPos` will indicate the length of the array without extra duplicates, and the function returns `insertPos`.
 
 ## Complexity
 
@@ -26,17 +26,24 @@ Maintain a slow-moving pointer (`i`) that tracks the position where the next non
  * @return {number}
  */
 var removeDuplicates = function (nums) {
-  let i = 0; // Pointer to place the next unique/allowed duplicate element
+  // Handle the edge case of an empty array
+  if (nums.length === 0) return 0;
 
-  for (let n of nums) {
-    // Iterate over each element in the array
-    // Place the element if either it's among the first two elements or it's not a third or more duplicate
-    if (i < 2 || n !== nums[i - 2]) {
-      nums[i] = n; // Place the element at the current position
-      i++; // Increment the position for the next element
+  // Pointer for the next insert position for a non-duplicate element
+  let insertPos = 0;
+
+  // Iterate through each element in the array
+  for (let i = 0; i < nums.length; i++) {
+    // If the current element is not a duplicate (allowed to be the first or second occurrence)
+    if (insertPos < 2 || nums[i] !== nums[insertPos - 2]) {
+      // Copy the element to the insert position
+      nums[insertPos] = nums[i];
+      // Move the insert position forward
+      insertPos++;
     }
   }
 
-  return i; // Return the new length of the array after duplicates removal
+  // The new length of the array, without extra duplicates, is insertPos
+  return insertPos;
 };
 ```
