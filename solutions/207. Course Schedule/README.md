@@ -17,8 +17,8 @@ The approach uses the concept of **Topological Sorting**, ensuring that for each
    - `queue.shift()` removes the first course from the queue and assigns it to `course`. This course has no prerequisites and can be considered completed.
    - `count++` increments the count of completed courses. If this count equals the total number of courses by the end of the process, it means all courses can be completed.
    - Retrieve all courses dependent on the current course that is dequeued from the `queue` and iterate over each of them. If there are no dependent courses, an empty array (`[]`) is used to avoid null references.
-      - For each dependent course (`nextCourse`), the algorithm reduces its `inDegree` by 1. This is because completing `course` satisfies one of `nextCourse`'s prerequisites.
-      - If reducing the `inDegree` results in `nextCourse` having no more prerequisites, it means `nextCourse` can now be taken. Therefore, `nextCourse` is added to the `queue`.
+      - For each dependent course (`dependentCourse`), the algorithm reduces its `inDegree` by 1. This is because completing `course` satisfies one of `dependentCourse`'s prerequisites.
+      - If reducing the `inDegree` results in `dependentCourse` having no more prerequisites, it means `dependentCourse` can now be taken. Therefore, `dependentCourse` is added to the `queue`.
 8. If the count of processed courses equals numCourses, return true; otherwise, false.
 
 ## Complexity
@@ -60,9 +60,9 @@ var canFinish = function (numCourses, prerequisites) {
     count++; // Increment completed courses
 
     // Process dependent courses
-    (map.get(course) || []).forEach((nextCourse) => {
-      inDegree[nextCourse]--; // Remove prerequisite
-      if (inDegree[nextCourse] === 0) queue.push(nextCourse); // If no more prerequisites, enqueue
+    (map.get(course) || []).forEach((dependentCourse) => {
+      inDegree[dependentCourse]--; // Remove prerequisite
+      if (inDegree[dependentCourse] === 0) queue.push(dependentCourse); // If no more prerequisites, enqueue
     });
   }
 

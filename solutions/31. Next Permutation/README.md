@@ -2,19 +2,18 @@
 
 ## Intuition
 
-For any given sequence that is not in its last permutation, we can increase it to the next permutation by following a specific process: find the first pair of two successive numbers `a[i]` and `a[i+1]`, from the right, which satisfy `a[i] < a[i+1]`. Then, find the smallest number on the right side of `a[i]` that is greater than `a[i]`, swap them, and finally reverse the sequence after the original index `i` to get the next permutation.
+The intuition behind this algorithm is to find the rightmost pair of two successive numbers a[i] and a[i+1], where a[i] < a[i+1]. This pair marks a decrease in the sequence, and we aim to increase this specific a[i] to the next greater number but in the smallest way possible.
 
 ## Approach
 
-1. Iterate from right to left, find the first element (`pivot`) that is smaller than its next element. This step determines the part of the sequence that can be rearranged to get the next permutation.
-2. If a pivot is found, search for the smallest element greater than the pivot to its right. This ensures the increment to the next permutation is minimal.
-3. Swap the pivot with the identified element to increase the sequence.
-4. Reverse the elements to the right of the pivot's original position to get the lowest permutation of these numbers, completing the transition to the next permutation.
-5. If no pivot is found, the array is in descending order, and reversing it gives the lowest permutation.
+1. Traverse the array from right to left to find the first pair where `nums[i] < nums[i+1]`. This `nums[i]` is identified as the pivot.
+2. If such a pivot is found, scan the array again from right to left to find the first element that is greater than the pivot, indicating this element can be swapped with the pivot to increase the sequence's value.
+3. Swap the pivot with the found element, ensuring the increase is minimal.
+4. Reverse the sequence to the right of the pivot's original position to ensure we get the smallest next permutation.
 
 ## Complexity
 
-- Time Complexity: O(n), where n is the number of elements in the array. Each step (finding the pivot, finding the element to swap with the pivot, and reversing the suffix) involves a single pass through the array or a portion of it.
+- Time Complexity: O(N), where N is the number of elements in the array. Each step of the algorithm (finding the pivot, finding the element to swap with, and reversing the suffix) is done in linear time.
 - Space Complexity: O(1), as the rearrangement is done in place with only a constant amount of extra space used for variables.
 
 ## Code
@@ -27,34 +26,33 @@ For any given sequence that is not in its last permutation, we can increase it t
 var nextPermutation = function (nums) {
   let pivotIndex = -1;
 
-  // Step 1: Find the pivot
+  // Step 1: Find the pivot, the first element from the end that's smaller than its next.
   for (let i = nums.length - 2; i >= 0; i--) {
     if (nums[i] < nums[i + 1]) {
       pivotIndex = i;
-      break; // Pivot found, no need to continue
+      break; // Found the pivot, stop searching.
     }
   }
 
-  // If pivot is found, find the smallest number greater than the pivot
+  // Step 2: If a pivot is found, find the smallest element greater than the pivot to swap.
   if (pivotIndex !== -1) {
     for (let i = nums.length - 1; i > pivotIndex; i--) {
       if (nums[i] > nums[pivotIndex]) {
-        // Step 2: Swap with pivot
-        [nums[pivotIndex], nums[i]] = [nums[i], nums[pivotIndex]];
-        break; // Swap complete, break the loop
+        [nums[pivotIndex], nums[i]] = [nums[i], nums[pivotIndex]]; // Swap the elements.
+        break; // Swap done, break the loop.
       }
     }
   }
 
-  // Step 3: Reverse the suffix
+  // Step 3: Reverse the suffix starting right after the pivot to get the next permutation.
   let start = pivotIndex + 1,
     end = nums.length - 1;
   while (start < end) {
-    [nums[start], nums[end]] = [nums[end], nums[start]]; // Swap elements to reverse
+    [nums[start], nums[end]] = [nums[end], nums[start]]; // Swap elements towards the center.
     start++;
     end--;
   }
 
-  // No pivot found means the array is in descending order, reverse it to get the lowest permutation
+  // If no pivot was found, the entire sequence is in descending order. Reverse it to get the smallest permutation.
 };
 ```
